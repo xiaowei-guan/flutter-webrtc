@@ -126,13 +126,13 @@ public class Messages {
 
   /** Generated class from Pigeon that represents data sent in messages. */
   public static final class ConstraintsMessage {
-    private @NonNull Map<String, dynamic> constraints;
+    private @NonNull Map<String, Object> constraints;
 
-    public @NonNull Map<String, dynamic> getConstraints() {
+    public @NonNull Map<String, Object> getConstraints() {
       return constraints;
     }
 
-    public void setConstraints(@NonNull Map<String, dynamic> setterArg) {
+    public void setConstraints(@NonNull Map<String, Object> setterArg) {
       if (setterArg == null) {
         throw new IllegalStateException("Nonnull field \"constraints\" is null.");
       }
@@ -144,9 +144,9 @@ public class Messages {
 
     public static final class Builder {
 
-      private @Nullable Map<String, dynamic> constraints;
+      private @Nullable Map<String, Object> constraints;
 
-      public @NonNull Builder setConstraints(@NonNull Map<String, dynamic> setterArg) {
+      public @NonNull Builder setConstraints(@NonNull Map<String, Object> setterArg) {
         this.constraints = setterArg;
         return this;
       }
@@ -168,20 +168,20 @@ public class Messages {
     static @NonNull ConstraintsMessage fromList(@NonNull ArrayList<Object> list) {
       ConstraintsMessage pigeonResult = new ConstraintsMessage();
       Object constraints = list.get(0);
-      pigeonResult.setConstraints((Map<String, dynamic>) constraints);
+      pigeonResult.setConstraints((Map<String, Object>) constraints);
       return pigeonResult;
     }
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
   public static final class ConfigurationMessage {
-    private @NonNull Map<String, dynamic> configurations;
+    private @NonNull Map<String, Object> configurations;
 
-    public @NonNull Map<String, dynamic> getConfigurations() {
+    public @NonNull Map<String, Object> getConfigurations() {
       return configurations;
     }
 
-    public void setConfigurations(@NonNull Map<String, dynamic> setterArg) {
+    public void setConfigurations(@NonNull Map<String, Object> setterArg) {
       if (setterArg == null) {
         throw new IllegalStateException("Nonnull field \"configurations\" is null.");
       }
@@ -193,9 +193,9 @@ public class Messages {
 
     public static final class Builder {
 
-      private @Nullable Map<String, dynamic> configurations;
+      private @Nullable Map<String, Object> configurations;
 
-      public @NonNull Builder setConfigurations(@NonNull Map<String, dynamic> setterArg) {
+      public @NonNull Builder setConfigurations(@NonNull Map<String, Object> setterArg) {
         this.configurations = setterArg;
         return this;
       }
@@ -217,273 +217,7 @@ public class Messages {
     static @NonNull ConfigurationMessage fromList(@NonNull ArrayList<Object> list) {
       ConfigurationMessage pigeonResult = new ConfigurationMessage();
       Object configurations = list.get(0);
-      pigeonResult.setConfigurations((Map<String, dynamic>) configurations);
-      return pigeonResult;
-    }
-  }
-
-  /** Generated class from Pigeon that represents data sent in messages. */
-  public static final class MediaStreamMessage {
-    private @NonNull String id;
-
-    public @NonNull String getId() {
-      return id;
-    }
-
-    public void setId(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"id\" is null.");
-      }
-      this.id = setterArg;
-    }
-
-    private @NonNull String ownerTag;
-
-    public @NonNull String getOwnerTag() {
-      return ownerTag;
-    }
-
-    public void setOwnerTag(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"ownerTag\" is null.");
-      }
-      this.ownerTag = setterArg;
-    }
-
-    private @NonNull List<AudioTrackMessage> audioTracks;
-
-    public @NonNull List<AudioTrackMessage> getAudioTracks() {
-      return audioTracks;
-    }
-
-    public void setAudioTracks(@NonNull List<AudioTrackMessage> setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"audioTracks\" is null.");
-      }
-      this.audioTracks = setterArg;
-    }
-
-    private @NonNull List<VideoTrackMessage> videoTracks;
-
-    public @NonNull List<VideoTrackMessage> getVideoTracks() {
-      return videoTracks;
-    }
-
-    public void setVideoTracks(@NonNull List<VideoTrackMessage> setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"videoTracks\" is null.");
-      }
-      this.videoTracks = setterArg;
-    }
-
-    /** Constructor is non-public to enforce null safety; use Builder. */
-    MediaStreamMessage() {}
-
-    public static final class Builder {
-
-      private @Nullable String id;
-
-      public @NonNull Builder setId(@NonNull String setterArg) {
-        this.id = setterArg;
-        return this;
-      }
-
-      private @Nullable String ownerTag;
-
-      public @NonNull Builder setOwnerTag(@NonNull String setterArg) {
-        this.ownerTag = setterArg;
-        return this;
-      }
-
-      private @Nullable List<AudioTrackMessage> audioTracks;
-
-      public @NonNull Builder setAudioTracks(@NonNull List<AudioTrackMessage> setterArg) {
-        this.audioTracks = setterArg;
-        return this;
-      }
-
-      private @Nullable List<VideoTrackMessage> videoTracks;
-
-      public @NonNull Builder setVideoTracks(@NonNull List<VideoTrackMessage> setterArg) {
-        this.videoTracks = setterArg;
-        return this;
-      }
-
-      public @NonNull MediaStreamMessage build() {
-        MediaStreamMessage pigeonReturn = new MediaStreamMessage();
-        pigeonReturn.setId(id);
-        pigeonReturn.setOwnerTag(ownerTag);
-        pigeonReturn.setAudioTracks(audioTracks);
-        pigeonReturn.setVideoTracks(videoTracks);
-        return pigeonReturn;
-      }
-    }
-
-    @NonNull
-    ArrayList<Object> toList() {
-      ArrayList<Object> toListResult = new ArrayList<Object>(4);
-      toListResult.add(id);
-      toListResult.add(ownerTag);
-      toListResult.add(audioTracks);
-      toListResult.add(videoTracks);
-      return toListResult;
-    }
-
-    static @NonNull MediaStreamMessage fromList(@NonNull ArrayList<Object> list) {
-      MediaStreamMessage pigeonResult = new MediaStreamMessage();
-      Object id = list.get(0);
-      pigeonResult.setId((String) id);
-      Object ownerTag = list.get(1);
-      pigeonResult.setOwnerTag((String) ownerTag);
-      Object audioTracks = list.get(2);
-      pigeonResult.setAudioTracks((List<AudioTrackMessage>) audioTracks);
-      Object videoTracks = list.get(3);
-      pigeonResult.setVideoTracks((List<VideoTrackMessage>) videoTracks);
-      return pigeonResult;
-    }
-  }
-
-  /** Generated class from Pigeon that represents data sent in messages. */
-  public static final class AudioTrackMessage {
-    private @NonNull String id;
-
-    public @NonNull String getId() {
-      return id;
-    }
-
-    public void setId(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"id\" is null.");
-      }
-      this.id = setterArg;
-    }
-
-    private @NonNull String label;
-
-    public @NonNull String getLabel() {
-      return label;
-    }
-
-    public void setLabel(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"label\" is null.");
-      }
-      this.label = setterArg;
-    }
-
-    private @NonNull String kind;
-
-    public @NonNull String getKind() {
-      return kind;
-    }
-
-    public void setKind(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"kind\" is null.");
-      }
-      this.kind = setterArg;
-    }
-
-    private @NonNull Boolean enabled;
-
-    public @NonNull Boolean getEnabled() {
-      return enabled;
-    }
-
-    public void setEnabled(@NonNull Boolean setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"enabled\" is null.");
-      }
-      this.enabled = setterArg;
-    }
-
-    private @NonNull AudioTrackSettingsMessage settings;
-
-    public @NonNull AudioTrackSettingsMessage getSettings() {
-      return settings;
-    }
-
-    public void setSettings(@NonNull AudioTrackSettingsMessage setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"settings\" is null.");
-      }
-      this.settings = setterArg;
-    }
-
-    /** Constructor is non-public to enforce null safety; use Builder. */
-    AudioTrackMessage() {}
-
-    public static final class Builder {
-
-      private @Nullable String id;
-
-      public @NonNull Builder setId(@NonNull String setterArg) {
-        this.id = setterArg;
-        return this;
-      }
-
-      private @Nullable String label;
-
-      public @NonNull Builder setLabel(@NonNull String setterArg) {
-        this.label = setterArg;
-        return this;
-      }
-
-      private @Nullable String kind;
-
-      public @NonNull Builder setKind(@NonNull String setterArg) {
-        this.kind = setterArg;
-        return this;
-      }
-
-      private @Nullable Boolean enabled;
-
-      public @NonNull Builder setEnabled(@NonNull Boolean setterArg) {
-        this.enabled = setterArg;
-        return this;
-      }
-
-      private @Nullable AudioTrackSettingsMessage settings;
-
-      public @NonNull Builder setSettings(@NonNull AudioTrackSettingsMessage setterArg) {
-        this.settings = setterArg;
-        return this;
-      }
-
-      public @NonNull AudioTrackMessage build() {
-        AudioTrackMessage pigeonReturn = new AudioTrackMessage();
-        pigeonReturn.setId(id);
-        pigeonReturn.setLabel(label);
-        pigeonReturn.setKind(kind);
-        pigeonReturn.setEnabled(enabled);
-        pigeonReturn.setSettings(settings);
-        return pigeonReturn;
-      }
-    }
-
-    @NonNull
-    ArrayList<Object> toList() {
-      ArrayList<Object> toListResult = new ArrayList<Object>(5);
-      toListResult.add(id);
-      toListResult.add(label);
-      toListResult.add(kind);
-      toListResult.add(enabled);
-      toListResult.add((settings == null) ? null : settings.toList());
-      return toListResult;
-    }
-
-    static @NonNull AudioTrackMessage fromList(@NonNull ArrayList<Object> list) {
-      AudioTrackMessage pigeonResult = new AudioTrackMessage();
-      Object id = list.get(0);
-      pigeonResult.setId((String) id);
-      Object label = list.get(1);
-      pigeonResult.setLabel((String) label);
-      Object kind = list.get(2);
-      pigeonResult.setKind((String) kind);
-      Object enabled = list.get(3);
-      pigeonResult.setEnabled((Boolean) enabled);
-      Object settings = list.get(4);
-      pigeonResult.setSettings((settings == null) ? null : AudioTrackSettingsMessage.fromList((ArrayList<Object>) settings));
+      pigeonResult.setConfigurations((Map<String, Object>) configurations);
       return pigeonResult;
     }
   }
@@ -682,7 +416,7 @@ public class Messages {
   }
 
   /** Generated class from Pigeon that represents data sent in messages. */
-  public static final class VideoTrackMessage {
+  public static final class AudioTrackMessage {
     private @NonNull String id;
 
     public @NonNull String getId() {
@@ -735,13 +469,13 @@ public class Messages {
       this.enabled = setterArg;
     }
 
-    private @NonNull VideoTrackSettingsMessage settings;
+    private @NonNull AudioTrackSettingsMessage settings;
 
-    public @NonNull VideoTrackSettingsMessage getSettings() {
+    public @NonNull AudioTrackSettingsMessage getSettings() {
       return settings;
     }
 
-    public void setSettings(@NonNull VideoTrackSettingsMessage setterArg) {
+    public void setSettings(@NonNull AudioTrackSettingsMessage setterArg) {
       if (setterArg == null) {
         throw new IllegalStateException("Nonnull field \"settings\" is null.");
       }
@@ -749,7 +483,7 @@ public class Messages {
     }
 
     /** Constructor is non-public to enforce null safety; use Builder. */
-    VideoTrackMessage() {}
+    AudioTrackMessage() {}
 
     public static final class Builder {
 
@@ -781,15 +515,15 @@ public class Messages {
         return this;
       }
 
-      private @Nullable VideoTrackSettingsMessage settings;
+      private @Nullable AudioTrackSettingsMessage settings;
 
-      public @NonNull Builder setSettings(@NonNull VideoTrackSettingsMessage setterArg) {
+      public @NonNull Builder setSettings(@NonNull AudioTrackSettingsMessage setterArg) {
         this.settings = setterArg;
         return this;
       }
 
-      public @NonNull VideoTrackMessage build() {
-        VideoTrackMessage pigeonReturn = new VideoTrackMessage();
+      public @NonNull AudioTrackMessage build() {
+        AudioTrackMessage pigeonReturn = new AudioTrackMessage();
         pigeonReturn.setId(id);
         pigeonReturn.setLabel(label);
         pigeonReturn.setKind(kind);
@@ -810,8 +544,8 @@ public class Messages {
       return toListResult;
     }
 
-    static @NonNull VideoTrackMessage fromList(@NonNull ArrayList<Object> list) {
-      VideoTrackMessage pigeonResult = new VideoTrackMessage();
+    static @NonNull AudioTrackMessage fromList(@NonNull ArrayList<Object> list) {
+      AudioTrackMessage pigeonResult = new AudioTrackMessage();
       Object id = list.get(0);
       pigeonResult.setId((String) id);
       Object label = list.get(1);
@@ -821,7 +555,7 @@ public class Messages {
       Object enabled = list.get(3);
       pigeonResult.setEnabled((Boolean) enabled);
       Object settings = list.get(4);
-      pigeonResult.setSettings((settings == null) ? null : VideoTrackSettingsMessage.fromList((ArrayList<Object>) settings));
+      pigeonResult.setSettings((settings == null) ? null : AudioTrackSettingsMessage.fromList((ArrayList<Object>) settings));
       return pigeonResult;
     }
   }
@@ -967,6 +701,272 @@ public class Messages {
       pigeonResult.setHeight((height == null) ? null : ((height instanceof Integer) ? (Integer) height : (Long) height));
       Object frameRate = list.get(4);
       pigeonResult.setFrameRate((frameRate == null) ? null : ((frameRate instanceof Integer) ? (Integer) frameRate : (Long) frameRate));
+      return pigeonResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static final class VideoTrackMessage {
+    private @NonNull String id;
+
+    public @NonNull String getId() {
+      return id;
+    }
+
+    public void setId(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"id\" is null.");
+      }
+      this.id = setterArg;
+    }
+
+    private @NonNull String label;
+
+    public @NonNull String getLabel() {
+      return label;
+    }
+
+    public void setLabel(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"label\" is null.");
+      }
+      this.label = setterArg;
+    }
+
+    private @NonNull String kind;
+
+    public @NonNull String getKind() {
+      return kind;
+    }
+
+    public void setKind(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"kind\" is null.");
+      }
+      this.kind = setterArg;
+    }
+
+    private @NonNull Boolean enabled;
+
+    public @NonNull Boolean getEnabled() {
+      return enabled;
+    }
+
+    public void setEnabled(@NonNull Boolean setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"enabled\" is null.");
+      }
+      this.enabled = setterArg;
+    }
+
+    private @NonNull VideoTrackSettingsMessage settings;
+
+    public @NonNull VideoTrackSettingsMessage getSettings() {
+      return settings;
+    }
+
+    public void setSettings(@NonNull VideoTrackSettingsMessage setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"settings\" is null.");
+      }
+      this.settings = setterArg;
+    }
+
+    /** Constructor is non-public to enforce null safety; use Builder. */
+    VideoTrackMessage() {}
+
+    public static final class Builder {
+
+      private @Nullable String id;
+
+      public @NonNull Builder setId(@NonNull String setterArg) {
+        this.id = setterArg;
+        return this;
+      }
+
+      private @Nullable String label;
+
+      public @NonNull Builder setLabel(@NonNull String setterArg) {
+        this.label = setterArg;
+        return this;
+      }
+
+      private @Nullable String kind;
+
+      public @NonNull Builder setKind(@NonNull String setterArg) {
+        this.kind = setterArg;
+        return this;
+      }
+
+      private @Nullable Boolean enabled;
+
+      public @NonNull Builder setEnabled(@NonNull Boolean setterArg) {
+        this.enabled = setterArg;
+        return this;
+      }
+
+      private @Nullable VideoTrackSettingsMessage settings;
+
+      public @NonNull Builder setSettings(@NonNull VideoTrackSettingsMessage setterArg) {
+        this.settings = setterArg;
+        return this;
+      }
+
+      public @NonNull VideoTrackMessage build() {
+        VideoTrackMessage pigeonReturn = new VideoTrackMessage();
+        pigeonReturn.setId(id);
+        pigeonReturn.setLabel(label);
+        pigeonReturn.setKind(kind);
+        pigeonReturn.setEnabled(enabled);
+        pigeonReturn.setSettings(settings);
+        return pigeonReturn;
+      }
+    }
+
+    @NonNull
+    ArrayList<Object> toList() {
+      ArrayList<Object> toListResult = new ArrayList<Object>(5);
+      toListResult.add(id);
+      toListResult.add(label);
+      toListResult.add(kind);
+      toListResult.add(enabled);
+      toListResult.add((settings == null) ? null : settings.toList());
+      return toListResult;
+    }
+
+    static @NonNull VideoTrackMessage fromList(@NonNull ArrayList<Object> list) {
+      VideoTrackMessage pigeonResult = new VideoTrackMessage();
+      Object id = list.get(0);
+      pigeonResult.setId((String) id);
+      Object label = list.get(1);
+      pigeonResult.setLabel((String) label);
+      Object kind = list.get(2);
+      pigeonResult.setKind((String) kind);
+      Object enabled = list.get(3);
+      pigeonResult.setEnabled((Boolean) enabled);
+      Object settings = list.get(4);
+      pigeonResult.setSettings((settings == null) ? null : VideoTrackSettingsMessage.fromList((ArrayList<Object>) settings));
+      return pigeonResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static final class MediaStreamMessage {
+    private @NonNull String id;
+
+    public @NonNull String getId() {
+      return id;
+    }
+
+    public void setId(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"id\" is null.");
+      }
+      this.id = setterArg;
+    }
+
+    private @NonNull String ownerTag;
+
+    public @NonNull String getOwnerTag() {
+      return ownerTag;
+    }
+
+    public void setOwnerTag(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"ownerTag\" is null.");
+      }
+      this.ownerTag = setterArg;
+    }
+
+    private @NonNull List<AudioTrackMessage> audioTracks;
+
+    public @NonNull List<AudioTrackMessage> getAudioTracks() {
+      return audioTracks;
+    }
+
+    public void setAudioTracks(@NonNull List<AudioTrackMessage> setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"audioTracks\" is null.");
+      }
+      this.audioTracks = setterArg;
+    }
+
+    private @NonNull List<VideoTrackMessage> videoTracks;
+
+    public @NonNull List<VideoTrackMessage> getVideoTracks() {
+      return videoTracks;
+    }
+
+    public void setVideoTracks(@NonNull List<VideoTrackMessage> setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"videoTracks\" is null.");
+      }
+      this.videoTracks = setterArg;
+    }
+
+    /** Constructor is non-public to enforce null safety; use Builder. */
+    MediaStreamMessage() {}
+
+    public static final class Builder {
+
+      private @Nullable String id;
+
+      public @NonNull Builder setId(@NonNull String setterArg) {
+        this.id = setterArg;
+        return this;
+      }
+
+      private @Nullable String ownerTag;
+
+      public @NonNull Builder setOwnerTag(@NonNull String setterArg) {
+        this.ownerTag = setterArg;
+        return this;
+      }
+
+      private @Nullable List<AudioTrackMessage> audioTracks;
+
+      public @NonNull Builder setAudioTracks(@NonNull List<AudioTrackMessage> setterArg) {
+        this.audioTracks = setterArg;
+        return this;
+      }
+
+      private @Nullable List<VideoTrackMessage> videoTracks;
+
+      public @NonNull Builder setVideoTracks(@NonNull List<VideoTrackMessage> setterArg) {
+        this.videoTracks = setterArg;
+        return this;
+      }
+
+      public @NonNull MediaStreamMessage build() {
+        MediaStreamMessage pigeonReturn = new MediaStreamMessage();
+        pigeonReturn.setId(id);
+        pigeonReturn.setOwnerTag(ownerTag);
+        pigeonReturn.setAudioTracks(audioTracks);
+        pigeonReturn.setVideoTracks(videoTracks);
+        return pigeonReturn;
+      }
+    }
+
+    @NonNull
+    ArrayList<Object> toList() {
+      ArrayList<Object> toListResult = new ArrayList<Object>(4);
+      toListResult.add(id);
+      toListResult.add(ownerTag);
+      toListResult.add(audioTracks);
+      toListResult.add(videoTracks);
+      return toListResult;
+    }
+
+    static @NonNull MediaStreamMessage fromList(@NonNull ArrayList<Object> list) {
+      MediaStreamMessage pigeonResult = new MediaStreamMessage();
+      Object id = list.get(0);
+      pigeonResult.setId((String) id);
+      Object ownerTag = list.get(1);
+      pigeonResult.setOwnerTag((String) ownerTag);
+      Object audioTracks = list.get(2);
+      pigeonResult.setAudioTracks((List<AudioTrackMessage>) audioTracks);
+      Object videoTracks = list.get(3);
+      pigeonResult.setVideoTracks((List<VideoTrackMessage>) videoTracks);
       return pigeonResult;
     }
   }
@@ -1203,13 +1203,13 @@ public class Messages {
       this.timestamp = setterArg;
     }
 
-    private @NonNull Map<dynamic, dynamic> values;
+    private @NonNull Map<Object, Object> values;
 
-    public @NonNull Map<dynamic, dynamic> getValues() {
+    public @NonNull Map<Object, Object> getValues() {
       return values;
     }
 
-    public void setValues(@NonNull Map<dynamic, dynamic> setterArg) {
+    public void setValues(@NonNull Map<Object, Object> setterArg) {
       if (setterArg == null) {
         throw new IllegalStateException("Nonnull field \"values\" is null.");
       }
@@ -1242,9 +1242,9 @@ public class Messages {
         return this;
       }
 
-      private @Nullable Map<dynamic, dynamic> values;
+      private @Nullable Map<Object, Object> values;
 
-      public @NonNull Builder setValues(@NonNull Map<dynamic, dynamic> setterArg) {
+      public @NonNull Builder setValues(@NonNull Map<Object, Object> setterArg) {
         this.values = setterArg;
         return this;
       }
@@ -1278,7 +1278,7 @@ public class Messages {
       Object timestamp = list.get(2);
       pigeonResult.setTimestamp((Double) timestamp);
       Object values = list.get(3);
-      pigeonResult.setValues((Map<dynamic, dynamic>) values);
+      pigeonResult.setValues((Map<Object, Object>) values);
       return pigeonResult;
     }
   }
@@ -1945,13 +1945,13 @@ public class Messages {
       this.numChannels = setterArg;
     }
 
-    private @Nullable Map<dynamic, dynamic> parameters;
+    private @Nullable Map<Object, Object> parameters;
 
-    public @Nullable Map<dynamic, dynamic> getParameters() {
+    public @Nullable Map<Object, Object> getParameters() {
       return parameters;
     }
 
-    public void setParameters(@Nullable Map<dynamic, dynamic> setterArg) {
+    public void setParameters(@Nullable Map<Object, Object> setterArg) {
       this.parameters = setterArg;
     }
 
@@ -1992,9 +1992,9 @@ public class Messages {
         return this;
       }
 
-      private @Nullable Map<dynamic, dynamic> parameters;
+      private @Nullable Map<Object, Object> parameters;
 
-      public @NonNull Builder setParameters(@Nullable Map<dynamic, dynamic> setterArg) {
+      public @NonNull Builder setParameters(@Nullable Map<Object, Object> setterArg) {
         this.parameters = setterArg;
         return this;
       }
@@ -2036,7 +2036,80 @@ public class Messages {
       Object numChannels = list.get(4);
       pigeonResult.setNumChannels((numChannels == null) ? null : ((numChannels instanceof Integer) ? (Integer) numChannels : (Long) numChannels));
       Object parameters = list.get(5);
-      pigeonResult.setParameters((Map<dynamic, dynamic>) parameters);
+      pigeonResult.setParameters((Map<Object, Object>) parameters);
+      return pigeonResult;
+    }
+  }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static final class RTCParametersMessage {
+    private @NonNull String cname;
+
+    public @NonNull String getCname() {
+      return cname;
+    }
+
+    public void setCname(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"cname\" is null.");
+      }
+      this.cname = setterArg;
+    }
+
+    private @NonNull Boolean reducedSize;
+
+    public @NonNull Boolean getReducedSize() {
+      return reducedSize;
+    }
+
+    public void setReducedSize(@NonNull Boolean setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"reducedSize\" is null.");
+      }
+      this.reducedSize = setterArg;
+    }
+
+    /** Constructor is non-public to enforce null safety; use Builder. */
+    RTCParametersMessage() {}
+
+    public static final class Builder {
+
+      private @Nullable String cname;
+
+      public @NonNull Builder setCname(@NonNull String setterArg) {
+        this.cname = setterArg;
+        return this;
+      }
+
+      private @Nullable Boolean reducedSize;
+
+      public @NonNull Builder setReducedSize(@NonNull Boolean setterArg) {
+        this.reducedSize = setterArg;
+        return this;
+      }
+
+      public @NonNull RTCParametersMessage build() {
+        RTCParametersMessage pigeonReturn = new RTCParametersMessage();
+        pigeonReturn.setCname(cname);
+        pigeonReturn.setReducedSize(reducedSize);
+        return pigeonReturn;
+      }
+    }
+
+    @NonNull
+    ArrayList<Object> toList() {
+      ArrayList<Object> toListResult = new ArrayList<Object>(2);
+      toListResult.add(cname);
+      toListResult.add(reducedSize);
+      return toListResult;
+    }
+
+    static @NonNull RTCParametersMessage fromList(@NonNull ArrayList<Object> list) {
+      RTCParametersMessage pigeonResult = new RTCParametersMessage();
+      Object cname = list.get(0);
+      pigeonResult.setCname((String) cname);
+      Object reducedSize = list.get(1);
+      pigeonResult.setReducedSize((Boolean) reducedSize);
       return pigeonResult;
     }
   }
@@ -2164,79 +2237,6 @@ public class Messages {
       pigeonResult.setEncodings((List<RtpEncodingMessage>) encodings);
       Object codecs = list.get(4);
       pigeonResult.setCodecs((List<RtpCodecMessage>) codecs);
-      return pigeonResult;
-    }
-  }
-
-  /** Generated class from Pigeon that represents data sent in messages. */
-  public static final class RTCParametersMessage {
-    private @NonNull String cname;
-
-    public @NonNull String getCname() {
-      return cname;
-    }
-
-    public void setCname(@NonNull String setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"cname\" is null.");
-      }
-      this.cname = setterArg;
-    }
-
-    private @NonNull Boolean reducedSize;
-
-    public @NonNull Boolean getReducedSize() {
-      return reducedSize;
-    }
-
-    public void setReducedSize(@NonNull Boolean setterArg) {
-      if (setterArg == null) {
-        throw new IllegalStateException("Nonnull field \"reducedSize\" is null.");
-      }
-      this.reducedSize = setterArg;
-    }
-
-    /** Constructor is non-public to enforce null safety; use Builder. */
-    RTCParametersMessage() {}
-
-    public static final class Builder {
-
-      private @Nullable String cname;
-
-      public @NonNull Builder setCname(@NonNull String setterArg) {
-        this.cname = setterArg;
-        return this;
-      }
-
-      private @Nullable Boolean reducedSize;
-
-      public @NonNull Builder setReducedSize(@NonNull Boolean setterArg) {
-        this.reducedSize = setterArg;
-        return this;
-      }
-
-      public @NonNull RTCParametersMessage build() {
-        RTCParametersMessage pigeonReturn = new RTCParametersMessage();
-        pigeonReturn.setCname(cname);
-        pigeonReturn.setReducedSize(reducedSize);
-        return pigeonReturn;
-      }
-    }
-
-    @NonNull
-    ArrayList<Object> toList() {
-      ArrayList<Object> toListResult = new ArrayList<Object>(2);
-      toListResult.add(cname);
-      toListResult.add(reducedSize);
-      return toListResult;
-    }
-
-    static @NonNull RTCParametersMessage fromList(@NonNull ArrayList<Object> list) {
-      RTCParametersMessage pigeonResult = new RTCParametersMessage();
-      Object cname = list.get(0);
-      pigeonResult.setCname((String) cname);
-      Object reducedSize = list.get(1);
-      pigeonResult.setReducedSize((Boolean) reducedSize);
       return pigeonResult;
     }
   }
@@ -2693,13 +2693,51 @@ public class Messages {
     protected Object readValueOfType(byte type, @NonNull ByteBuffer buffer) {
       switch (type) {
         case (byte) 128:
-          return RtpCapabilitiesMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return AudioTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 129:
-          return RtpCodecCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return AudioTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 130:
-          return RtpHeaderExtensionCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return ConfigurationMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 131:
-          return dynamic.fromList((ArrayList<Object>) readValue(buffer));
+          return ConstraintsMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 132:
+          return DataChannelInitMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 133:
+          return DataChannelMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 134:
+          return DesktopCapturerSourceMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 135:
+          return HeaderExtensionMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 136:
+          return IceCandidateMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 137:
+          return MediaDeviceInfoMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 138:
+          return MediaStreamMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 139:
+          return RTCParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 140:
+          return RtpCapabilitiesMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 141:
+          return RtpCodecCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 142:
+          return RtpCodecMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 143:
+          return RtpEncodingMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 144:
+          return RtpHeaderExtensionCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 145:
+          return RtpParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 146:
+          return SessionDescriptionMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 147:
+          return StatsReportMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 148:
+          return ThumbnailSizeMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 149:
+          return VideoTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 150:
+          return VideoTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
         default:
           return super.readValueOfType(type, buffer);
       }
@@ -2707,18 +2745,75 @@ public class Messages {
 
     @Override
     protected void writeValue(@NonNull ByteArrayOutputStream stream, Object value) {
-      if (value instanceof RtpCapabilitiesMessage) {
+      if (value instanceof AudioTrackMessage) {
         stream.write(128);
+        writeValue(stream, ((AudioTrackMessage) value).toList());
+      } else if (value instanceof AudioTrackSettingsMessage) {
+        stream.write(129);
+        writeValue(stream, ((AudioTrackSettingsMessage) value).toList());
+      } else if (value instanceof ConfigurationMessage) {
+        stream.write(130);
+        writeValue(stream, ((ConfigurationMessage) value).toList());
+      } else if (value instanceof ConstraintsMessage) {
+        stream.write(131);
+        writeValue(stream, ((ConstraintsMessage) value).toList());
+      } else if (value instanceof DataChannelInitMessage) {
+        stream.write(132);
+        writeValue(stream, ((DataChannelInitMessage) value).toList());
+      } else if (value instanceof DataChannelMessage) {
+        stream.write(133);
+        writeValue(stream, ((DataChannelMessage) value).toList());
+      } else if (value instanceof DesktopCapturerSourceMessage) {
+        stream.write(134);
+        writeValue(stream, ((DesktopCapturerSourceMessage) value).toList());
+      } else if (value instanceof HeaderExtensionMessage) {
+        stream.write(135);
+        writeValue(stream, ((HeaderExtensionMessage) value).toList());
+      } else if (value instanceof IceCandidateMessage) {
+        stream.write(136);
+        writeValue(stream, ((IceCandidateMessage) value).toList());
+      } else if (value instanceof MediaDeviceInfoMessage) {
+        stream.write(137);
+        writeValue(stream, ((MediaDeviceInfoMessage) value).toList());
+      } else if (value instanceof MediaStreamMessage) {
+        stream.write(138);
+        writeValue(stream, ((MediaStreamMessage) value).toList());
+      } else if (value instanceof RTCParametersMessage) {
+        stream.write(139);
+        writeValue(stream, ((RTCParametersMessage) value).toList());
+      } else if (value instanceof RtpCapabilitiesMessage) {
+        stream.write(140);
         writeValue(stream, ((RtpCapabilitiesMessage) value).toList());
       } else if (value instanceof RtpCodecCapabilityMessage) {
-        stream.write(129);
+        stream.write(141);
         writeValue(stream, ((RtpCodecCapabilityMessage) value).toList());
+      } else if (value instanceof RtpCodecMessage) {
+        stream.write(142);
+        writeValue(stream, ((RtpCodecMessage) value).toList());
+      } else if (value instanceof RtpEncodingMessage) {
+        stream.write(143);
+        writeValue(stream, ((RtpEncodingMessage) value).toList());
       } else if (value instanceof RtpHeaderExtensionCapabilityMessage) {
-        stream.write(130);
+        stream.write(144);
         writeValue(stream, ((RtpHeaderExtensionCapabilityMessage) value).toList());
-      } else if (value instanceof dynamic) {
-        stream.write(131);
-        writeValue(stream, ((dynamic) value).toList());
+      } else if (value instanceof RtpParametersMessage) {
+        stream.write(145);
+        writeValue(stream, ((RtpParametersMessage) value).toList());
+      } else if (value instanceof SessionDescriptionMessage) {
+        stream.write(146);
+        writeValue(stream, ((SessionDescriptionMessage) value).toList());
+      } else if (value instanceof StatsReportMessage) {
+        stream.write(147);
+        writeValue(stream, ((StatsReportMessage) value).toList());
+      } else if (value instanceof ThumbnailSizeMessage) {
+        stream.write(148);
+        writeValue(stream, ((ThumbnailSizeMessage) value).toList());
+      } else if (value instanceof VideoTrackMessage) {
+        stream.write(149);
+        writeValue(stream, ((VideoTrackMessage) value).toList());
+      } else if (value instanceof VideoTrackSettingsMessage) {
+        stream.write(150);
+        writeValue(stream, ((VideoTrackSettingsMessage) value).toList());
       } else {
         super.writeValue(stream, value);
       }
@@ -2729,7 +2824,7 @@ public class Messages {
   public interface RTCPeerconnectionFactoryApi {
 
     @NonNull 
-    String createPeerconnection(@NonNull Map<String, dynamic> configuration, @NonNull Map<String, dynamic> constraints);
+    String createPeerconnection(@NonNull Map<String, Object> configuration, @NonNull Map<String, Object> constraints);
 
     @NonNull 
     RtpCapabilitiesMessage getRtpReceiverCapabilities(@NonNull String kind);
@@ -2752,8 +2847,8 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                Map<String, dynamic> configurationArg = (Map<String, dynamic>) args.get(0);
-                Map<String, dynamic> constraintsArg = (Map<String, dynamic>) args.get(1);
+                Map<String, Object> configurationArg = (Map<String, Object>) args.get(0);
+                Map<String, Object> constraintsArg = (Map<String, Object>) args.get(1);
                 try {
                   String output = api.createPeerconnection(configurationArg, constraintsArg);
                   wrapped.add(0, output);
@@ -2838,21 +2933,41 @@ public class Messages {
         case (byte) 132:
           return DataChannelInitMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 133:
-          return IceCandidateMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return DataChannelMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 134:
-          return MediaStreamMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return DesktopCapturerSourceMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 135:
-          return SessionDescriptionMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return HeaderExtensionMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 136:
-          return SessionDescriptionMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return IceCandidateMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 137:
-          return StatsReportMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return MediaDeviceInfoMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 138:
-          return VideoTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return MediaStreamMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 139:
-          return VideoTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return RTCParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 140:
-          return dynamic.fromList((ArrayList<Object>) readValue(buffer));
+          return RtpCapabilitiesMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 141:
+          return RtpCodecCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 142:
+          return RtpCodecMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 143:
+          return RtpEncodingMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 144:
+          return RtpHeaderExtensionCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 145:
+          return RtpParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 146:
+          return SessionDescriptionMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 147:
+          return StatsReportMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 148:
+          return ThumbnailSizeMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 149:
+          return VideoTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 150:
+          return VideoTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
         default:
           return super.readValueOfType(type, buffer);
       }
@@ -2875,30 +2990,60 @@ public class Messages {
       } else if (value instanceof DataChannelInitMessage) {
         stream.write(132);
         writeValue(stream, ((DataChannelInitMessage) value).toList());
-      } else if (value instanceof IceCandidateMessage) {
+      } else if (value instanceof DataChannelMessage) {
         stream.write(133);
-        writeValue(stream, ((IceCandidateMessage) value).toList());
-      } else if (value instanceof MediaStreamMessage) {
+        writeValue(stream, ((DataChannelMessage) value).toList());
+      } else if (value instanceof DesktopCapturerSourceMessage) {
         stream.write(134);
-        writeValue(stream, ((MediaStreamMessage) value).toList());
-      } else if (value instanceof SessionDescriptionMessage) {
+        writeValue(stream, ((DesktopCapturerSourceMessage) value).toList());
+      } else if (value instanceof HeaderExtensionMessage) {
         stream.write(135);
-        writeValue(stream, ((SessionDescriptionMessage) value).toList());
-      } else if (value instanceof SessionDescriptionMessage) {
+        writeValue(stream, ((HeaderExtensionMessage) value).toList());
+      } else if (value instanceof IceCandidateMessage) {
         stream.write(136);
+        writeValue(stream, ((IceCandidateMessage) value).toList());
+      } else if (value instanceof MediaDeviceInfoMessage) {
+        stream.write(137);
+        writeValue(stream, ((MediaDeviceInfoMessage) value).toList());
+      } else if (value instanceof MediaStreamMessage) {
+        stream.write(138);
+        writeValue(stream, ((MediaStreamMessage) value).toList());
+      } else if (value instanceof RTCParametersMessage) {
+        stream.write(139);
+        writeValue(stream, ((RTCParametersMessage) value).toList());
+      } else if (value instanceof RtpCapabilitiesMessage) {
+        stream.write(140);
+        writeValue(stream, ((RtpCapabilitiesMessage) value).toList());
+      } else if (value instanceof RtpCodecCapabilityMessage) {
+        stream.write(141);
+        writeValue(stream, ((RtpCodecCapabilityMessage) value).toList());
+      } else if (value instanceof RtpCodecMessage) {
+        stream.write(142);
+        writeValue(stream, ((RtpCodecMessage) value).toList());
+      } else if (value instanceof RtpEncodingMessage) {
+        stream.write(143);
+        writeValue(stream, ((RtpEncodingMessage) value).toList());
+      } else if (value instanceof RtpHeaderExtensionCapabilityMessage) {
+        stream.write(144);
+        writeValue(stream, ((RtpHeaderExtensionCapabilityMessage) value).toList());
+      } else if (value instanceof RtpParametersMessage) {
+        stream.write(145);
+        writeValue(stream, ((RtpParametersMessage) value).toList());
+      } else if (value instanceof SessionDescriptionMessage) {
+        stream.write(146);
         writeValue(stream, ((SessionDescriptionMessage) value).toList());
       } else if (value instanceof StatsReportMessage) {
-        stream.write(137);
+        stream.write(147);
         writeValue(stream, ((StatsReportMessage) value).toList());
+      } else if (value instanceof ThumbnailSizeMessage) {
+        stream.write(148);
+        writeValue(stream, ((ThumbnailSizeMessage) value).toList());
       } else if (value instanceof VideoTrackMessage) {
-        stream.write(138);
+        stream.write(149);
         writeValue(stream, ((VideoTrackMessage) value).toList());
       } else if (value instanceof VideoTrackSettingsMessage) {
-        stream.write(139);
+        stream.write(150);
         writeValue(stream, ((VideoTrackSettingsMessage) value).toList());
-      } else if (value instanceof dynamic) {
-        stream.write(140);
-        writeValue(stream, ((dynamic) value).toList());
       } else {
         super.writeValue(stream, value);
       }
@@ -2913,7 +3058,7 @@ public class Messages {
     void addStream(@NonNull String peerconnectionId, @NonNull String streamId);
 
     @NonNull 
-    Map<String, dynamic> addTrack(@NonNull String peerconnectionId, @NonNull String trackId, @Nullable List<String> streamIds);
+    Map<String, Object> addTrack(@NonNull String peerconnectionId, @NonNull String trackId, @Nullable List<String> streamIds);
 
     void close(@NonNull String peerconnectionId);
 
@@ -2921,7 +3066,7 @@ public class Messages {
     SessionDescriptionMessage createAnswer(@NonNull String peerconnectionId, @NonNull ConstraintsMessage msg);
 
     @NonNull 
-    Map<String, dynamic> createDataChannel(@NonNull String peerconnectionId, @NonNull String label, @NonNull DataChannelInitMessage msg);
+    Map<String, Object> createDataChannel(@NonNull String peerconnectionId, @NonNull String label, @NonNull DataChannelInitMessage msg);
 
     @NonNull 
     SessionDescriptionMessage createOffer(@NonNull String peerconnectionId, @NonNull ConstraintsMessage msg);
@@ -2938,13 +3083,13 @@ public class Messages {
     List<MediaStreamMessage> getRemoteStreams(@NonNull String peerconnectionId);
 
     @NonNull 
-    List<Map<String, dynamic>> getReceivers(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getReceivers(@NonNull String peerconnectionId);
 
     @NonNull 
-    List<Map<String, dynamic>> getSenders(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getSenders(@NonNull String peerconnectionId);
 
     @NonNull 
-    List<Map<String, dynamic>> getTransceivers(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getTransceivers(@NonNull String peerconnectionId);
 
     @NonNull 
     List<StatsReportMessage> getStats(@NonNull String peerconnectionId, @NonNull String trackId);
@@ -3034,7 +3179,7 @@ public class Messages {
                 String trackIdArg = (String) args.get(1);
                 List<String> streamIdsArg = (List<String>) args.get(2);
                 try {
-                  Map<String, dynamic> output = api.addTrack(peerconnectionIdArg, trackIdArg, streamIdsArg);
+                  Map<String, Object> output = api.addTrack(peerconnectionIdArg, trackIdArg, streamIdsArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3109,7 +3254,7 @@ public class Messages {
                 String labelArg = (String) args.get(1);
                 DataChannelInitMessage msgArg = (DataChannelInitMessage) args.get(2);
                 try {
-                  Map<String, dynamic> output = api.createDataChannel(peerconnectionIdArg, labelArg, msgArg);
+                  Map<String, Object> output = api.createDataChannel(peerconnectionIdArg, labelArg, msgArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3254,7 +3399,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String peerconnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, dynamic>> output = api.getReceivers(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getReceivers(peerconnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3278,7 +3423,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String peerconnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, dynamic>> output = api.getSenders(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getSenders(peerconnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3302,7 +3447,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String peerconnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, dynamic>> output = api.getTransceivers(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getTransceivers(peerconnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3694,8 +3839,6 @@ public class Messages {
           return RtpEncodingMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 132:
           return RtpParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
-        case (byte) 133:
-          return dynamic.fromList((ArrayList<Object>) readValue(buffer));
         default:
           return super.readValueOfType(type, buffer);
       }
@@ -3718,9 +3861,6 @@ public class Messages {
       } else if (value instanceof RtpParametersMessage) {
         stream.write(132);
         writeValue(stream, ((RtpParametersMessage) value).toList());
-      } else if (value instanceof dynamic) {
-        stream.write(133);
-        writeValue(stream, ((dynamic) value).toList());
       } else {
         super.writeValue(stream, value);
       }
@@ -4550,10 +4690,10 @@ public class Messages {
     }
   }
 
-  private static class MediaDevicesCodec extends StandardMessageCodec {
-    public static final MediaDevicesCodec INSTANCE = new MediaDevicesCodec();
+  private static class MediaDevicesApiCodec extends StandardMessageCodec {
+    public static final MediaDevicesApiCodec INSTANCE = new MediaDevicesApiCodec();
 
-    private MediaDevicesCodec() {}
+    private MediaDevicesApiCodec() {}
 
     @Override
     protected Object readValueOfType(byte type, @NonNull ByteBuffer buffer) {
@@ -4563,15 +4703,47 @@ public class Messages {
         case (byte) 129:
           return AudioTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 130:
-          return MediaDeviceInfoMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return ConfigurationMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 131:
-          return MediaStreamMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return ConstraintsMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 132:
-          return VideoTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return DataChannelInitMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 133:
-          return VideoTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
+          return DataChannelMessage.fromList((ArrayList<Object>) readValue(buffer));
         case (byte) 134:
-          return dynamic.fromList((ArrayList<Object>) readValue(buffer));
+          return DesktopCapturerSourceMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 135:
+          return HeaderExtensionMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 136:
+          return IceCandidateMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 137:
+          return MediaDeviceInfoMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 138:
+          return MediaStreamMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 139:
+          return RTCParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 140:
+          return RtpCapabilitiesMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 141:
+          return RtpCodecCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 142:
+          return RtpCodecMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 143:
+          return RtpEncodingMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 144:
+          return RtpHeaderExtensionCapabilityMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 145:
+          return RtpParametersMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 146:
+          return SessionDescriptionMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 147:
+          return StatsReportMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 148:
+          return ThumbnailSizeMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 149:
+          return VideoTrackMessage.fromList((ArrayList<Object>) readValue(buffer));
+        case (byte) 150:
+          return VideoTrackSettingsMessage.fromList((ArrayList<Object>) readValue(buffer));
         default:
           return super.readValueOfType(type, buffer);
       }
@@ -4585,21 +4757,69 @@ public class Messages {
       } else if (value instanceof AudioTrackSettingsMessage) {
         stream.write(129);
         writeValue(stream, ((AudioTrackSettingsMessage) value).toList());
-      } else if (value instanceof MediaDeviceInfoMessage) {
+      } else if (value instanceof ConfigurationMessage) {
         stream.write(130);
+        writeValue(stream, ((ConfigurationMessage) value).toList());
+      } else if (value instanceof ConstraintsMessage) {
+        stream.write(131);
+        writeValue(stream, ((ConstraintsMessage) value).toList());
+      } else if (value instanceof DataChannelInitMessage) {
+        stream.write(132);
+        writeValue(stream, ((DataChannelInitMessage) value).toList());
+      } else if (value instanceof DataChannelMessage) {
+        stream.write(133);
+        writeValue(stream, ((DataChannelMessage) value).toList());
+      } else if (value instanceof DesktopCapturerSourceMessage) {
+        stream.write(134);
+        writeValue(stream, ((DesktopCapturerSourceMessage) value).toList());
+      } else if (value instanceof HeaderExtensionMessage) {
+        stream.write(135);
+        writeValue(stream, ((HeaderExtensionMessage) value).toList());
+      } else if (value instanceof IceCandidateMessage) {
+        stream.write(136);
+        writeValue(stream, ((IceCandidateMessage) value).toList());
+      } else if (value instanceof MediaDeviceInfoMessage) {
+        stream.write(137);
         writeValue(stream, ((MediaDeviceInfoMessage) value).toList());
       } else if (value instanceof MediaStreamMessage) {
-        stream.write(131);
+        stream.write(138);
         writeValue(stream, ((MediaStreamMessage) value).toList());
+      } else if (value instanceof RTCParametersMessage) {
+        stream.write(139);
+        writeValue(stream, ((RTCParametersMessage) value).toList());
+      } else if (value instanceof RtpCapabilitiesMessage) {
+        stream.write(140);
+        writeValue(stream, ((RtpCapabilitiesMessage) value).toList());
+      } else if (value instanceof RtpCodecCapabilityMessage) {
+        stream.write(141);
+        writeValue(stream, ((RtpCodecCapabilityMessage) value).toList());
+      } else if (value instanceof RtpCodecMessage) {
+        stream.write(142);
+        writeValue(stream, ((RtpCodecMessage) value).toList());
+      } else if (value instanceof RtpEncodingMessage) {
+        stream.write(143);
+        writeValue(stream, ((RtpEncodingMessage) value).toList());
+      } else if (value instanceof RtpHeaderExtensionCapabilityMessage) {
+        stream.write(144);
+        writeValue(stream, ((RtpHeaderExtensionCapabilityMessage) value).toList());
+      } else if (value instanceof RtpParametersMessage) {
+        stream.write(145);
+        writeValue(stream, ((RtpParametersMessage) value).toList());
+      } else if (value instanceof SessionDescriptionMessage) {
+        stream.write(146);
+        writeValue(stream, ((SessionDescriptionMessage) value).toList());
+      } else if (value instanceof StatsReportMessage) {
+        stream.write(147);
+        writeValue(stream, ((StatsReportMessage) value).toList());
+      } else if (value instanceof ThumbnailSizeMessage) {
+        stream.write(148);
+        writeValue(stream, ((ThumbnailSizeMessage) value).toList());
       } else if (value instanceof VideoTrackMessage) {
-        stream.write(132);
+        stream.write(149);
         writeValue(stream, ((VideoTrackMessage) value).toList());
       } else if (value instanceof VideoTrackSettingsMessage) {
-        stream.write(133);
+        stream.write(150);
         writeValue(stream, ((VideoTrackSettingsMessage) value).toList());
-      } else if (value instanceof dynamic) {
-        stream.write(134);
-        writeValue(stream, ((dynamic) value).toList());
       } else {
         super.writeValue(stream, value);
       }
@@ -4607,16 +4827,16 @@ public class Messages {
   }
 
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-  public interface MediaDevices {
+  public interface MediaDevicesApi {
 
     @NonNull 
-    MediaStreamMessage getUserMedia(@NonNull Map<String, dynamic> mediaConstraints);
+    MediaStreamMessage getUserMedia(@NonNull Map<String, Object> mediaConstraints);
 
     @NonNull 
-    MediaStreamMessage getDisplayMedia(@NonNull Map<String, dynamic> mediaConstraints);
+    MediaStreamMessage getDisplayMedia(@NonNull Map<String, Object> mediaConstraints);
 
     @NonNull 
-    List<dynamic> getSources();
+    List<Object> getSources();
 
     @NonNull 
     List<MediaDeviceInfoMessage> enumerateDevices();
@@ -4624,22 +4844,22 @@ public class Messages {
     @NonNull 
     MediaDeviceInfoMessage selectAudioOutput(@NonNull String deviceId);
 
-    /** The codec used by MediaDevices. */
+    /** The codec used by MediaDevicesApi. */
     static @NonNull MessageCodec<Object> getCodec() {
-      return MediaDevicesCodec.INSTANCE;
+      return MediaDevicesApiCodec.INSTANCE;
     }
-    /**Sets up an instance of `MediaDevices` to handle messages through the `binaryMessenger`. */
-    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable MediaDevices api) {
+    /**Sets up an instance of `MediaDevicesApi` to handle messages through the `binaryMessenger`. */
+    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable MediaDevicesApi api) {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaDevices.getUserMedia", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaDevicesApi.getUserMedia", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                Map<String, dynamic> mediaConstraintsArg = (Map<String, dynamic>) args.get(0);
+                Map<String, Object> mediaConstraintsArg = (Map<String, Object>) args.get(0);
                 try {
                   MediaStreamMessage output = api.getUserMedia(mediaConstraintsArg);
                   wrapped.add(0, output);
@@ -4657,13 +4877,13 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaDevices.getDisplayMedia", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaDevicesApi.getDisplayMedia", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                Map<String, dynamic> mediaConstraintsArg = (Map<String, dynamic>) args.get(0);
+                Map<String, Object> mediaConstraintsArg = (Map<String, Object>) args.get(0);
                 try {
                   MediaStreamMessage output = api.getDisplayMedia(mediaConstraintsArg);
                   wrapped.add(0, output);
@@ -4681,13 +4901,13 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaDevices.getSources", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaDevicesApi.getSources", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 try {
-                  List<dynamic> output = api.getSources();
+                  List<Object> output = api.getSources();
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -4703,7 +4923,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaDevices.enumerateDevices", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaDevicesApi.enumerateDevices", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4725,7 +4945,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaDevices.selectAudioOutput", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaDevicesApi.selectAudioOutput", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {

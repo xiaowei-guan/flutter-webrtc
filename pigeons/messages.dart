@@ -21,31 +21,12 @@ class SessionDescriptionMessage {
 
 class ConstraintsMessage {
   ConstraintsMessage(this.constraints);
-  Map<String?, dynamic?> constraints;
+  Map<String?, Object?> constraints;
 }
 
 class ConfigurationMessage {
   ConfigurationMessage(this.configurations);
-  Map<String?, dynamic?> configurations;
-}
-
-class MediaStreamMessage {
-  MediaStreamMessage(
-      this.id, this.ownerTag, this.audioTracks, this.videoTracks);
-  String id;
-  String ownerTag;
-  List<AudioTrackMessage?> audioTracks;
-  List<VideoTrackMessage?> videoTracks;
-}
-
-class AudioTrackMessage {
-  AudioTrackMessage(
-      this.id, this.label, this.kind, this.enabled, this.settings);
-  String id;
-  String label;
-  String kind;
-  bool enabled;
-  AudioTrackSettingsMessage settings;
+  Map<String?, Object?> configurations;
 }
 
 class AudioTrackSettingsMessage {
@@ -66,14 +47,14 @@ class AudioTrackSettingsMessage {
   int latency;
 }
 
-class VideoTrackMessage {
-  VideoTrackMessage(
+class AudioTrackMessage {
+  AudioTrackMessage(
       this.id, this.label, this.kind, this.enabled, this.settings);
   String id;
   String label;
   String kind;
   bool enabled;
-  VideoTrackSettingsMessage settings;
+  AudioTrackSettingsMessage settings;
 }
 
 class VideoTrackSettingsMessage {
@@ -84,6 +65,25 @@ class VideoTrackSettingsMessage {
   int width;
   int height;
   int frameRate;
+}
+
+class VideoTrackMessage {
+  VideoTrackMessage(
+      this.id, this.label, this.kind, this.enabled, this.settings);
+  String id;
+  String label;
+  String kind;
+  bool enabled;
+  VideoTrackSettingsMessage settings;
+}
+
+class MediaStreamMessage {
+  MediaStreamMessage(
+      this.id, this.ownerTag, this.audioTracks, this.videoTracks);
+  String id;
+  String ownerTag;
+  List<AudioTrackMessage?> audioTracks;
+  List<VideoTrackMessage?> videoTracks;
 }
 
 class MediaDeviceInfoMessage {
@@ -112,7 +112,7 @@ class StatsReportMessage {
   String? id;
   String? type;
   double? timestamp;
-  Map<dynamic?, dynamic?> values;
+  Map<Object?, Object?> values;
 }
 
 class DataChannelMessage {
@@ -160,7 +160,13 @@ class RtpCodecMessage {
   String? kind;
   int? clockRate;
   int? numChannels;
-  Map<dynamic?, dynamic?>? parameters;
+  Map<Object?, Object?>? parameters;
+}
+
+class RTCParametersMessage {
+  RTCParametersMessage(this.cname, this.reducedSize);
+  String cname;
+  bool reducedSize;
 }
 
 class RtpParametersMessage {
@@ -169,12 +175,6 @@ class RtpParametersMessage {
   List<HeaderExtensionMessage?>? headerExtensions;
   List<RtpEncodingMessage?>? encodings;
   List<RtpCodecMessage?>? codecs;
-}
-
-class RTCParametersMessage {
-  RTCParametersMessage(this.cname, this.reducedSize);
-  String cname;
-  bool reducedSize;
 }
 
 class RtpCodecCapabilityMessage {
@@ -214,7 +214,7 @@ class DesktopCapturerSourceMessage {
 @HostApi()
 abstract class RTCPeerconnectionFactoryApi {
   String createPeerconnection(
-      Map<String, dynamic?> configuration, Map<String, dynamic?> constraints);
+      Map<String, Object?> configuration, Map<String, Object?> constraints);
   RtpCapabilitiesMessage getRtpReceiverCapabilities(String kind);
   RtpCapabilitiesMessage getRtpSenderCapabilities(String kind);
 }
@@ -223,12 +223,12 @@ abstract class RTCPeerconnectionFactoryApi {
 abstract class RtcPeerconnectionApi {
   void addCandidate(String peerconnectionId, IceCandidateMessage msg);
   void addStream(String peerconnectionId, String streamId);
-  Map<String, dynamic> addTrack(
+  Map<String, Object?> addTrack(
       String peerconnectionId, String trackId, List<String>? streamIds);
   void close(String peerconnectionId);
   SessionDescriptionMessage createAnswer(
       String peerconnectionId, ConstraintsMessage msg);
-  Map<String, dynamic> createDataChannel(
+  Map<String, Object?> createDataChannel(
       String peerconnectionId, String label, DataChannelInitMessage msg);
   SessionDescriptionMessage createOffer(
       String peerconnectionId, ConstraintsMessage msg);
@@ -236,9 +236,9 @@ abstract class RtcPeerconnectionApi {
   SessionDescriptionMessage? getLocalDescription(String peerconnectionId);
   List<MediaStreamMessage> getLocalStreams(String peerconnectionId);
   List<MediaStreamMessage> getRemoteStreams(String peerconnectionId);
-  List<Map<String, dynamic>> getReceivers(String peerconnectionId);
-  List<Map<String, dynamic>> getSenders(String peerconnectionId);
-  List<Map<String, dynamic>> getTransceivers(String peerconnectionId);
+  List<Map<String, Object?>> getReceivers(String peerconnectionId);
+  List<Map<String, Object?>> getSenders(String peerconnectionId);
+  List<Map<String, Object?>> getTransceivers(String peerconnectionId);
   List<StatsReportMessage> getStats(String peerconnectionId, String trackId);
   void removeStream(String peerconnectionId, String streamId);
   bool removeTrack(String peerconnectionId, String senderId);
@@ -326,10 +326,10 @@ abstract class DesktopCapturerSourceApi {
 }
 
 @HostApi()
-abstract class MediaDevices {
-  MediaStreamMessage getUserMedia(Map<String, dynamic> mediaConstraints);
-  MediaStreamMessage getDisplayMedia(Map<String, dynamic> mediaConstraints);
-  List<dynamic> getSources();
+abstract class MediaDevicesApi {
+  MediaStreamMessage getUserMedia(Map<String, Object?> mediaConstraints);
+  MediaStreamMessage getDisplayMedia(Map<String, Object?> mediaConstraints);
+  List<Object?> getSources();
   List<MediaDeviceInfoMessage> enumerateDevices();
   MediaDeviceInfoMessage selectAudioOutput(String deviceId);
 }

@@ -42,7 +42,7 @@ class ConstraintsMessage {
     required this.constraints,
   });
 
-  Map<String?, dynamic?> constraints;
+  Map<String?, Object?> constraints;
 
   Object encode() {
     return <Object?>[
@@ -53,7 +53,7 @@ class ConstraintsMessage {
   static ConstraintsMessage decode(Object result) {
     result as List<Object?>;
     return ConstraintsMessage(
-      constraints: (result[0] as Map<Object?, Object?>?)!.cast<String?, dynamic?>(),
+      constraints: (result[0] as Map<Object?, Object?>?)!.cast<String?, Object?>(),
     );
   }
 }
@@ -63,7 +63,7 @@ class ConfigurationMessage {
     required this.configurations,
   });
 
-  Map<String?, dynamic?> configurations;
+  Map<String?, Object?> configurations;
 
   Object encode() {
     return <Object?>[
@@ -74,84 +74,7 @@ class ConfigurationMessage {
   static ConfigurationMessage decode(Object result) {
     result as List<Object?>;
     return ConfigurationMessage(
-      configurations: (result[0] as Map<Object?, Object?>?)!.cast<String?, dynamic?>(),
-    );
-  }
-}
-
-class MediaStreamMessage {
-  MediaStreamMessage({
-    required this.id,
-    required this.ownerTag,
-    required this.audioTracks,
-    required this.videoTracks,
-  });
-
-  String id;
-
-  String ownerTag;
-
-  List<AudioTrackMessage?> audioTracks;
-
-  List<VideoTrackMessage?> videoTracks;
-
-  Object encode() {
-    return <Object?>[
-      id,
-      ownerTag,
-      audioTracks,
-      videoTracks,
-    ];
-  }
-
-  static MediaStreamMessage decode(Object result) {
-    result as List<Object?>;
-    return MediaStreamMessage(
-      id: result[0]! as String,
-      ownerTag: result[1]! as String,
-      audioTracks: (result[2] as List<Object?>?)!.cast<AudioTrackMessage?>(),
-      videoTracks: (result[3] as List<Object?>?)!.cast<VideoTrackMessage?>(),
-    );
-  }
-}
-
-class AudioTrackMessage {
-  AudioTrackMessage({
-    required this.id,
-    required this.label,
-    required this.kind,
-    required this.enabled,
-    required this.settings,
-  });
-
-  String id;
-
-  String label;
-
-  String kind;
-
-  bool enabled;
-
-  AudioTrackSettingsMessage settings;
-
-  Object encode() {
-    return <Object?>[
-      id,
-      label,
-      kind,
-      enabled,
-      settings.encode(),
-    ];
-  }
-
-  static AudioTrackMessage decode(Object result) {
-    result as List<Object?>;
-    return AudioTrackMessage(
-      id: result[0]! as String,
-      label: result[1]! as String,
-      kind: result[2]! as String,
-      enabled: result[3]! as bool,
-      settings: AudioTrackSettingsMessage.decode(result[4]! as List<Object?>),
+      configurations: (result[0] as Map<Object?, Object?>?)!.cast<String?, Object?>(),
     );
   }
 }
@@ -207,8 +130,8 @@ class AudioTrackSettingsMessage {
   }
 }
 
-class VideoTrackMessage {
-  VideoTrackMessage({
+class AudioTrackMessage {
+  AudioTrackMessage({
     required this.id,
     required this.label,
     required this.kind,
@@ -224,7 +147,7 @@ class VideoTrackMessage {
 
   bool enabled;
 
-  VideoTrackSettingsMessage settings;
+  AudioTrackSettingsMessage settings;
 
   Object encode() {
     return <Object?>[
@@ -236,14 +159,14 @@ class VideoTrackMessage {
     ];
   }
 
-  static VideoTrackMessage decode(Object result) {
+  static AudioTrackMessage decode(Object result) {
     result as List<Object?>;
-    return VideoTrackMessage(
+    return AudioTrackMessage(
       id: result[0]! as String,
       label: result[1]! as String,
       kind: result[2]! as String,
       enabled: result[3]! as bool,
-      settings: VideoTrackSettingsMessage.decode(result[4]! as List<Object?>),
+      settings: AudioTrackSettingsMessage.decode(result[4]! as List<Object?>),
     );
   }
 }
@@ -285,6 +208,83 @@ class VideoTrackSettingsMessage {
       width: result[2]! as int,
       height: result[3]! as int,
       frameRate: result[4]! as int,
+    );
+  }
+}
+
+class VideoTrackMessage {
+  VideoTrackMessage({
+    required this.id,
+    required this.label,
+    required this.kind,
+    required this.enabled,
+    required this.settings,
+  });
+
+  String id;
+
+  String label;
+
+  String kind;
+
+  bool enabled;
+
+  VideoTrackSettingsMessage settings;
+
+  Object encode() {
+    return <Object?>[
+      id,
+      label,
+      kind,
+      enabled,
+      settings.encode(),
+    ];
+  }
+
+  static VideoTrackMessage decode(Object result) {
+    result as List<Object?>;
+    return VideoTrackMessage(
+      id: result[0]! as String,
+      label: result[1]! as String,
+      kind: result[2]! as String,
+      enabled: result[3]! as bool,
+      settings: VideoTrackSettingsMessage.decode(result[4]! as List<Object?>),
+    );
+  }
+}
+
+class MediaStreamMessage {
+  MediaStreamMessage({
+    required this.id,
+    required this.ownerTag,
+    required this.audioTracks,
+    required this.videoTracks,
+  });
+
+  String id;
+
+  String ownerTag;
+
+  List<AudioTrackMessage?> audioTracks;
+
+  List<VideoTrackMessage?> videoTracks;
+
+  Object encode() {
+    return <Object?>[
+      id,
+      ownerTag,
+      audioTracks,
+      videoTracks,
+    ];
+  }
+
+  static MediaStreamMessage decode(Object result) {
+    result as List<Object?>;
+    return MediaStreamMessage(
+      id: result[0]! as String,
+      ownerTag: result[1]! as String,
+      audioTracks: (result[2] as List<Object?>?)!.cast<AudioTrackMessage?>(),
+      videoTracks: (result[3] as List<Object?>?)!.cast<VideoTrackMessage?>(),
     );
   }
 }
@@ -370,7 +370,7 @@ class StatsReportMessage {
 
   double? timestamp;
 
-  Map<dynamic?, dynamic?> values;
+  Map<Object?, Object?> values;
 
   Object encode() {
     return <Object?>[
@@ -387,7 +387,7 @@ class StatsReportMessage {
       id: result[0] as String?,
       type: result[1] as String?,
       timestamp: result[2] as double?,
-      values: (result[3] as Map<Object?, Object?>?)!.cast<dynamic?, dynamic?>(),
+      values: (result[3] as Map<Object?, Object?>?)!.cast<Object?, Object?>(),
     );
   }
 }
@@ -591,7 +591,7 @@ class RtpCodecMessage {
 
   int? numChannels;
 
-  Map<dynamic?, dynamic?>? parameters;
+  Map<Object?, Object?>? parameters;
 
   Object encode() {
     return <Object?>[
@@ -612,7 +612,33 @@ class RtpCodecMessage {
       kind: result[2] as String?,
       clockRate: result[3] as int?,
       numChannels: result[4] as int?,
-      parameters: (result[5] as Map<Object?, Object?>?)?.cast<dynamic?, dynamic?>(),
+      parameters: (result[5] as Map<Object?, Object?>?)?.cast<Object?, Object?>(),
+    );
+  }
+}
+
+class RTCParametersMessage {
+  RTCParametersMessage({
+    required this.cname,
+    required this.reducedSize,
+  });
+
+  String cname;
+
+  bool reducedSize;
+
+  Object encode() {
+    return <Object?>[
+      cname,
+      reducedSize,
+    ];
+  }
+
+  static RTCParametersMessage decode(Object result) {
+    result as List<Object?>;
+    return RTCParametersMessage(
+      cname: result[0]! as String,
+      reducedSize: result[1]! as bool,
     );
   }
 }
@@ -656,32 +682,6 @@ class RtpParametersMessage {
       headerExtensions: (result[2] as List<Object?>?)?.cast<HeaderExtensionMessage?>(),
       encodings: (result[3] as List<Object?>?)?.cast<RtpEncodingMessage?>(),
       codecs: (result[4] as List<Object?>?)?.cast<RtpCodecMessage?>(),
-    );
-  }
-}
-
-class RTCParametersMessage {
-  RTCParametersMessage({
-    required this.cname,
-    required this.reducedSize,
-  });
-
-  String cname;
-
-  bool reducedSize;
-
-  Object encode() {
-    return <Object?>[
-      cname,
-      reducedSize,
-    ];
-  }
-
-  static RTCParametersMessage decode(Object result) {
-    result as List<Object?>;
-    return RTCParametersMessage(
-      cname: result[0]! as String,
-      reducedSize: result[1]! as bool,
     );
   }
 }
@@ -840,17 +840,74 @@ class _RTCPeerconnectionFactoryApiCodec extends StandardMessageCodec {
   const _RTCPeerconnectionFactoryApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
-    if (value is RtpCapabilitiesMessage) {
+    if (value is AudioTrackMessage) {
       buffer.putUint8(128);
       writeValue(buffer, value.encode());
-    } else if (value is RtpCodecCapabilityMessage) {
+    } else if (value is AudioTrackSettingsMessage) {
       buffer.putUint8(129);
       writeValue(buffer, value.encode());
-    } else if (value is RtpHeaderExtensionCapabilityMessage) {
+    } else if (value is ConfigurationMessage) {
       buffer.putUint8(130);
       writeValue(buffer, value.encode());
-    } else if (value is dynamic) {
+    } else if (value is ConstraintsMessage) {
       buffer.putUint8(131);
+      writeValue(buffer, value.encode());
+    } else if (value is DataChannelInitMessage) {
+      buffer.putUint8(132);
+      writeValue(buffer, value.encode());
+    } else if (value is DataChannelMessage) {
+      buffer.putUint8(133);
+      writeValue(buffer, value.encode());
+    } else if (value is DesktopCapturerSourceMessage) {
+      buffer.putUint8(134);
+      writeValue(buffer, value.encode());
+    } else if (value is HeaderExtensionMessage) {
+      buffer.putUint8(135);
+      writeValue(buffer, value.encode());
+    } else if (value is IceCandidateMessage) {
+      buffer.putUint8(136);
+      writeValue(buffer, value.encode());
+    } else if (value is MediaDeviceInfoMessage) {
+      buffer.putUint8(137);
+      writeValue(buffer, value.encode());
+    } else if (value is MediaStreamMessage) {
+      buffer.putUint8(138);
+      writeValue(buffer, value.encode());
+    } else if (value is RTCParametersMessage) {
+      buffer.putUint8(139);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCapabilitiesMessage) {
+      buffer.putUint8(140);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecCapabilityMessage) {
+      buffer.putUint8(141);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecMessage) {
+      buffer.putUint8(142);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpEncodingMessage) {
+      buffer.putUint8(143);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpHeaderExtensionCapabilityMessage) {
+      buffer.putUint8(144);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpParametersMessage) {
+      buffer.putUint8(145);
+      writeValue(buffer, value.encode());
+    } else if (value is SessionDescriptionMessage) {
+      buffer.putUint8(146);
+      writeValue(buffer, value.encode());
+    } else if (value is StatsReportMessage) {
+      buffer.putUint8(147);
+      writeValue(buffer, value.encode());
+    } else if (value is ThumbnailSizeMessage) {
+      buffer.putUint8(148);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackMessage) {
+      buffer.putUint8(149);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackSettingsMessage) {
+      buffer.putUint8(150);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -861,13 +918,51 @@ class _RTCPeerconnectionFactoryApiCodec extends StandardMessageCodec {
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
       case 128: 
-        return RtpCapabilitiesMessage.decode(readValue(buffer)!);
+        return AudioTrackMessage.decode(readValue(buffer)!);
       case 129: 
-        return RtpCodecCapabilityMessage.decode(readValue(buffer)!);
+        return AudioTrackSettingsMessage.decode(readValue(buffer)!);
       case 130: 
-        return RtpHeaderExtensionCapabilityMessage.decode(readValue(buffer)!);
+        return ConfigurationMessage.decode(readValue(buffer)!);
       case 131: 
-        return dynamic.decode(readValue(buffer)!);
+        return ConstraintsMessage.decode(readValue(buffer)!);
+      case 132: 
+        return DataChannelInitMessage.decode(readValue(buffer)!);
+      case 133: 
+        return DataChannelMessage.decode(readValue(buffer)!);
+      case 134: 
+        return DesktopCapturerSourceMessage.decode(readValue(buffer)!);
+      case 135: 
+        return HeaderExtensionMessage.decode(readValue(buffer)!);
+      case 136: 
+        return IceCandidateMessage.decode(readValue(buffer)!);
+      case 137: 
+        return MediaDeviceInfoMessage.decode(readValue(buffer)!);
+      case 138: 
+        return MediaStreamMessage.decode(readValue(buffer)!);
+      case 139: 
+        return RTCParametersMessage.decode(readValue(buffer)!);
+      case 140: 
+        return RtpCapabilitiesMessage.decode(readValue(buffer)!);
+      case 141: 
+        return RtpCodecCapabilityMessage.decode(readValue(buffer)!);
+      case 142: 
+        return RtpCodecMessage.decode(readValue(buffer)!);
+      case 143: 
+        return RtpEncodingMessage.decode(readValue(buffer)!);
+      case 144: 
+        return RtpHeaderExtensionCapabilityMessage.decode(readValue(buffer)!);
+      case 145: 
+        return RtpParametersMessage.decode(readValue(buffer)!);
+      case 146: 
+        return SessionDescriptionMessage.decode(readValue(buffer)!);
+      case 147: 
+        return StatsReportMessage.decode(readValue(buffer)!);
+      case 148: 
+        return ThumbnailSizeMessage.decode(readValue(buffer)!);
+      case 149: 
+        return VideoTrackMessage.decode(readValue(buffer)!);
+      case 150: 
+        return VideoTrackSettingsMessage.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -884,7 +979,7 @@ class RTCPeerconnectionFactoryApi {
 
   static const MessageCodec<Object?> codec = _RTCPeerconnectionFactoryApiCodec();
 
-  Future<String> createPeerconnection(Map<String?, dynamic?> arg_configuration, Map<String?, dynamic?> arg_constraints) async {
+  Future<String> createPeerconnection(Map<String?, Object?> arg_configuration, Map<String?, Object?> arg_constraints) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCPeerconnectionFactoryApi.createPeerconnection', codec,
         binaryMessenger: _binaryMessenger);
@@ -985,29 +1080,59 @@ class _RtcPeerconnectionApiCodec extends StandardMessageCodec {
     } else if (value is DataChannelInitMessage) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
-    } else if (value is IceCandidateMessage) {
+    } else if (value is DataChannelMessage) {
       buffer.putUint8(133);
       writeValue(buffer, value.encode());
-    } else if (value is MediaStreamMessage) {
+    } else if (value is DesktopCapturerSourceMessage) {
       buffer.putUint8(134);
       writeValue(buffer, value.encode());
-    } else if (value is SessionDescriptionMessage) {
+    } else if (value is HeaderExtensionMessage) {
       buffer.putUint8(135);
       writeValue(buffer, value.encode());
-    } else if (value is SessionDescriptionMessage) {
+    } else if (value is IceCandidateMessage) {
       buffer.putUint8(136);
       writeValue(buffer, value.encode());
-    } else if (value is StatsReportMessage) {
+    } else if (value is MediaDeviceInfoMessage) {
       buffer.putUint8(137);
       writeValue(buffer, value.encode());
-    } else if (value is VideoTrackMessage) {
+    } else if (value is MediaStreamMessage) {
       buffer.putUint8(138);
       writeValue(buffer, value.encode());
-    } else if (value is VideoTrackSettingsMessage) {
+    } else if (value is RTCParametersMessage) {
       buffer.putUint8(139);
       writeValue(buffer, value.encode());
-    } else if (value is dynamic) {
+    } else if (value is RtpCapabilitiesMessage) {
       buffer.putUint8(140);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecCapabilityMessage) {
+      buffer.putUint8(141);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecMessage) {
+      buffer.putUint8(142);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpEncodingMessage) {
+      buffer.putUint8(143);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpHeaderExtensionCapabilityMessage) {
+      buffer.putUint8(144);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpParametersMessage) {
+      buffer.putUint8(145);
+      writeValue(buffer, value.encode());
+    } else if (value is SessionDescriptionMessage) {
+      buffer.putUint8(146);
+      writeValue(buffer, value.encode());
+    } else if (value is StatsReportMessage) {
+      buffer.putUint8(147);
+      writeValue(buffer, value.encode());
+    } else if (value is ThumbnailSizeMessage) {
+      buffer.putUint8(148);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackMessage) {
+      buffer.putUint8(149);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackSettingsMessage) {
+      buffer.putUint8(150);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -1028,21 +1153,41 @@ class _RtcPeerconnectionApiCodec extends StandardMessageCodec {
       case 132: 
         return DataChannelInitMessage.decode(readValue(buffer)!);
       case 133: 
-        return IceCandidateMessage.decode(readValue(buffer)!);
+        return DataChannelMessage.decode(readValue(buffer)!);
       case 134: 
-        return MediaStreamMessage.decode(readValue(buffer)!);
+        return DesktopCapturerSourceMessage.decode(readValue(buffer)!);
       case 135: 
-        return SessionDescriptionMessage.decode(readValue(buffer)!);
+        return HeaderExtensionMessage.decode(readValue(buffer)!);
       case 136: 
-        return SessionDescriptionMessage.decode(readValue(buffer)!);
+        return IceCandidateMessage.decode(readValue(buffer)!);
       case 137: 
-        return StatsReportMessage.decode(readValue(buffer)!);
+        return MediaDeviceInfoMessage.decode(readValue(buffer)!);
       case 138: 
-        return VideoTrackMessage.decode(readValue(buffer)!);
+        return MediaStreamMessage.decode(readValue(buffer)!);
       case 139: 
-        return VideoTrackSettingsMessage.decode(readValue(buffer)!);
+        return RTCParametersMessage.decode(readValue(buffer)!);
       case 140: 
-        return dynamic.decode(readValue(buffer)!);
+        return RtpCapabilitiesMessage.decode(readValue(buffer)!);
+      case 141: 
+        return RtpCodecCapabilityMessage.decode(readValue(buffer)!);
+      case 142: 
+        return RtpCodecMessage.decode(readValue(buffer)!);
+      case 143: 
+        return RtpEncodingMessage.decode(readValue(buffer)!);
+      case 144: 
+        return RtpHeaderExtensionCapabilityMessage.decode(readValue(buffer)!);
+      case 145: 
+        return RtpParametersMessage.decode(readValue(buffer)!);
+      case 146: 
+        return SessionDescriptionMessage.decode(readValue(buffer)!);
+      case 147: 
+        return StatsReportMessage.decode(readValue(buffer)!);
+      case 148: 
+        return ThumbnailSizeMessage.decode(readValue(buffer)!);
+      case 149: 
+        return VideoTrackMessage.decode(readValue(buffer)!);
+      case 150: 
+        return VideoTrackSettingsMessage.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -1103,7 +1248,7 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<Map<String?, dynamic?>> addTrack(String arg_peerconnectionId, String arg_trackId, List<String?>? arg_streamIds) async {
+  Future<Map<String?, Object?>> addTrack(String arg_peerconnectionId, String arg_trackId, List<String?>? arg_streamIds) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RtcPeerconnectionApi.addTrack', codec,
         binaryMessenger: _binaryMessenger);
@@ -1126,7 +1271,7 @@ class RtcPeerconnectionApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as Map<Object?, Object?>?)!.cast<String?, dynamic?>();
+      return (replyList[0] as Map<Object?, Object?>?)!.cast<String?, Object?>();
     }
   }
 
@@ -1179,7 +1324,7 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<Map<String?, dynamic?>> createDataChannel(String arg_peerconnectionId, String arg_label, DataChannelInitMessage arg_msg) async {
+  Future<Map<String?, Object?>> createDataChannel(String arg_peerconnectionId, String arg_label, DataChannelInitMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RtcPeerconnectionApi.createDataChannel', codec,
         binaryMessenger: _binaryMessenger);
@@ -1202,7 +1347,7 @@ class RtcPeerconnectionApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as Map<Object?, Object?>?)!.cast<String?, dynamic?>();
+      return (replyList[0] as Map<Object?, Object?>?)!.cast<String?, Object?>();
     }
   }
 
@@ -1331,7 +1476,7 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<Map<String?, dynamic?>?>> getReceivers(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getReceivers(String arg_peerconnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RtcPeerconnectionApi.getReceivers', codec,
         binaryMessenger: _binaryMessenger);
@@ -1354,11 +1499,11 @@ class RtcPeerconnectionApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as List<Object?>?)!.cast<Map<String?, dynamic?>?>();
+      return (replyList[0] as List<Object?>?)!.cast<Map<String?, Object?>?>();
     }
   }
 
-  Future<List<Map<String?, dynamic?>?>> getSenders(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getSenders(String arg_peerconnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RtcPeerconnectionApi.getSenders', codec,
         binaryMessenger: _binaryMessenger);
@@ -1381,11 +1526,11 @@ class RtcPeerconnectionApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as List<Object?>?)!.cast<Map<String?, dynamic?>?>();
+      return (replyList[0] as List<Object?>?)!.cast<Map<String?, Object?>?>();
     }
   }
 
-  Future<List<Map<String?, dynamic?>?>> getTransceivers(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getTransceivers(String arg_peerconnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RtcPeerconnectionApi.getTransceivers', codec,
         binaryMessenger: _binaryMessenger);
@@ -1408,7 +1553,7 @@ class RtcPeerconnectionApi {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as List<Object?>?)!.cast<Map<String?, dynamic?>?>();
+      return (replyList[0] as List<Object?>?)!.cast<Map<String?, Object?>?>();
     }
   }
 
@@ -1761,9 +1906,6 @@ class _RTCRtpSenderApiCodec extends StandardMessageCodec {
     } else if (value is RtpParametersMessage) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
-    } else if (value is dynamic) {
-      buffer.putUint8(133);
-      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -1782,8 +1924,6 @@ class _RTCRtpSenderApiCodec extends StandardMessageCodec {
         return RtpEncodingMessage.decode(readValue(buffer)!);
       case 132: 
         return RtpParametersMessage.decode(readValue(buffer)!);
-      case 133: 
-        return dynamic.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -2493,8 +2633,8 @@ class DesktopCapturerSourceApi {
   }
 }
 
-class _MediaDevicesCodec extends StandardMessageCodec {
-  const _MediaDevicesCodec();
+class _MediaDevicesApiCodec extends StandardMessageCodec {
+  const _MediaDevicesApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is AudioTrackMessage) {
@@ -2503,20 +2643,68 @@ class _MediaDevicesCodec extends StandardMessageCodec {
     } else if (value is AudioTrackSettingsMessage) {
       buffer.putUint8(129);
       writeValue(buffer, value.encode());
-    } else if (value is MediaDeviceInfoMessage) {
+    } else if (value is ConfigurationMessage) {
       buffer.putUint8(130);
       writeValue(buffer, value.encode());
-    } else if (value is MediaStreamMessage) {
+    } else if (value is ConstraintsMessage) {
       buffer.putUint8(131);
       writeValue(buffer, value.encode());
-    } else if (value is VideoTrackMessage) {
+    } else if (value is DataChannelInitMessage) {
       buffer.putUint8(132);
       writeValue(buffer, value.encode());
-    } else if (value is VideoTrackSettingsMessage) {
+    } else if (value is DataChannelMessage) {
       buffer.putUint8(133);
       writeValue(buffer, value.encode());
-    } else if (value is dynamic) {
+    } else if (value is DesktopCapturerSourceMessage) {
       buffer.putUint8(134);
+      writeValue(buffer, value.encode());
+    } else if (value is HeaderExtensionMessage) {
+      buffer.putUint8(135);
+      writeValue(buffer, value.encode());
+    } else if (value is IceCandidateMessage) {
+      buffer.putUint8(136);
+      writeValue(buffer, value.encode());
+    } else if (value is MediaDeviceInfoMessage) {
+      buffer.putUint8(137);
+      writeValue(buffer, value.encode());
+    } else if (value is MediaStreamMessage) {
+      buffer.putUint8(138);
+      writeValue(buffer, value.encode());
+    } else if (value is RTCParametersMessage) {
+      buffer.putUint8(139);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCapabilitiesMessage) {
+      buffer.putUint8(140);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecCapabilityMessage) {
+      buffer.putUint8(141);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpCodecMessage) {
+      buffer.putUint8(142);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpEncodingMessage) {
+      buffer.putUint8(143);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpHeaderExtensionCapabilityMessage) {
+      buffer.putUint8(144);
+      writeValue(buffer, value.encode());
+    } else if (value is RtpParametersMessage) {
+      buffer.putUint8(145);
+      writeValue(buffer, value.encode());
+    } else if (value is SessionDescriptionMessage) {
+      buffer.putUint8(146);
+      writeValue(buffer, value.encode());
+    } else if (value is StatsReportMessage) {
+      buffer.putUint8(147);
+      writeValue(buffer, value.encode());
+    } else if (value is ThumbnailSizeMessage) {
+      buffer.putUint8(148);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackMessage) {
+      buffer.putUint8(149);
+      writeValue(buffer, value.encode());
+    } else if (value is VideoTrackSettingsMessage) {
+      buffer.putUint8(150);
       writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
@@ -2531,34 +2719,66 @@ class _MediaDevicesCodec extends StandardMessageCodec {
       case 129: 
         return AudioTrackSettingsMessage.decode(readValue(buffer)!);
       case 130: 
-        return MediaDeviceInfoMessage.decode(readValue(buffer)!);
+        return ConfigurationMessage.decode(readValue(buffer)!);
       case 131: 
-        return MediaStreamMessage.decode(readValue(buffer)!);
+        return ConstraintsMessage.decode(readValue(buffer)!);
       case 132: 
-        return VideoTrackMessage.decode(readValue(buffer)!);
+        return DataChannelInitMessage.decode(readValue(buffer)!);
       case 133: 
-        return VideoTrackSettingsMessage.decode(readValue(buffer)!);
+        return DataChannelMessage.decode(readValue(buffer)!);
       case 134: 
-        return dynamic.decode(readValue(buffer)!);
+        return DesktopCapturerSourceMessage.decode(readValue(buffer)!);
+      case 135: 
+        return HeaderExtensionMessage.decode(readValue(buffer)!);
+      case 136: 
+        return IceCandidateMessage.decode(readValue(buffer)!);
+      case 137: 
+        return MediaDeviceInfoMessage.decode(readValue(buffer)!);
+      case 138: 
+        return MediaStreamMessage.decode(readValue(buffer)!);
+      case 139: 
+        return RTCParametersMessage.decode(readValue(buffer)!);
+      case 140: 
+        return RtpCapabilitiesMessage.decode(readValue(buffer)!);
+      case 141: 
+        return RtpCodecCapabilityMessage.decode(readValue(buffer)!);
+      case 142: 
+        return RtpCodecMessage.decode(readValue(buffer)!);
+      case 143: 
+        return RtpEncodingMessage.decode(readValue(buffer)!);
+      case 144: 
+        return RtpHeaderExtensionCapabilityMessage.decode(readValue(buffer)!);
+      case 145: 
+        return RtpParametersMessage.decode(readValue(buffer)!);
+      case 146: 
+        return SessionDescriptionMessage.decode(readValue(buffer)!);
+      case 147: 
+        return StatsReportMessage.decode(readValue(buffer)!);
+      case 148: 
+        return ThumbnailSizeMessage.decode(readValue(buffer)!);
+      case 149: 
+        return VideoTrackMessage.decode(readValue(buffer)!);
+      case 150: 
+        return VideoTrackSettingsMessage.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
   }
 }
 
-class MediaDevices {
-  /// Constructor for [MediaDevices].  The [binaryMessenger] named argument is
+class MediaDevicesApi {
+  /// Constructor for [MediaDevicesApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  MediaDevices({BinaryMessenger? binaryMessenger})
+  MediaDevicesApi({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
-  static const MessageCodec<Object?> codec = _MediaDevicesCodec();
+  static const MessageCodec<Object?> codec = _MediaDevicesApiCodec();
 
-  Future<MediaStreamMessage> getUserMedia(Map<String?, dynamic?> arg_mediaConstraints) async {
+  Future<MediaStreamMessage> getUserMedia(Map<String?, Object?> arg_mediaConstraints) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaDevices.getUserMedia', codec,
+        'dev.flutter.pigeon.MediaDevicesApi.getUserMedia', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_mediaConstraints]) as List<Object?>?;
@@ -2583,9 +2803,9 @@ class MediaDevices {
     }
   }
 
-  Future<MediaStreamMessage> getDisplayMedia(Map<String?, dynamic?> arg_mediaConstraints) async {
+  Future<MediaStreamMessage> getDisplayMedia(Map<String?, Object?> arg_mediaConstraints) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaDevices.getDisplayMedia', codec,
+        'dev.flutter.pigeon.MediaDevicesApi.getDisplayMedia', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_mediaConstraints]) as List<Object?>?;
@@ -2610,9 +2830,9 @@ class MediaDevices {
     }
   }
 
-  Future<List<dynamic?>> getSources() async {
+  Future<List<Object?>> getSources() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaDevices.getSources', codec,
+        'dev.flutter.pigeon.MediaDevicesApi.getSources', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;
@@ -2633,13 +2853,13 @@ class MediaDevices {
         message: 'Host platform returned null value for non-null return value.',
       );
     } else {
-      return (replyList[0] as List<Object?>?)!.cast<dynamic?>();
+      return (replyList[0] as List<Object?>?)!.cast<Object?>();
     }
   }
 
   Future<List<MediaDeviceInfoMessage?>> enumerateDevices() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaDevices.enumerateDevices', codec,
+        'dev.flutter.pigeon.MediaDevicesApi.enumerateDevices', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;
@@ -2666,7 +2886,7 @@ class MediaDevices {
 
   Future<MediaDeviceInfoMessage> selectAudioOutput(String arg_deviceId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaDevices.selectAudioOutput', codec,
+        'dev.flutter.pigeon.MediaDevicesApi.selectAudioOutput', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_deviceId]) as List<Object?>?;

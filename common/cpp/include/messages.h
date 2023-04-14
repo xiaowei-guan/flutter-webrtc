@@ -62,7 +62,7 @@ template<class T> class ErrorOr {
   friend class MediaStreamApi;
   friend class MediaStreamTrackApi;
   friend class DesktopCapturerSourceApi;
-  friend class MediaDevices;
+  friend class MediaDevicesApi;
   ErrorOr() = default;
   T TakeValue() && { return std::get<T>(std::move(v_)); }
 
@@ -115,8 +115,8 @@ class SessionDescriptionMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<std::string> sdp_;
   std::optional<std::string> type_;
 
@@ -158,8 +158,8 @@ class ConstraintsMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   flutter::EncodableMap constraints_;
 
 };
@@ -200,130 +200,9 @@ class ConfigurationMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   flutter::EncodableMap configurations_;
-
-};
-
-
-// Generated class from Pigeon that represents data sent in messages.
-class MediaStreamMessage {
- public:
-  // Constructs an object setting all fields.
-  explicit MediaStreamMessage(
-    const std::string& id,
-    const std::string& owner_tag,
-    const flutter::EncodableList& audio_tracks,
-    const flutter::EncodableList& video_tracks);
-
-  const std::string& id() const;
-  void set_id(std::string_view value_arg);
-
-  const std::string& owner_tag() const;
-  void set_owner_tag(std::string_view value_arg);
-
-  const flutter::EncodableList& audio_tracks() const;
-  void set_audio_tracks(const flutter::EncodableList& value_arg);
-
-  const flutter::EncodableList& video_tracks() const;
-  void set_video_tracks(const flutter::EncodableList& value_arg);
-
-
- private:
-  static MediaStreamMessage FromEncodableList(const flutter::EncodableList& list);
-  flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
-  friend class RTCDataChannelApi;
-  friend class RTCDataChannelApiCodecSerializer;
-  friend class RTCDTMFSenderApi;
-  friend class RTCDTMFSenderApiCodecSerializer;
-  friend class RTCRtpSenderApi;
-  friend class RTCRtpSenderApiCodecSerializer;
-  friend class RTCRtpTransceiverApi;
-  friend class RTCRtpTransceiverApiCodecSerializer;
-  friend class RTCVideoRendererApi;
-  friend class RTCVideoRendererApiCodecSerializer;
-  friend class MediaRecorderApi;
-  friend class MediaRecorderApiCodecSerializer;
-  friend class MediaStreamApi;
-  friend class MediaStreamApiCodecSerializer;
-  friend class MediaStreamTrackApi;
-  friend class MediaStreamTrackApiCodecSerializer;
-  friend class DesktopCapturerSourceApi;
-  friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
-  std::string id_;
-  std::string owner_tag_;
-  flutter::EncodableList audio_tracks_;
-  flutter::EncodableList video_tracks_;
-
-};
-
-
-// Generated class from Pigeon that represents data sent in messages.
-class AudioTrackMessage {
- public:
-  // Constructs an object setting all fields.
-  explicit AudioTrackMessage(
-    const std::string& id,
-    const std::string& label,
-    const std::string& kind,
-    bool enabled,
-    const AudioTrackSettingsMessage& settings);
-
-  const std::string& id() const;
-  void set_id(std::string_view value_arg);
-
-  const std::string& label() const;
-  void set_label(std::string_view value_arg);
-
-  const std::string& kind() const;
-  void set_kind(std::string_view value_arg);
-
-  bool enabled() const;
-  void set_enabled(bool value_arg);
-
-  const AudioTrackSettingsMessage& settings() const;
-  void set_settings(const AudioTrackSettingsMessage& value_arg);
-
-
- private:
-  static AudioTrackMessage FromEncodableList(const flutter::EncodableList& list);
-  flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
-  friend class RTCDataChannelApi;
-  friend class RTCDataChannelApiCodecSerializer;
-  friend class RTCDTMFSenderApi;
-  friend class RTCDTMFSenderApiCodecSerializer;
-  friend class RTCRtpSenderApi;
-  friend class RTCRtpSenderApiCodecSerializer;
-  friend class RTCRtpTransceiverApi;
-  friend class RTCRtpTransceiverApiCodecSerializer;
-  friend class RTCVideoRendererApi;
-  friend class RTCVideoRendererApiCodecSerializer;
-  friend class MediaRecorderApi;
-  friend class MediaRecorderApiCodecSerializer;
-  friend class MediaStreamApi;
-  friend class MediaStreamApiCodecSerializer;
-  friend class MediaStreamTrackApi;
-  friend class MediaStreamTrackApiCodecSerializer;
-  friend class DesktopCapturerSourceApi;
-  friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
-  std::string id_;
-  std::string label_;
-  std::string kind_;
-  bool enabled_;
-  AudioTrackSettingsMessage settings_;
 
 };
 
@@ -389,8 +268,8 @@ class AudioTrackSettingsMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string device_id_;
   std::string kind_;
   bool auto_gain_control_;
@@ -403,15 +282,15 @@ class AudioTrackSettingsMessage {
 
 
 // Generated class from Pigeon that represents data sent in messages.
-class VideoTrackMessage {
+class AudioTrackMessage {
  public:
   // Constructs an object setting all fields.
-  explicit VideoTrackMessage(
+  explicit AudioTrackMessage(
     const std::string& id,
     const std::string& label,
     const std::string& kind,
     bool enabled,
-    const VideoTrackSettingsMessage& settings);
+    const AudioTrackSettingsMessage& settings);
 
   const std::string& id() const;
   void set_id(std::string_view value_arg);
@@ -425,12 +304,12 @@ class VideoTrackMessage {
   bool enabled() const;
   void set_enabled(bool value_arg);
 
-  const VideoTrackSettingsMessage& settings() const;
-  void set_settings(const VideoTrackSettingsMessage& value_arg);
+  const AudioTrackSettingsMessage& settings() const;
+  void set_settings(const AudioTrackSettingsMessage& value_arg);
 
 
  private:
-  static VideoTrackMessage FromEncodableList(const flutter::EncodableList& list);
+  static AudioTrackMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
   friend class RTCPeerconnectionFactoryApi;
   friend class RTCPeerconnectionFactoryApiCodecSerializer;
@@ -454,13 +333,13 @@ class VideoTrackMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string id_;
   std::string label_;
   std::string kind_;
   bool enabled_;
-  VideoTrackSettingsMessage settings_;
+  AudioTrackSettingsMessage settings_;
 
 };
 
@@ -518,13 +397,134 @@ class VideoTrackSettingsMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string device_id_;
   std::string kind_;
   int64_t width_;
   int64_t height_;
   int64_t frame_rate_;
+
+};
+
+
+// Generated class from Pigeon that represents data sent in messages.
+class VideoTrackMessage {
+ public:
+  // Constructs an object setting all fields.
+  explicit VideoTrackMessage(
+    const std::string& id,
+    const std::string& label,
+    const std::string& kind,
+    bool enabled,
+    const VideoTrackSettingsMessage& settings);
+
+  const std::string& id() const;
+  void set_id(std::string_view value_arg);
+
+  const std::string& label() const;
+  void set_label(std::string_view value_arg);
+
+  const std::string& kind() const;
+  void set_kind(std::string_view value_arg);
+
+  bool enabled() const;
+  void set_enabled(bool value_arg);
+
+  const VideoTrackSettingsMessage& settings() const;
+  void set_settings(const VideoTrackSettingsMessage& value_arg);
+
+
+ private:
+  static VideoTrackMessage FromEncodableList(const flutter::EncodableList& list);
+  flutter::EncodableList ToEncodableList() const;
+  friend class RTCPeerconnectionFactoryApi;
+  friend class RTCPeerconnectionFactoryApiCodecSerializer;
+  friend class RtcPeerconnectionApi;
+  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCDataChannelApi;
+  friend class RTCDataChannelApiCodecSerializer;
+  friend class RTCDTMFSenderApi;
+  friend class RTCDTMFSenderApiCodecSerializer;
+  friend class RTCRtpSenderApi;
+  friend class RTCRtpSenderApiCodecSerializer;
+  friend class RTCRtpTransceiverApi;
+  friend class RTCRtpTransceiverApiCodecSerializer;
+  friend class RTCVideoRendererApi;
+  friend class RTCVideoRendererApiCodecSerializer;
+  friend class MediaRecorderApi;
+  friend class MediaRecorderApiCodecSerializer;
+  friend class MediaStreamApi;
+  friend class MediaStreamApiCodecSerializer;
+  friend class MediaStreamTrackApi;
+  friend class MediaStreamTrackApiCodecSerializer;
+  friend class DesktopCapturerSourceApi;
+  friend class DesktopCapturerSourceApiCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
+  std::string id_;
+  std::string label_;
+  std::string kind_;
+  bool enabled_;
+  VideoTrackSettingsMessage settings_;
+
+};
+
+
+// Generated class from Pigeon that represents data sent in messages.
+class MediaStreamMessage {
+ public:
+  // Constructs an object setting all fields.
+  explicit MediaStreamMessage(
+    const std::string& id,
+    const std::string& owner_tag,
+    const flutter::EncodableList& audio_tracks,
+    const flutter::EncodableList& video_tracks);
+
+  const std::string& id() const;
+  void set_id(std::string_view value_arg);
+
+  const std::string& owner_tag() const;
+  void set_owner_tag(std::string_view value_arg);
+
+  const flutter::EncodableList& audio_tracks() const;
+  void set_audio_tracks(const flutter::EncodableList& value_arg);
+
+  const flutter::EncodableList& video_tracks() const;
+  void set_video_tracks(const flutter::EncodableList& value_arg);
+
+
+ private:
+  static MediaStreamMessage FromEncodableList(const flutter::EncodableList& list);
+  flutter::EncodableList ToEncodableList() const;
+  friend class RTCPeerconnectionFactoryApi;
+  friend class RTCPeerconnectionFactoryApiCodecSerializer;
+  friend class RtcPeerconnectionApi;
+  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCDataChannelApi;
+  friend class RTCDataChannelApiCodecSerializer;
+  friend class RTCDTMFSenderApi;
+  friend class RTCDTMFSenderApiCodecSerializer;
+  friend class RTCRtpSenderApi;
+  friend class RTCRtpSenderApiCodecSerializer;
+  friend class RTCRtpTransceiverApi;
+  friend class RTCRtpTransceiverApiCodecSerializer;
+  friend class RTCVideoRendererApi;
+  friend class RTCVideoRendererApiCodecSerializer;
+  friend class MediaRecorderApi;
+  friend class MediaRecorderApiCodecSerializer;
+  friend class MediaStreamApi;
+  friend class MediaStreamApiCodecSerializer;
+  friend class MediaStreamTrackApi;
+  friend class MediaStreamTrackApiCodecSerializer;
+  friend class DesktopCapturerSourceApi;
+  friend class DesktopCapturerSourceApiCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
+  std::string id_;
+  std::string owner_tag_;
+  flutter::EncodableList audio_tracks_;
+  flutter::EncodableList video_tracks_;
 
 };
 
@@ -584,8 +584,8 @@ class MediaDeviceInfoMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string device_id_;
   std::optional<std::string> group_id_;
   std::optional<std::string> kind_;
@@ -644,8 +644,8 @@ class IceCandidateMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<std::string> candidate_;
   std::optional<std::string> sdp_mid_;
   std::optional<int64_t> sdp_m_line_index_;
@@ -707,8 +707,8 @@ class StatsReportMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<std::string> id_;
   std::optional<std::string> type_;
   std::optional<double> timestamp_;
@@ -772,8 +772,8 @@ class DataChannelMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string channel_id_;
   std::string type_;
   std::optional<std::vector<uint8_t>> binary_;
@@ -842,8 +842,8 @@ class DataChannelInitMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   int64_t id_;
   bool negotiated_;
   std::string binary_type_;
@@ -905,8 +905,8 @@ class HeaderExtensionMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<std::string> uri_;
   std::optional<int64_t> id_;
   std::optional<bool> encrypted_;
@@ -993,8 +993,8 @@ class RtpEncodingMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   bool active_;
   std::optional<std::string> rid_;
   std::optional<int64_t> max_bitrate_;
@@ -1073,14 +1073,63 @@ class RtpCodecMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<int64_t> payload_type_;
   std::optional<std::string> name_;
   std::optional<std::string> kind_;
   std::optional<int64_t> clock_rate_;
   std::optional<int64_t> num_channels_;
   std::optional<flutter::EncodableMap> parameters_;
+
+};
+
+
+// Generated class from Pigeon that represents data sent in messages.
+class RTCParametersMessage {
+ public:
+  // Constructs an object setting all fields.
+  explicit RTCParametersMessage(
+    const std::string& cname,
+    bool reduced_size);
+
+  const std::string& cname() const;
+  void set_cname(std::string_view value_arg);
+
+  bool reduced_size() const;
+  void set_reduced_size(bool value_arg);
+
+
+ private:
+  static RTCParametersMessage FromEncodableList(const flutter::EncodableList& list);
+  flutter::EncodableList ToEncodableList() const;
+  friend class RtpParametersMessage;
+  friend class RTCPeerconnectionFactoryApi;
+  friend class RTCPeerconnectionFactoryApiCodecSerializer;
+  friend class RtcPeerconnectionApi;
+  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCDataChannelApi;
+  friend class RTCDataChannelApiCodecSerializer;
+  friend class RTCDTMFSenderApi;
+  friend class RTCDTMFSenderApiCodecSerializer;
+  friend class RTCRtpSenderApi;
+  friend class RTCRtpSenderApiCodecSerializer;
+  friend class RTCRtpTransceiverApi;
+  friend class RTCRtpTransceiverApiCodecSerializer;
+  friend class RTCVideoRendererApi;
+  friend class RTCVideoRendererApiCodecSerializer;
+  friend class MediaRecorderApi;
+  friend class MediaRecorderApiCodecSerializer;
+  friend class MediaStreamApi;
+  friend class MediaStreamApiCodecSerializer;
+  friend class MediaStreamTrackApi;
+  friend class MediaStreamTrackApiCodecSerializer;
+  friend class DesktopCapturerSourceApi;
+  friend class DesktopCapturerSourceApiCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
+  std::string cname_;
+  bool reduced_size_;
 
 };
 
@@ -1145,62 +1194,13 @@ class RtpParametersMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<std::string> transaction_id_;
   std::optional<RTCParametersMessage> rtcp_;
   std::optional<flutter::EncodableList> header_extensions_;
   std::optional<flutter::EncodableList> encodings_;
   std::optional<flutter::EncodableList> codecs_;
-
-};
-
-
-// Generated class from Pigeon that represents data sent in messages.
-class RTCParametersMessage {
- public:
-  // Constructs an object setting all fields.
-  explicit RTCParametersMessage(
-    const std::string& cname,
-    bool reduced_size);
-
-  const std::string& cname() const;
-  void set_cname(std::string_view value_arg);
-
-  bool reduced_size() const;
-  void set_reduced_size(bool value_arg);
-
-
- private:
-  static RTCParametersMessage FromEncodableList(const flutter::EncodableList& list);
-  flutter::EncodableList ToEncodableList() const;
-  friend class RtpParametersMessage;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
-  friend class RTCDataChannelApi;
-  friend class RTCDataChannelApiCodecSerializer;
-  friend class RTCDTMFSenderApi;
-  friend class RTCDTMFSenderApiCodecSerializer;
-  friend class RTCRtpSenderApi;
-  friend class RTCRtpSenderApiCodecSerializer;
-  friend class RTCRtpTransceiverApi;
-  friend class RTCRtpTransceiverApiCodecSerializer;
-  friend class RTCVideoRendererApi;
-  friend class RTCVideoRendererApiCodecSerializer;
-  friend class MediaRecorderApi;
-  friend class MediaRecorderApiCodecSerializer;
-  friend class MediaStreamApi;
-  friend class MediaStreamApiCodecSerializer;
-  friend class MediaStreamTrackApi;
-  friend class MediaStreamTrackApiCodecSerializer;
-  friend class DesktopCapturerSourceApi;
-  friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
-  std::string cname_;
-  bool reduced_size_;
 
 };
 
@@ -1260,8 +1260,8 @@ class RtpCodecCapabilityMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<int64_t> channels_;
   int64_t clock_rate_;
   std::string mime_type_;
@@ -1305,8 +1305,8 @@ class RtpHeaderExtensionCapabilityMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string uri_;
 
 };
@@ -1362,8 +1362,8 @@ class RtpCapabilitiesMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::optional<flutter::EncodableList> codecs_;
   std::optional<flutter::EncodableList> header_extensions_;
   std::optional<flutter::EncodableList> fec_mechanisms_;
@@ -1412,8 +1412,8 @@ class ThumbnailSizeMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   int64_t width_;
   int64_t height_;
 
@@ -1468,8 +1468,8 @@ class DesktopCapturerSourceMessage {
   friend class MediaStreamTrackApiCodecSerializer;
   friend class DesktopCapturerSourceApi;
   friend class DesktopCapturerSourceApiCodecSerializer;
-  friend class MediaDevices;
-  friend class MediaDevicesCodecSerializer;
+  friend class MediaDevicesApi;
+  friend class MediaDevicesApiCodecSerializer;
   std::string id_;
   std::string name_;
   std::string type_;
@@ -1949,11 +1949,11 @@ class DesktopCapturerSourceApi {
   DesktopCapturerSourceApi() = default;
 
 };
-class MediaDevicesCodecSerializer : public flutter::StandardCodecSerializer {
+class MediaDevicesApiCodecSerializer : public flutter::StandardCodecSerializer {
  public:
-  MediaDevicesCodecSerializer();
-  inline static MediaDevicesCodecSerializer& GetInstance() {
-    static MediaDevicesCodecSerializer sInstance;
+  MediaDevicesApiCodecSerializer();
+  inline static MediaDevicesApiCodecSerializer& GetInstance() {
+    static MediaDevicesApiCodecSerializer sInstance;
     return sInstance;
   }
 
@@ -1969,28 +1969,28 @@ class MediaDevicesCodecSerializer : public flutter::StandardCodecSerializer {
 };
 
 // Generated interface from Pigeon that represents a handler of messages from Flutter.
-class MediaDevices {
+class MediaDevicesApi {
  public:
-  MediaDevices(const MediaDevices&) = delete;
-  MediaDevices& operator=(const MediaDevices&) = delete;
-  virtual ~MediaDevices() {}
+  MediaDevicesApi(const MediaDevicesApi&) = delete;
+  MediaDevicesApi& operator=(const MediaDevicesApi&) = delete;
+  virtual ~MediaDevicesApi() {}
   virtual ErrorOr<MediaStreamMessage> GetUserMedia(const flutter::EncodableMap& media_constraints) = 0;
   virtual ErrorOr<MediaStreamMessage> GetDisplayMedia(const flutter::EncodableMap& media_constraints) = 0;
   virtual ErrorOr<flutter::EncodableList> GetSources() = 0;
   virtual ErrorOr<flutter::EncodableList> EnumerateDevices() = 0;
   virtual ErrorOr<MediaDeviceInfoMessage> SelectAudioOutput(const std::string& device_id) = 0;
 
-  // The codec used by MediaDevices.
+  // The codec used by MediaDevicesApi.
   static const flutter::StandardMessageCodec& GetCodec();
-  // Sets up an instance of `MediaDevices` to handle messages through the `binary_messenger`.
+  // Sets up an instance of `MediaDevicesApi` to handle messages through the `binary_messenger`.
   static void SetUp(
     flutter::BinaryMessenger* binary_messenger,
-    MediaDevices* api);
+    MediaDevicesApi* api);
   static flutter::EncodableValue WrapError(std::string_view error_message);
   static flutter::EncodableValue WrapError(const FlutterError& error);
 
  protected:
-  MediaDevices() = default;
+  MediaDevicesApi() = default;
 
 };
 }  // namespace flutter_webrtc_plugin

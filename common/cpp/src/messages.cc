@@ -135,153 +135,6 @@ ConfigurationMessage ConfigurationMessage::FromEncodableList(const EncodableList
   return decoded;
 }
 
-// MediaStreamMessage
-
-MediaStreamMessage::MediaStreamMessage(
-  const std::string& id,
-  const std::string& owner_tag,
-  const EncodableList& audio_tracks,
-  const EncodableList& video_tracks)
- : id_(id),
-    owner_tag_(owner_tag),
-    audio_tracks_(audio_tracks),
-    video_tracks_(video_tracks) {}
-
-const std::string& MediaStreamMessage::id() const {
-  return id_;
-}
-
-void MediaStreamMessage::set_id(std::string_view value_arg) {
-  id_ = value_arg;
-}
-
-
-const std::string& MediaStreamMessage::owner_tag() const {
-  return owner_tag_;
-}
-
-void MediaStreamMessage::set_owner_tag(std::string_view value_arg) {
-  owner_tag_ = value_arg;
-}
-
-
-const EncodableList& MediaStreamMessage::audio_tracks() const {
-  return audio_tracks_;
-}
-
-void MediaStreamMessage::set_audio_tracks(const EncodableList& value_arg) {
-  audio_tracks_ = value_arg;
-}
-
-
-const EncodableList& MediaStreamMessage::video_tracks() const {
-  return video_tracks_;
-}
-
-void MediaStreamMessage::set_video_tracks(const EncodableList& value_arg) {
-  video_tracks_ = value_arg;
-}
-
-
-EncodableList MediaStreamMessage::ToEncodableList() const {
-  EncodableList list;
-  list.reserve(4);
-  list.push_back(EncodableValue(id_));
-  list.push_back(EncodableValue(owner_tag_));
-  list.push_back(EncodableValue(audio_tracks_));
-  list.push_back(EncodableValue(video_tracks_));
-  return list;
-}
-
-MediaStreamMessage MediaStreamMessage::FromEncodableList(const EncodableList& list) {
-  MediaStreamMessage decoded(
-    std::get<std::string>(list[0]),
-    std::get<std::string>(list[1]),
-    std::get<EncodableList>(list[2]),
-    std::get<EncodableList>(list[3]));
-  return decoded;
-}
-
-// AudioTrackMessage
-
-AudioTrackMessage::AudioTrackMessage(
-  const std::string& id,
-  const std::string& label,
-  const std::string& kind,
-  bool enabled,
-  const AudioTrackSettingsMessage& settings)
- : id_(id),
-    label_(label),
-    kind_(kind),
-    enabled_(enabled),
-    settings_(settings) {}
-
-const std::string& AudioTrackMessage::id() const {
-  return id_;
-}
-
-void AudioTrackMessage::set_id(std::string_view value_arg) {
-  id_ = value_arg;
-}
-
-
-const std::string& AudioTrackMessage::label() const {
-  return label_;
-}
-
-void AudioTrackMessage::set_label(std::string_view value_arg) {
-  label_ = value_arg;
-}
-
-
-const std::string& AudioTrackMessage::kind() const {
-  return kind_;
-}
-
-void AudioTrackMessage::set_kind(std::string_view value_arg) {
-  kind_ = value_arg;
-}
-
-
-bool AudioTrackMessage::enabled() const {
-  return enabled_;
-}
-
-void AudioTrackMessage::set_enabled(bool value_arg) {
-  enabled_ = value_arg;
-}
-
-
-const AudioTrackSettingsMessage& AudioTrackMessage::settings() const {
-  return settings_;
-}
-
-void AudioTrackMessage::set_settings(const AudioTrackSettingsMessage& value_arg) {
-  settings_ = value_arg;
-}
-
-
-EncodableList AudioTrackMessage::ToEncodableList() const {
-  EncodableList list;
-  list.reserve(5);
-  list.push_back(EncodableValue(id_));
-  list.push_back(EncodableValue(label_));
-  list.push_back(EncodableValue(kind_));
-  list.push_back(EncodableValue(enabled_));
-  list.push_back(EncodableValue(settings_.ToEncodableList()));
-  return list;
-}
-
-AudioTrackMessage AudioTrackMessage::FromEncodableList(const EncodableList& list) {
-  AudioTrackMessage decoded(
-    std::get<std::string>(list[0]),
-    std::get<std::string>(list[1]),
-    std::get<std::string>(list[2]),
-    std::get<bool>(list[3]),
-    AudioTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(list[4])));
-  return decoded;
-}
-
 // AudioTrackSettingsMessage
 
 AudioTrackSettingsMessage::AudioTrackSettingsMessage(
@@ -388,66 +241,66 @@ AudioTrackSettingsMessage AudioTrackSettingsMessage::FromEncodableList(const Enc
   return decoded;
 }
 
-// VideoTrackMessage
+// AudioTrackMessage
 
-VideoTrackMessage::VideoTrackMessage(
+AudioTrackMessage::AudioTrackMessage(
   const std::string& id,
   const std::string& label,
   const std::string& kind,
   bool enabled,
-  const VideoTrackSettingsMessage& settings)
+  const AudioTrackSettingsMessage& settings)
  : id_(id),
     label_(label),
     kind_(kind),
     enabled_(enabled),
     settings_(settings) {}
 
-const std::string& VideoTrackMessage::id() const {
+const std::string& AudioTrackMessage::id() const {
   return id_;
 }
 
-void VideoTrackMessage::set_id(std::string_view value_arg) {
+void AudioTrackMessage::set_id(std::string_view value_arg) {
   id_ = value_arg;
 }
 
 
-const std::string& VideoTrackMessage::label() const {
+const std::string& AudioTrackMessage::label() const {
   return label_;
 }
 
-void VideoTrackMessage::set_label(std::string_view value_arg) {
+void AudioTrackMessage::set_label(std::string_view value_arg) {
   label_ = value_arg;
 }
 
 
-const std::string& VideoTrackMessage::kind() const {
+const std::string& AudioTrackMessage::kind() const {
   return kind_;
 }
 
-void VideoTrackMessage::set_kind(std::string_view value_arg) {
+void AudioTrackMessage::set_kind(std::string_view value_arg) {
   kind_ = value_arg;
 }
 
 
-bool VideoTrackMessage::enabled() const {
+bool AudioTrackMessage::enabled() const {
   return enabled_;
 }
 
-void VideoTrackMessage::set_enabled(bool value_arg) {
+void AudioTrackMessage::set_enabled(bool value_arg) {
   enabled_ = value_arg;
 }
 
 
-const VideoTrackSettingsMessage& VideoTrackMessage::settings() const {
+const AudioTrackSettingsMessage& AudioTrackMessage::settings() const {
   return settings_;
 }
 
-void VideoTrackMessage::set_settings(const VideoTrackSettingsMessage& value_arg) {
+void AudioTrackMessage::set_settings(const AudioTrackSettingsMessage& value_arg) {
   settings_ = value_arg;
 }
 
 
-EncodableList VideoTrackMessage::ToEncodableList() const {
+EncodableList AudioTrackMessage::ToEncodableList() const {
   EncodableList list;
   list.reserve(5);
   list.push_back(EncodableValue(id_));
@@ -458,13 +311,13 @@ EncodableList VideoTrackMessage::ToEncodableList() const {
   return list;
 }
 
-VideoTrackMessage VideoTrackMessage::FromEncodableList(const EncodableList& list) {
-  VideoTrackMessage decoded(
+AudioTrackMessage AudioTrackMessage::FromEncodableList(const EncodableList& list) {
+  AudioTrackMessage decoded(
     std::get<std::string>(list[0]),
     std::get<std::string>(list[1]),
     std::get<std::string>(list[2]),
     std::get<bool>(list[3]),
-    VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(list[4])));
+    AudioTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(list[4])));
   return decoded;
 }
 
@@ -545,6 +398,153 @@ VideoTrackSettingsMessage VideoTrackSettingsMessage::FromEncodableList(const Enc
     list[2].LongValue(),
     list[3].LongValue(),
     list[4].LongValue());
+  return decoded;
+}
+
+// VideoTrackMessage
+
+VideoTrackMessage::VideoTrackMessage(
+  const std::string& id,
+  const std::string& label,
+  const std::string& kind,
+  bool enabled,
+  const VideoTrackSettingsMessage& settings)
+ : id_(id),
+    label_(label),
+    kind_(kind),
+    enabled_(enabled),
+    settings_(settings) {}
+
+const std::string& VideoTrackMessage::id() const {
+  return id_;
+}
+
+void VideoTrackMessage::set_id(std::string_view value_arg) {
+  id_ = value_arg;
+}
+
+
+const std::string& VideoTrackMessage::label() const {
+  return label_;
+}
+
+void VideoTrackMessage::set_label(std::string_view value_arg) {
+  label_ = value_arg;
+}
+
+
+const std::string& VideoTrackMessage::kind() const {
+  return kind_;
+}
+
+void VideoTrackMessage::set_kind(std::string_view value_arg) {
+  kind_ = value_arg;
+}
+
+
+bool VideoTrackMessage::enabled() const {
+  return enabled_;
+}
+
+void VideoTrackMessage::set_enabled(bool value_arg) {
+  enabled_ = value_arg;
+}
+
+
+const VideoTrackSettingsMessage& VideoTrackMessage::settings() const {
+  return settings_;
+}
+
+void VideoTrackMessage::set_settings(const VideoTrackSettingsMessage& value_arg) {
+  settings_ = value_arg;
+}
+
+
+EncodableList VideoTrackMessage::ToEncodableList() const {
+  EncodableList list;
+  list.reserve(5);
+  list.push_back(EncodableValue(id_));
+  list.push_back(EncodableValue(label_));
+  list.push_back(EncodableValue(kind_));
+  list.push_back(EncodableValue(enabled_));
+  list.push_back(EncodableValue(settings_.ToEncodableList()));
+  return list;
+}
+
+VideoTrackMessage VideoTrackMessage::FromEncodableList(const EncodableList& list) {
+  VideoTrackMessage decoded(
+    std::get<std::string>(list[0]),
+    std::get<std::string>(list[1]),
+    std::get<std::string>(list[2]),
+    std::get<bool>(list[3]),
+    VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(list[4])));
+  return decoded;
+}
+
+// MediaStreamMessage
+
+MediaStreamMessage::MediaStreamMessage(
+  const std::string& id,
+  const std::string& owner_tag,
+  const EncodableList& audio_tracks,
+  const EncodableList& video_tracks)
+ : id_(id),
+    owner_tag_(owner_tag),
+    audio_tracks_(audio_tracks),
+    video_tracks_(video_tracks) {}
+
+const std::string& MediaStreamMessage::id() const {
+  return id_;
+}
+
+void MediaStreamMessage::set_id(std::string_view value_arg) {
+  id_ = value_arg;
+}
+
+
+const std::string& MediaStreamMessage::owner_tag() const {
+  return owner_tag_;
+}
+
+void MediaStreamMessage::set_owner_tag(std::string_view value_arg) {
+  owner_tag_ = value_arg;
+}
+
+
+const EncodableList& MediaStreamMessage::audio_tracks() const {
+  return audio_tracks_;
+}
+
+void MediaStreamMessage::set_audio_tracks(const EncodableList& value_arg) {
+  audio_tracks_ = value_arg;
+}
+
+
+const EncodableList& MediaStreamMessage::video_tracks() const {
+  return video_tracks_;
+}
+
+void MediaStreamMessage::set_video_tracks(const EncodableList& value_arg) {
+  video_tracks_ = value_arg;
+}
+
+
+EncodableList MediaStreamMessage::ToEncodableList() const {
+  EncodableList list;
+  list.reserve(4);
+  list.push_back(EncodableValue(id_));
+  list.push_back(EncodableValue(owner_tag_));
+  list.push_back(EncodableValue(audio_tracks_));
+  list.push_back(EncodableValue(video_tracks_));
+  return list;
+}
+
+MediaStreamMessage MediaStreamMessage::FromEncodableList(const EncodableList& list) {
+  MediaStreamMessage decoded(
+    std::get<std::string>(list[0]),
+    std::get<std::string>(list[1]),
+    std::get<EncodableList>(list[2]),
+    std::get<EncodableList>(list[3]));
   return decoded;
 }
 
@@ -1401,6 +1401,47 @@ RtpCodecMessage RtpCodecMessage::FromEncodableList(const EncodableList& list) {
   return decoded;
 }
 
+// RTCParametersMessage
+
+RTCParametersMessage::RTCParametersMessage(
+  const std::string& cname,
+  bool reduced_size)
+ : cname_(cname),
+    reduced_size_(reduced_size) {}
+
+const std::string& RTCParametersMessage::cname() const {
+  return cname_;
+}
+
+void RTCParametersMessage::set_cname(std::string_view value_arg) {
+  cname_ = value_arg;
+}
+
+
+bool RTCParametersMessage::reduced_size() const {
+  return reduced_size_;
+}
+
+void RTCParametersMessage::set_reduced_size(bool value_arg) {
+  reduced_size_ = value_arg;
+}
+
+
+EncodableList RTCParametersMessage::ToEncodableList() const {
+  EncodableList list;
+  list.reserve(2);
+  list.push_back(EncodableValue(cname_));
+  list.push_back(EncodableValue(reduced_size_));
+  return list;
+}
+
+RTCParametersMessage RTCParametersMessage::FromEncodableList(const EncodableList& list) {
+  RTCParametersMessage decoded(
+    std::get<std::string>(list[0]),
+    std::get<bool>(list[1]));
+  return decoded;
+}
+
 // RtpParametersMessage
 
 RtpParametersMessage::RtpParametersMessage() {}
@@ -1515,47 +1556,6 @@ RtpParametersMessage RtpParametersMessage::FromEncodableList(const EncodableList
   if (!encodable_codecs.IsNull()) {
     decoded.set_codecs(std::get<EncodableList>(encodable_codecs));
   }
-  return decoded;
-}
-
-// RTCParametersMessage
-
-RTCParametersMessage::RTCParametersMessage(
-  const std::string& cname,
-  bool reduced_size)
- : cname_(cname),
-    reduced_size_(reduced_size) {}
-
-const std::string& RTCParametersMessage::cname() const {
-  return cname_;
-}
-
-void RTCParametersMessage::set_cname(std::string_view value_arg) {
-  cname_ = value_arg;
-}
-
-
-bool RTCParametersMessage::reduced_size() const {
-  return reduced_size_;
-}
-
-void RTCParametersMessage::set_reduced_size(bool value_arg) {
-  reduced_size_ = value_arg;
-}
-
-
-EncodableList RTCParametersMessage::ToEncodableList() const {
-  EncodableList list;
-  list.reserve(2);
-  list.push_back(EncodableValue(cname_));
-  list.push_back(EncodableValue(reduced_size_));
-  return list;
-}
-
-RTCParametersMessage RTCParametersMessage::FromEncodableList(const EncodableList& list) {
-  RTCParametersMessage decoded(
-    std::get<std::string>(list[0]),
-    std::get<bool>(list[1]));
   return decoded;
 }
 
@@ -1866,13 +1866,51 @@ EncodableValue RTCPeerconnectionFactoryApiCodecSerializer::ReadValueOfType(
   flutter::ByteStreamReader* stream) const {
   switch (type) {
     case 128:
-      return CustomEncodableValue(RtpCapabilitiesMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(AudioTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 129:
-      return CustomEncodableValue(RtpCodecCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(AudioTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 130:
-      return CustomEncodableValue(RtpHeaderExtensionCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(ConfigurationMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 131:
-      return CustomEncodableValue(dynamic::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(ConstraintsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 132:
+      return CustomEncodableValue(DataChannelInitMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 133:
+      return CustomEncodableValue(DataChannelMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 134:
+      return CustomEncodableValue(DesktopCapturerSourceMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 135:
+      return CustomEncodableValue(HeaderExtensionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 136:
+      return CustomEncodableValue(IceCandidateMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 137:
+      return CustomEncodableValue(MediaDeviceInfoMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 138:
+      return CustomEncodableValue(MediaStreamMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 139:
+      return CustomEncodableValue(RTCParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 140:
+      return CustomEncodableValue(RtpCapabilitiesMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 141:
+      return CustomEncodableValue(RtpCodecCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 142:
+      return CustomEncodableValue(RtpCodecMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 143:
+      return CustomEncodableValue(RtpEncodingMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 144:
+      return CustomEncodableValue(RtpHeaderExtensionCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 145:
+      return CustomEncodableValue(RtpParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 146:
+      return CustomEncodableValue(SessionDescriptionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 147:
+      return CustomEncodableValue(StatsReportMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 148:
+      return CustomEncodableValue(ThumbnailSizeMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 149:
+      return CustomEncodableValue(VideoTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 150:
+      return CustomEncodableValue(VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     default:
       return flutter::StandardCodecSerializer::ReadValueOfType(type, stream);
   }
@@ -1882,24 +1920,119 @@ void RTCPeerconnectionFactoryApiCodecSerializer::WriteValue(
   const EncodableValue& value,
   flutter::ByteStreamWriter* stream) const {
   if (const CustomEncodableValue* custom_value = std::get_if<CustomEncodableValue>(&value)) {
-    if (custom_value->type() == typeid(RtpCapabilitiesMessage)) {
+    if (custom_value->type() == typeid(AudioTrackMessage)) {
       stream->WriteByte(128);
+      WriteValue(EncodableValue(std::any_cast<AudioTrackMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(AudioTrackSettingsMessage)) {
+      stream->WriteByte(129);
+      WriteValue(EncodableValue(std::any_cast<AudioTrackSettingsMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(ConfigurationMessage)) {
+      stream->WriteByte(130);
+      WriteValue(EncodableValue(std::any_cast<ConfigurationMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(ConstraintsMessage)) {
+      stream->WriteByte(131);
+      WriteValue(EncodableValue(std::any_cast<ConstraintsMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DataChannelInitMessage)) {
+      stream->WriteByte(132);
+      WriteValue(EncodableValue(std::any_cast<DataChannelInitMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DataChannelMessage)) {
+      stream->WriteByte(133);
+      WriteValue(EncodableValue(std::any_cast<DataChannelMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DesktopCapturerSourceMessage)) {
+      stream->WriteByte(134);
+      WriteValue(EncodableValue(std::any_cast<DesktopCapturerSourceMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(HeaderExtensionMessage)) {
+      stream->WriteByte(135);
+      WriteValue(EncodableValue(std::any_cast<HeaderExtensionMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(IceCandidateMessage)) {
+      stream->WriteByte(136);
+      WriteValue(EncodableValue(std::any_cast<IceCandidateMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(MediaDeviceInfoMessage)) {
+      stream->WriteByte(137);
+      WriteValue(EncodableValue(std::any_cast<MediaDeviceInfoMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(MediaStreamMessage)) {
+      stream->WriteByte(138);
+      WriteValue(EncodableValue(std::any_cast<MediaStreamMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RTCParametersMessage)) {
+      stream->WriteByte(139);
+      WriteValue(EncodableValue(std::any_cast<RTCParametersMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCapabilitiesMessage)) {
+      stream->WriteByte(140);
       WriteValue(EncodableValue(std::any_cast<RtpCapabilitiesMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(RtpCodecCapabilityMessage)) {
-      stream->WriteByte(129);
+      stream->WriteByte(141);
       WriteValue(EncodableValue(std::any_cast<RtpCodecCapabilityMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
+    if (custom_value->type() == typeid(RtpCodecMessage)) {
+      stream->WriteByte(142);
+      WriteValue(EncodableValue(std::any_cast<RtpCodecMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpEncodingMessage)) {
+      stream->WriteByte(143);
+      WriteValue(EncodableValue(std::any_cast<RtpEncodingMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
     if (custom_value->type() == typeid(RtpHeaderExtensionCapabilityMessage)) {
-      stream->WriteByte(130);
+      stream->WriteByte(144);
       WriteValue(EncodableValue(std::any_cast<RtpHeaderExtensionCapabilityMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
-    if (custom_value->type() == typeid(dynamic)) {
-      stream->WriteByte(131);
-      WriteValue(EncodableValue(std::any_cast<dynamic>(*custom_value).ToEncodableList()), stream);
+    if (custom_value->type() == typeid(RtpParametersMessage)) {
+      stream->WriteByte(145);
+      WriteValue(EncodableValue(std::any_cast<RtpParametersMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(SessionDescriptionMessage)) {
+      stream->WriteByte(146);
+      WriteValue(EncodableValue(std::any_cast<SessionDescriptionMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(StatsReportMessage)) {
+      stream->WriteByte(147);
+      WriteValue(EncodableValue(std::any_cast<StatsReportMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(ThumbnailSizeMessage)) {
+      stream->WriteByte(148);
+      WriteValue(EncodableValue(std::any_cast<ThumbnailSizeMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(VideoTrackMessage)) {
+      stream->WriteByte(149);
+      WriteValue(EncodableValue(std::any_cast<VideoTrackMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(VideoTrackSettingsMessage)) {
+      stream->WriteByte(150);
+      WriteValue(EncodableValue(std::any_cast<VideoTrackSettingsMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
   }
@@ -2041,21 +2174,41 @@ EncodableValue RtcPeerconnectionApiCodecSerializer::ReadValueOfType(
     case 132:
       return CustomEncodableValue(DataChannelInitMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 133:
-      return CustomEncodableValue(IceCandidateMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(DataChannelMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 134:
-      return CustomEncodableValue(MediaStreamMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(DesktopCapturerSourceMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 135:
-      return CustomEncodableValue(SessionDescriptionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(HeaderExtensionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 136:
-      return CustomEncodableValue(SessionDescriptionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(IceCandidateMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 137:
-      return CustomEncodableValue(StatsReportMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(MediaDeviceInfoMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 138:
-      return CustomEncodableValue(VideoTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(MediaStreamMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 139:
-      return CustomEncodableValue(VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(RTCParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 140:
-      return CustomEncodableValue(dynamic::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(RtpCapabilitiesMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 141:
+      return CustomEncodableValue(RtpCodecCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 142:
+      return CustomEncodableValue(RtpCodecMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 143:
+      return CustomEncodableValue(RtpEncodingMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 144:
+      return CustomEncodableValue(RtpHeaderExtensionCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 145:
+      return CustomEncodableValue(RtpParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 146:
+      return CustomEncodableValue(SessionDescriptionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 147:
+      return CustomEncodableValue(StatsReportMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 148:
+      return CustomEncodableValue(ThumbnailSizeMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 149:
+      return CustomEncodableValue(VideoTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 150:
+      return CustomEncodableValue(VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     default:
       return flutter::StandardCodecSerializer::ReadValueOfType(type, stream);
   }
@@ -2090,44 +2243,94 @@ void RtcPeerconnectionApiCodecSerializer::WriteValue(
       WriteValue(EncodableValue(std::any_cast<DataChannelInitMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
-    if (custom_value->type() == typeid(IceCandidateMessage)) {
+    if (custom_value->type() == typeid(DataChannelMessage)) {
       stream->WriteByte(133);
+      WriteValue(EncodableValue(std::any_cast<DataChannelMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DesktopCapturerSourceMessage)) {
+      stream->WriteByte(134);
+      WriteValue(EncodableValue(std::any_cast<DesktopCapturerSourceMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(HeaderExtensionMessage)) {
+      stream->WriteByte(135);
+      WriteValue(EncodableValue(std::any_cast<HeaderExtensionMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(IceCandidateMessage)) {
+      stream->WriteByte(136);
       WriteValue(EncodableValue(std::any_cast<IceCandidateMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
+    if (custom_value->type() == typeid(MediaDeviceInfoMessage)) {
+      stream->WriteByte(137);
+      WriteValue(EncodableValue(std::any_cast<MediaDeviceInfoMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
     if (custom_value->type() == typeid(MediaStreamMessage)) {
-      stream->WriteByte(134);
+      stream->WriteByte(138);
       WriteValue(EncodableValue(std::any_cast<MediaStreamMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
-    if (custom_value->type() == typeid(SessionDescriptionMessage)) {
-      stream->WriteByte(135);
-      WriteValue(EncodableValue(std::any_cast<SessionDescriptionMessage>(*custom_value).ToEncodableList()), stream);
+    if (custom_value->type() == typeid(RTCParametersMessage)) {
+      stream->WriteByte(139);
+      WriteValue(EncodableValue(std::any_cast<RTCParametersMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCapabilitiesMessage)) {
+      stream->WriteByte(140);
+      WriteValue(EncodableValue(std::any_cast<RtpCapabilitiesMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCodecCapabilityMessage)) {
+      stream->WriteByte(141);
+      WriteValue(EncodableValue(std::any_cast<RtpCodecCapabilityMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCodecMessage)) {
+      stream->WriteByte(142);
+      WriteValue(EncodableValue(std::any_cast<RtpCodecMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpEncodingMessage)) {
+      stream->WriteByte(143);
+      WriteValue(EncodableValue(std::any_cast<RtpEncodingMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpHeaderExtensionCapabilityMessage)) {
+      stream->WriteByte(144);
+      WriteValue(EncodableValue(std::any_cast<RtpHeaderExtensionCapabilityMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpParametersMessage)) {
+      stream->WriteByte(145);
+      WriteValue(EncodableValue(std::any_cast<RtpParametersMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(SessionDescriptionMessage)) {
-      stream->WriteByte(136);
+      stream->WriteByte(146);
       WriteValue(EncodableValue(std::any_cast<SessionDescriptionMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(StatsReportMessage)) {
-      stream->WriteByte(137);
+      stream->WriteByte(147);
       WriteValue(EncodableValue(std::any_cast<StatsReportMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
+    if (custom_value->type() == typeid(ThumbnailSizeMessage)) {
+      stream->WriteByte(148);
+      WriteValue(EncodableValue(std::any_cast<ThumbnailSizeMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
     if (custom_value->type() == typeid(VideoTrackMessage)) {
-      stream->WriteByte(138);
+      stream->WriteByte(149);
       WriteValue(EncodableValue(std::any_cast<VideoTrackMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(VideoTrackSettingsMessage)) {
-      stream->WriteByte(139);
+      stream->WriteByte(150);
       WriteValue(EncodableValue(std::any_cast<VideoTrackSettingsMessage>(*custom_value).ToEncodableList()), stream);
-      return;
-    }
-    if (custom_value->type() == typeid(dynamic)) {
-      stream->WriteByte(140);
-      WriteValue(EncodableValue(std::any_cast<dynamic>(*custom_value).ToEncodableList()), stream);
       return;
     }
   }
@@ -3108,8 +3311,6 @@ EncodableValue RTCRtpSenderApiCodecSerializer::ReadValueOfType(
       return CustomEncodableValue(RtpEncodingMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 132:
       return CustomEncodableValue(RtpParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
-    case 133:
-      return CustomEncodableValue(dynamic::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     default:
       return flutter::StandardCodecSerializer::ReadValueOfType(type, stream);
   }
@@ -3142,11 +3343,6 @@ void RTCRtpSenderApiCodecSerializer::WriteValue(
     if (custom_value->type() == typeid(RtpParametersMessage)) {
       stream->WriteByte(132);
       WriteValue(EncodableValue(std::any_cast<RtpParametersMessage>(*custom_value).ToEncodableList()), stream);
-      return;
-    }
-    if (custom_value->type() == typeid(dynamic)) {
-      stream->WriteByte(133);
-      WriteValue(EncodableValue(std::any_cast<dynamic>(*custom_value).ToEncodableList()), stream);
       return;
     }
   }
@@ -4280,9 +4476,9 @@ EncodableValue DesktopCapturerSourceApi::WrapError(const FlutterError& error) {
 }
 
 
-MediaDevicesCodecSerializer::MediaDevicesCodecSerializer() {}
+MediaDevicesApiCodecSerializer::MediaDevicesApiCodecSerializer() {}
 
-EncodableValue MediaDevicesCodecSerializer::ReadValueOfType(
+EncodableValue MediaDevicesApiCodecSerializer::ReadValueOfType(
   uint8_t type,
   flutter::ByteStreamReader* stream) const {
   switch (type) {
@@ -4291,21 +4487,53 @@ EncodableValue MediaDevicesCodecSerializer::ReadValueOfType(
     case 129:
       return CustomEncodableValue(AudioTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 130:
-      return CustomEncodableValue(MediaDeviceInfoMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(ConfigurationMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 131:
-      return CustomEncodableValue(MediaStreamMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(ConstraintsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 132:
-      return CustomEncodableValue(VideoTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(DataChannelInitMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 133:
-      return CustomEncodableValue(VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(DataChannelMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     case 134:
-      return CustomEncodableValue(dynamic::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+      return CustomEncodableValue(DesktopCapturerSourceMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 135:
+      return CustomEncodableValue(HeaderExtensionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 136:
+      return CustomEncodableValue(IceCandidateMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 137:
+      return CustomEncodableValue(MediaDeviceInfoMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 138:
+      return CustomEncodableValue(MediaStreamMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 139:
+      return CustomEncodableValue(RTCParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 140:
+      return CustomEncodableValue(RtpCapabilitiesMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 141:
+      return CustomEncodableValue(RtpCodecCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 142:
+      return CustomEncodableValue(RtpCodecMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 143:
+      return CustomEncodableValue(RtpEncodingMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 144:
+      return CustomEncodableValue(RtpHeaderExtensionCapabilityMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 145:
+      return CustomEncodableValue(RtpParametersMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 146:
+      return CustomEncodableValue(SessionDescriptionMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 147:
+      return CustomEncodableValue(StatsReportMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 148:
+      return CustomEncodableValue(ThumbnailSizeMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 149:
+      return CustomEncodableValue(VideoTrackMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
+    case 150:
+      return CustomEncodableValue(VideoTrackSettingsMessage::FromEncodableList(std::get<EncodableList>(ReadValue(stream))));
     default:
       return flutter::StandardCodecSerializer::ReadValueOfType(type, stream);
   }
 }
 
-void MediaDevicesCodecSerializer::WriteValue(
+void MediaDevicesApiCodecSerializer::WriteValue(
   const EncodableValue& value,
   flutter::ByteStreamWriter* stream) const {
   if (const CustomEncodableValue* custom_value = std::get_if<CustomEncodableValue>(&value)) {
@@ -4319,46 +4547,126 @@ void MediaDevicesCodecSerializer::WriteValue(
       WriteValue(EncodableValue(std::any_cast<AudioTrackSettingsMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
-    if (custom_value->type() == typeid(MediaDeviceInfoMessage)) {
+    if (custom_value->type() == typeid(ConfigurationMessage)) {
       stream->WriteByte(130);
+      WriteValue(EncodableValue(std::any_cast<ConfigurationMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(ConstraintsMessage)) {
+      stream->WriteByte(131);
+      WriteValue(EncodableValue(std::any_cast<ConstraintsMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DataChannelInitMessage)) {
+      stream->WriteByte(132);
+      WriteValue(EncodableValue(std::any_cast<DataChannelInitMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DataChannelMessage)) {
+      stream->WriteByte(133);
+      WriteValue(EncodableValue(std::any_cast<DataChannelMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(DesktopCapturerSourceMessage)) {
+      stream->WriteByte(134);
+      WriteValue(EncodableValue(std::any_cast<DesktopCapturerSourceMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(HeaderExtensionMessage)) {
+      stream->WriteByte(135);
+      WriteValue(EncodableValue(std::any_cast<HeaderExtensionMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(IceCandidateMessage)) {
+      stream->WriteByte(136);
+      WriteValue(EncodableValue(std::any_cast<IceCandidateMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(MediaDeviceInfoMessage)) {
+      stream->WriteByte(137);
       WriteValue(EncodableValue(std::any_cast<MediaDeviceInfoMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(MediaStreamMessage)) {
-      stream->WriteByte(131);
+      stream->WriteByte(138);
       WriteValue(EncodableValue(std::any_cast<MediaStreamMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
+    if (custom_value->type() == typeid(RTCParametersMessage)) {
+      stream->WriteByte(139);
+      WriteValue(EncodableValue(std::any_cast<RTCParametersMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCapabilitiesMessage)) {
+      stream->WriteByte(140);
+      WriteValue(EncodableValue(std::any_cast<RtpCapabilitiesMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCodecCapabilityMessage)) {
+      stream->WriteByte(141);
+      WriteValue(EncodableValue(std::any_cast<RtpCodecCapabilityMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpCodecMessage)) {
+      stream->WriteByte(142);
+      WriteValue(EncodableValue(std::any_cast<RtpCodecMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpEncodingMessage)) {
+      stream->WriteByte(143);
+      WriteValue(EncodableValue(std::any_cast<RtpEncodingMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpHeaderExtensionCapabilityMessage)) {
+      stream->WriteByte(144);
+      WriteValue(EncodableValue(std::any_cast<RtpHeaderExtensionCapabilityMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(RtpParametersMessage)) {
+      stream->WriteByte(145);
+      WriteValue(EncodableValue(std::any_cast<RtpParametersMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(SessionDescriptionMessage)) {
+      stream->WriteByte(146);
+      WriteValue(EncodableValue(std::any_cast<SessionDescriptionMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(StatsReportMessage)) {
+      stream->WriteByte(147);
+      WriteValue(EncodableValue(std::any_cast<StatsReportMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
+    if (custom_value->type() == typeid(ThumbnailSizeMessage)) {
+      stream->WriteByte(148);
+      WriteValue(EncodableValue(std::any_cast<ThumbnailSizeMessage>(*custom_value).ToEncodableList()), stream);
+      return;
+    }
     if (custom_value->type() == typeid(VideoTrackMessage)) {
-      stream->WriteByte(132);
+      stream->WriteByte(149);
       WriteValue(EncodableValue(std::any_cast<VideoTrackMessage>(*custom_value).ToEncodableList()), stream);
       return;
     }
     if (custom_value->type() == typeid(VideoTrackSettingsMessage)) {
-      stream->WriteByte(133);
+      stream->WriteByte(150);
       WriteValue(EncodableValue(std::any_cast<VideoTrackSettingsMessage>(*custom_value).ToEncodableList()), stream);
-      return;
-    }
-    if (custom_value->type() == typeid(dynamic)) {
-      stream->WriteByte(134);
-      WriteValue(EncodableValue(std::any_cast<dynamic>(*custom_value).ToEncodableList()), stream);
       return;
     }
   }
   flutter::StandardCodecSerializer::WriteValue(value, stream);
 }
 
-/// The codec used by MediaDevices.
-const flutter::StandardMessageCodec& MediaDevices::GetCodec() {
-  return flutter::StandardMessageCodec::GetInstance(&MediaDevicesCodecSerializer::GetInstance());
+/// The codec used by MediaDevicesApi.
+const flutter::StandardMessageCodec& MediaDevicesApi::GetCodec() {
+  return flutter::StandardMessageCodec::GetInstance(&MediaDevicesApiCodecSerializer::GetInstance());
 }
 
-// Sets up an instance of `MediaDevices` to handle messages through the `binary_messenger`.
-void MediaDevices::SetUp(
+// Sets up an instance of `MediaDevicesApi` to handle messages through the `binary_messenger`.
+void MediaDevicesApi::SetUp(
   flutter::BinaryMessenger* binary_messenger,
-  MediaDevices* api) {
+  MediaDevicesApi* api) {
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevices.getUserMedia", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevicesApi.getUserMedia", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4386,7 +4694,7 @@ void MediaDevices::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevices.getDisplayMedia", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevicesApi.getDisplayMedia", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4414,7 +4722,7 @@ void MediaDevices::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevices.getSources", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevicesApi.getSources", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4435,7 +4743,7 @@ void MediaDevices::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevices.enumerateDevices", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevicesApi.enumerateDevices", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4456,7 +4764,7 @@ void MediaDevices::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevices.selectAudioOutput", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaDevicesApi.selectAudioOutput", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4485,7 +4793,7 @@ void MediaDevices::SetUp(
   }
 }
 
-EncodableValue MediaDevices::WrapError(std::string_view error_message) {
+EncodableValue MediaDevicesApi::WrapError(std::string_view error_message) {
   return EncodableValue(EncodableList{
     EncodableValue(std::string(error_message)),
     EncodableValue("Error"),
@@ -4493,7 +4801,7 @@ EncodableValue MediaDevices::WrapError(std::string_view error_message) {
   });
 }
 
-EncodableValue MediaDevices::WrapError(const FlutterError& error) {
+EncodableValue MediaDevicesApi::WrapError(const FlutterError& error) {
   return EncodableValue(EncodableList{
     EncodableValue(error.code()),
     EncodableValue(error.message()),
