@@ -836,8 +836,8 @@ class DesktopCapturerSourceMessage {
   }
 }
 
-class _RTCPeerconnectionFactoryApiCodec extends StandardMessageCodec {
-  const _RTCPeerconnectionFactoryApiCodec();
+class _RTCPeerConnectionFactoryApiCodec extends StandardMessageCodec {
+  const _RTCPeerConnectionFactoryApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is AudioTrackMessage) {
@@ -969,19 +969,19 @@ class _RTCPeerconnectionFactoryApiCodec extends StandardMessageCodec {
   }
 }
 
-class RTCPeerconnectionFactoryApi {
-  /// Constructor for [RTCPeerconnectionFactoryApi].  The [binaryMessenger] named argument is
+class RTCPeerConnectionFactoryApi {
+  /// Constructor for [RTCPeerConnectionFactoryApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  RTCPeerconnectionFactoryApi({BinaryMessenger? binaryMessenger})
+  RTCPeerConnectionFactoryApi({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
-  static const MessageCodec<Object?> codec = _RTCPeerconnectionFactoryApiCodec();
+  static const MessageCodec<Object?> codec = _RTCPeerConnectionFactoryApiCodec();
 
-  Future<String> createPeerconnection(Map<String?, Object?> arg_configuration, Map<String?, Object?> arg_constraints) async {
+  Future<String> createPeerConnection(Map<String?, Object?> arg_configuration, Map<String?, Object?> arg_constraints) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCPeerconnectionFactoryApi.createPeerconnection', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionFactoryApi.createPeerConnection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_configuration, arg_constraints]) as List<Object?>?;
@@ -1008,7 +1008,7 @@ class RTCPeerconnectionFactoryApi {
 
   Future<RtpCapabilitiesMessage> getRtpReceiverCapabilities(String arg_kind) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpReceiverCapabilities', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpReceiverCapabilities', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_kind]) as List<Object?>?;
@@ -1035,7 +1035,7 @@ class RTCPeerconnectionFactoryApi {
 
   Future<RtpCapabilitiesMessage> getRtpSenderCapabilities(String arg_kind) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpSenderCapabilities', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpSenderCapabilities', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_kind]) as List<Object?>?;
@@ -1061,8 +1061,8 @@ class RTCPeerconnectionFactoryApi {
   }
 }
 
-class _RtcPeerconnectionApiCodec extends StandardMessageCodec {
-  const _RtcPeerconnectionApiCodec();
+class _RTCPeerConnectionApiCodec extends StandardMessageCodec {
+  const _RTCPeerConnectionApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is AudioTrackMessage) {
@@ -1194,22 +1194,22 @@ class _RtcPeerconnectionApiCodec extends StandardMessageCodec {
   }
 }
 
-class RtcPeerconnectionApi {
-  /// Constructor for [RtcPeerconnectionApi].  The [binaryMessenger] named argument is
+class RTCPeerConnectionApi {
+  /// Constructor for [RTCPeerConnectionApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  RtcPeerconnectionApi({BinaryMessenger? binaryMessenger})
+  RTCPeerConnectionApi({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
-  static const MessageCodec<Object?> codec = _RtcPeerconnectionApiCodec();
+  static const MessageCodec<Object?> codec = _RTCPeerConnectionApiCodec();
 
-  Future<void> addCandidate(String arg_peerconnectionId, IceCandidateMessage arg_msg) async {
+  Future<void> addCandidate(String arg_peerConnectionId, IceCandidateMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.addCandidate', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.addCandidate', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1226,12 +1226,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> addStream(String arg_peerconnectionId, String arg_streamId) async {
+  Future<void> addStream(String arg_peerConnectionId, String arg_streamId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.addStream', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.addStream', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_streamId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_streamId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1248,12 +1248,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<Map<String?, Object?>> addTrack(String arg_peerconnectionId, String arg_trackId, List<String?>? arg_streamIds) async {
+  Future<Map<String?, Object?>> addTrack(String arg_peerConnectionId, String arg_trackId, List<String?>? arg_streamIds) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.addTrack', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.addTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_trackId, arg_streamIds]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_trackId, arg_streamIds]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1275,12 +1275,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> close(String arg_peerconnectionId) async {
+  Future<void> closePeerConnection(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.close', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.closePeerConnection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1297,12 +1297,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<SessionDescriptionMessage> createAnswer(String arg_peerconnectionId, ConstraintsMessage arg_msg) async {
+  Future<SessionDescriptionMessage> createAnswer(String arg_peerConnectionId, ConstraintsMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.createAnswer', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.createAnswer', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1324,12 +1324,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<Map<String?, Object?>> createDataChannel(String arg_peerconnectionId, String arg_label, DataChannelInitMessage arg_msg) async {
+  Future<Map<String?, Object?>> createDataChannel(String arg_peerConnectionId, String arg_label, DataChannelInitMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.createDataChannel', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.createDataChannel', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_label, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_label, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1351,12 +1351,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<SessionDescriptionMessage> createOffer(String arg_peerconnectionId, ConstraintsMessage arg_msg) async {
+  Future<SessionDescriptionMessage> createOffer(String arg_peerConnectionId, ConstraintsMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.createOffer', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.createOffer', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1378,12 +1378,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> dispose(String arg_peerconnectionId) async {
+  Future<void> disposePeerconnection(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.dispose', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.disposePeerconnection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1400,12 +1400,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<SessionDescriptionMessage?> getLocalDescription(String arg_peerconnectionId) async {
+  Future<SessionDescriptionMessage?> getLocalDescription(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getLocalDescription', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getLocalDescription', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1422,12 +1422,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<MediaStreamMessage?>> getLocalStreams(String arg_peerconnectionId) async {
+  Future<List<MediaStreamMessage?>> getLocalStreams(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getLocalStreams', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getLocalStreams', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1449,12 +1449,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<MediaStreamMessage?>> getRemoteStreams(String arg_peerconnectionId) async {
+  Future<List<MediaStreamMessage?>> getRemoteStreams(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteStreams', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteStreams', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1476,12 +1476,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<Map<String?, Object?>?>> getReceivers(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getReceivers(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getReceivers', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getReceivers', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1503,12 +1503,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<Map<String?, Object?>?>> getSenders(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getSenders(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getSenders', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getSenders', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1530,12 +1530,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<Map<String?, Object?>?>> getTransceivers(String arg_peerconnectionId) async {
+  Future<List<Map<String?, Object?>?>> getTransceivers(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getTransceivers', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getTransceivers', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1557,12 +1557,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<List<StatsReportMessage?>> getStats(String arg_peerconnectionId, String arg_trackId) async {
+  Future<List<StatsReportMessage?>> getStats(String arg_peerConnectionId, String arg_trackId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getStats', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getStats', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_trackId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_trackId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1584,12 +1584,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> removeStream(String arg_peerconnectionId, String arg_streamId) async {
+  Future<void> removeStream(String arg_peerConnectionId, String arg_streamId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.removeStream', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.removeStream', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_streamId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_streamId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1606,12 +1606,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<bool> removeTrack(String arg_peerconnectionId, String arg_senderId) async {
+  Future<bool> removeTrack(String arg_peerConnectionId, String arg_senderId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.removeTrack', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.removeTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_senderId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_senderId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1633,12 +1633,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> restartIce(String arg_peerconnectionId) async {
+  Future<void> restartIce(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.restartIce', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.restartIce', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1655,12 +1655,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> setConfiguration(String arg_peerconnectionId, ConfigurationMessage arg_msg) async {
+  Future<void> setConfiguration(String arg_peerConnectionId, ConfigurationMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.setConfiguration', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.setConfiguration', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1677,12 +1677,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> setLocalDescription(String arg_peerconnectionId, SessionDescriptionMessage arg_msg) async {
+  Future<void> setLocalDescription(String arg_peerConnectionId, SessionDescriptionMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.setLocalDescription', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.setLocalDescription', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1699,12 +1699,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<SessionDescriptionMessage> getRemoteDescription(String arg_peerconnectionId) async {
+  Future<SessionDescriptionMessage> getRemoteDescription(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteDescription', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteDescription', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1726,12 +1726,12 @@ class RtcPeerconnectionApi {
     }
   }
 
-  Future<void> setRemoteDescription(String arg_peerconnectionId, SessionDescriptionMessage arg_msg) async {
+  Future<void> setRemoteDescription(String arg_peerConnectionId, SessionDescriptionMessage arg_msg) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RtcPeerconnectionApi.setRemoteDescription', codec,
+        'dev.flutter.pigeon.RTCPeerConnectionApi.setRemoteDescription', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_msg]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_msg]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1782,12 +1782,12 @@ class RTCDataChannelApi {
 
   static const MessageCodec<Object?> codec = _RTCDataChannelApiCodec();
 
-  Future<void> send(String arg_peerconnectionId, DataChannelMessage arg_message) async {
+  Future<void> send(String arg_peerConnectionId, DataChannelMessage arg_message) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCDataChannelApi.send', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_message]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_message]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1804,12 +1804,12 @@ class RTCDataChannelApi {
     }
   }
 
-  Future<void> close(String arg_peerconnectionId) async {
+  Future<void> closeDataChannel(String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCDataChannelApi.close', codec,
+        'dev.flutter.pigeon.RTCDataChannelApi.closeDataChannel', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1837,12 +1837,12 @@ class RTCDTMFSenderApi {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> insertDtmf(String arg_peerconnectionId, String arg_rtpSenderId, String arg_tones, int arg_duration, int arg_interToneGap) async {
+  Future<void> insertDtmf(String arg_peerConnectionId, String arg_rtpSenderId, String arg_tones, int arg_duration, int arg_interToneGap) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCDTMFSenderApi.insertDtmf', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_rtpSenderId, arg_tones, arg_duration, arg_interToneGap]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_rtpSenderId, arg_tones, arg_duration, arg_interToneGap]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1859,12 +1859,12 @@ class RTCDTMFSenderApi {
     }
   }
 
-  Future<bool> canInsertDtmf(String arg_peerconnectionId, String arg_rtpSenderId) async {
+  Future<bool> canInsertDtmf(String arg_peerConnectionId, String arg_rtpSenderId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCDTMFSenderApi.canInsertDtmf', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_rtpSenderId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_rtpSenderId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1940,12 +1940,12 @@ class RTCRtpSenderApi {
 
   static const MessageCodec<Object?> codec = _RTCRtpSenderApiCodec();
 
-  Future<bool> setParameters(String arg_peerconnectionId, String arg_rtpSenderId, RtpParametersMessage arg_parameters) async {
+  Future<bool> setParameters(String arg_peerConnectionId, String arg_rtpSenderId, RtpParametersMessage arg_parameters) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpSenderApi.setParameters', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_rtpSenderId, arg_parameters]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_rtpSenderId, arg_parameters]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1967,12 +1967,12 @@ class RTCRtpSenderApi {
     }
   }
 
-  Future<void> replaceTrack(String arg_peerconnectionId, String arg_rtpSenderId, String arg_trackId) async {
+  Future<void> replaceTrack(String arg_peerConnectionId, String arg_rtpSenderId, String arg_trackId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpSenderApi.replaceTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_rtpSenderId, arg_trackId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_rtpSenderId, arg_trackId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -1989,12 +1989,12 @@ class RTCRtpSenderApi {
     }
   }
 
-  Future<void> setTrack(String arg_peerconnectionId, String arg_rtpSenderId, String arg_trackId, bool arg_takeOwnership) async {
+  Future<void> setTrack(String arg_peerConnectionId, String arg_rtpSenderId, String arg_trackId, bool arg_takeOwnership) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpSenderApi.setTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_rtpSenderId, arg_trackId, arg_takeOwnership]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_rtpSenderId, arg_trackId, arg_takeOwnership]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2045,12 +2045,12 @@ class RTCRtpTransceiverApi {
 
   static const MessageCodec<Object?> codec = _RTCRtpTransceiverApiCodec();
 
-  Future<void> setDirection(String arg_peerconnectionId, String arg_transceiverId, String arg_direction) async {
+  Future<void> setDirection(String arg_peerConnectionId, String arg_transceiverId, String arg_direction) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpTransceiverApi.setDirection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_transceiverId, arg_direction]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_transceiverId, arg_direction]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2067,12 +2067,12 @@ class RTCRtpTransceiverApi {
     }
   }
 
-  Future<String?> getCurrentDirection(String arg_peerconnectionId, String arg_transceiverId) async {
+  Future<String?> getCurrentDirection(String arg_peerConnectionId, String arg_transceiverId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpTransceiverApi.getCurrentDirection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_transceiverId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_transceiverId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2089,12 +2089,12 @@ class RTCRtpTransceiverApi {
     }
   }
 
-  Future<String> getDirection(String arg_peerconnectionId, String arg_transceiverId) async {
+  Future<String> getDirection(String arg_peerConnectionId, String arg_transceiverId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpTransceiverApi.getDirection', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_transceiverId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_transceiverId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2116,12 +2116,12 @@ class RTCRtpTransceiverApi {
     }
   }
 
-  Future<void> stop(String arg_peerconnectionId, String arg_transceiverId) async {
+  Future<void> stopRtpTransceiver(String arg_peerConnectionId, String arg_transceiverId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCRtpTransceiverApi.stop', codec,
+        'dev.flutter.pigeon.RTCRtpTransceiverApi.stopRtpTransceiver', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_transceiverId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_transceiverId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2138,12 +2138,12 @@ class RTCRtpTransceiverApi {
     }
   }
 
-  Future<void> setCodecPreferences(String arg_peerconnectionId, String arg_transceiverId, List<RtpCodecCapabilityMessage?> arg_codecs) async {
+  Future<void> setCodecPreferences(String arg_peerConnectionId, String arg_transceiverId, List<RtpCodecCapabilityMessage?> arg_codecs) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.RTCRtpTransceiverApi.setCodecPreferences', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_peerconnectionId, arg_transceiverId, arg_codecs]) as List<Object?>?;
+        await channel.send(<Object?>[arg_peerConnectionId, arg_transceiverId, arg_codecs]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2215,9 +2215,9 @@ class RTCVideoRendererApi {
     }
   }
 
-  Future<void> dispose(int arg_textureId) async {
+  Future<void> disposeVideoRender(int arg_textureId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.RTCVideoRendererApi.dispose', codec,
+        'dev.flutter.pigeon.RTCVideoRendererApi.disposeVideoRender', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_textureId]) as List<Object?>?;
@@ -2248,12 +2248,12 @@ class MediaRecorderApi {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> start(String arg_path, int arg_audioChannel, String? arg_videoTrackId, int arg_recorderId, String? arg_peerconnectionId) async {
+  Future<void> start(String arg_path, int arg_audioChannel, String? arg_videoTrackId, int arg_recorderId, String? arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.MediaRecorderApi.start', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_path, arg_audioChannel, arg_videoTrackId, arg_recorderId, arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_path, arg_audioChannel, arg_videoTrackId, arg_recorderId, arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2270,9 +2270,9 @@ class MediaRecorderApi {
     }
   }
 
-  Future<void> stop(int arg_recorderId) async {
+  Future<void> stopMediaRecorder(int arg_recorderId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaRecorderApi.stop', codec,
+        'dev.flutter.pigeon.MediaRecorderApi.stopMediaRecorder', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_recorderId]) as List<Object?>?;
@@ -2303,9 +2303,9 @@ class MediaStreamApi {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> getMediaTracks(String arg_streamId) async {
+  Future<void> getMediaStreamTracks(String arg_streamId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaStreamApi.getMediaTracks', codec,
+        'dev.flutter.pigeon.MediaStreamApi.getMediaStreamTracks', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_streamId]) as List<Object?>?;
@@ -2325,9 +2325,9 @@ class MediaStreamApi {
     }
   }
 
-  Future<void> addTrack(String arg_streamId, String arg_trackId) async {
+  Future<void> addMediaStreamTrack(String arg_streamId, String arg_trackId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaStreamApi.addTrack', codec,
+        'dev.flutter.pigeon.MediaStreamApi.addMediaStreamTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_streamId, arg_trackId]) as List<Object?>?;
@@ -2347,9 +2347,9 @@ class MediaStreamApi {
     }
   }
 
-  Future<void> removeTrack(String arg_streamId, String arg_trackId) async {
+  Future<void> removeMediaStreamTrack(String arg_streamId, String arg_trackId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaStreamApi.removeTrack', codec,
+        'dev.flutter.pigeon.MediaStreamApi.removeMediaStreamTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_streamId, arg_trackId]) as List<Object?>?;
@@ -2369,9 +2369,9 @@ class MediaStreamApi {
     }
   }
 
-  Future<void> dispose(String arg_streamId) async {
+  Future<void> disposeMediaStream(String arg_streamId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaStreamApi.dispose', codec,
+        'dev.flutter.pigeon.MediaStreamApi.disposeMediaStream', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_streamId]) as List<Object?>?;
@@ -2402,12 +2402,12 @@ class MediaStreamTrackApi {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> enable(String arg_trackId, bool arg_enabled, String arg_peerconnectionId) async {
+  Future<void> enable(String arg_trackId, bool arg_enabled, String arg_peerConnectionId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.MediaStreamTrackApi.enable', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_trackId, arg_enabled, arg_peerconnectionId]) as List<Object?>?;
+        await channel.send(<Object?>[arg_trackId, arg_enabled, arg_peerConnectionId]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2473,12 +2473,12 @@ class MediaStreamTrackApi {
     }
   }
 
-  Future<void> captureFrame(String arg_trackId, String arg_peerconnectionId, String arg_path) async {
+  Future<void> captureFrame(String arg_trackId, String arg_peerConnectionId, String arg_path) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.MediaStreamTrackApi.captureFrame', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_trackId, arg_peerconnectionId, arg_path]) as List<Object?>?;
+        await channel.send(<Object?>[arg_trackId, arg_peerConnectionId, arg_path]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -2495,9 +2495,9 @@ class MediaStreamTrackApi {
     }
   }
 
-  Future<void> stop(String arg_trackId) async {
+  Future<void> stopMediaStreamTrack(String arg_trackId) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.MediaStreamTrackApi.stop', codec,
+        'dev.flutter.pigeon.MediaStreamTrackApi.stopMediaStreamTrack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_trackId]) as List<Object?>?;

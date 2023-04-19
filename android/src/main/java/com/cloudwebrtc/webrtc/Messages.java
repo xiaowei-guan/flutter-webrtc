@@ -2684,10 +2684,10 @@ public class Messages {
     }
   }
 
-  private static class RTCPeerconnectionFactoryApiCodec extends StandardMessageCodec {
-    public static final RTCPeerconnectionFactoryApiCodec INSTANCE = new RTCPeerconnectionFactoryApiCodec();
+  private static class RTCPeerConnectionFactoryApiCodec extends StandardMessageCodec {
+    public static final RTCPeerConnectionFactoryApiCodec INSTANCE = new RTCPeerConnectionFactoryApiCodec();
 
-    private RTCPeerconnectionFactoryApiCodec() {}
+    private RTCPeerConnectionFactoryApiCodec() {}
 
     @Override
     protected Object readValueOfType(byte type, @NonNull ByteBuffer buffer) {
@@ -2821,10 +2821,10 @@ public class Messages {
   }
 
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-  public interface RTCPeerconnectionFactoryApi {
+  public interface RTCPeerConnectionFactoryApi {
 
     @NonNull 
-    String createPeerconnection(@NonNull Map<String, Object> configuration, @NonNull Map<String, Object> constraints);
+    String createPeerConnection(@NonNull Map<String, Object> configuration, @NonNull Map<String, Object> constraints);
 
     @NonNull 
     RtpCapabilitiesMessage getRtpReceiverCapabilities(@NonNull String kind);
@@ -2832,16 +2832,16 @@ public class Messages {
     @NonNull 
     RtpCapabilitiesMessage getRtpSenderCapabilities(@NonNull String kind);
 
-    /** The codec used by RTCPeerconnectionFactoryApi. */
+    /** The codec used by RTCPeerConnectionFactoryApi. */
     static @NonNull MessageCodec<Object> getCodec() {
-      return RTCPeerconnectionFactoryApiCodec.INSTANCE;
+      return RTCPeerConnectionFactoryApiCodec.INSTANCE;
     }
-    /**Sets up an instance of `RTCPeerconnectionFactoryApi` to handle messages through the `binaryMessenger`. */
-    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable RTCPeerconnectionFactoryApi api) {
+    /**Sets up an instance of `RTCPeerConnectionFactoryApi` to handle messages through the `binaryMessenger`. */
+    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable RTCPeerConnectionFactoryApi api) {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.createPeerconnection", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.createPeerConnection", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -2850,7 +2850,7 @@ public class Messages {
                 Map<String, Object> configurationArg = (Map<String, Object>) args.get(0);
                 Map<String, Object> constraintsArg = (Map<String, Object>) args.get(1);
                 try {
-                  String output = api.createPeerconnection(configurationArg, constraintsArg);
+                  String output = api.createPeerConnection(configurationArg, constraintsArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -2866,7 +2866,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpReceiverCapabilities", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpReceiverCapabilities", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -2890,7 +2890,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpSenderCapabilities", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpSenderCapabilities", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -2914,10 +2914,10 @@ public class Messages {
     }
   }
 
-  private static class RtcPeerconnectionApiCodec extends StandardMessageCodec {
-    public static final RtcPeerconnectionApiCodec INSTANCE = new RtcPeerconnectionApiCodec();
+  private static class RTCPeerConnectionApiCodec extends StandardMessageCodec {
+    public static final RTCPeerConnectionApiCodec INSTANCE = new RTCPeerConnectionApiCodec();
 
-    private RtcPeerconnectionApiCodec() {}
+    private RTCPeerConnectionApiCodec() {}
 
     @Override
     protected Object readValueOfType(byte type, @NonNull ByteBuffer buffer) {
@@ -3051,84 +3051,84 @@ public class Messages {
   }
 
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-  public interface RtcPeerconnectionApi {
+  public interface RTCPeerConnectionApi {
 
-    void addCandidate(@NonNull String peerconnectionId, @NonNull IceCandidateMessage msg);
+    void addCandidate(@NonNull String peerConnectionId, @NonNull IceCandidateMessage msg);
 
-    void addStream(@NonNull String peerconnectionId, @NonNull String streamId);
-
-    @NonNull 
-    Map<String, Object> addTrack(@NonNull String peerconnectionId, @NonNull String trackId, @Nullable List<String> streamIds);
-
-    void close(@NonNull String peerconnectionId);
+    void addStream(@NonNull String peerConnectionId, @NonNull String streamId);
 
     @NonNull 
-    SessionDescriptionMessage createAnswer(@NonNull String peerconnectionId, @NonNull ConstraintsMessage msg);
+    Map<String, Object> addTrack(@NonNull String peerConnectionId, @NonNull String trackId, @Nullable List<String> streamIds);
+
+    void closePeerConnection(@NonNull String peerConnectionId);
 
     @NonNull 
-    Map<String, Object> createDataChannel(@NonNull String peerconnectionId, @NonNull String label, @NonNull DataChannelInitMessage msg);
+    SessionDescriptionMessage createAnswer(@NonNull String peerConnectionId, @NonNull ConstraintsMessage msg);
 
     @NonNull 
-    SessionDescriptionMessage createOffer(@NonNull String peerconnectionId, @NonNull ConstraintsMessage msg);
+    Map<String, Object> createDataChannel(@NonNull String peerConnectionId, @NonNull String label, @NonNull DataChannelInitMessage msg);
 
-    void dispose(@NonNull String peerconnectionId);
+    @NonNull 
+    SessionDescriptionMessage createOffer(@NonNull String peerConnectionId, @NonNull ConstraintsMessage msg);
+
+    void disposePeerconnection(@NonNull String peerConnectionId);
 
     @Nullable 
-    SessionDescriptionMessage getLocalDescription(@NonNull String peerconnectionId);
+    SessionDescriptionMessage getLocalDescription(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<MediaStreamMessage> getLocalStreams(@NonNull String peerconnectionId);
+    List<MediaStreamMessage> getLocalStreams(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<MediaStreamMessage> getRemoteStreams(@NonNull String peerconnectionId);
+    List<MediaStreamMessage> getRemoteStreams(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<Map<String, Object>> getReceivers(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getReceivers(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<Map<String, Object>> getSenders(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getSenders(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<Map<String, Object>> getTransceivers(@NonNull String peerconnectionId);
+    List<Map<String, Object>> getTransceivers(@NonNull String peerConnectionId);
 
     @NonNull 
-    List<StatsReportMessage> getStats(@NonNull String peerconnectionId, @NonNull String trackId);
+    List<StatsReportMessage> getStats(@NonNull String peerConnectionId, @NonNull String trackId);
 
-    void removeStream(@NonNull String peerconnectionId, @NonNull String streamId);
-
-    @NonNull 
-    Boolean removeTrack(@NonNull String peerconnectionId, @NonNull String senderId);
-
-    void restartIce(@NonNull String peerconnectionId);
-
-    void setConfiguration(@NonNull String peerconnectionId, @NonNull ConfigurationMessage msg);
-
-    void setLocalDescription(@NonNull String peerconnectionId, @NonNull SessionDescriptionMessage msg);
+    void removeStream(@NonNull String peerConnectionId, @NonNull String streamId);
 
     @NonNull 
-    SessionDescriptionMessage getRemoteDescription(@NonNull String peerconnectionId);
+    Boolean removeTrack(@NonNull String peerConnectionId, @NonNull String senderId);
 
-    void setRemoteDescription(@NonNull String peerconnectionId, @NonNull SessionDescriptionMessage msg);
+    void restartIce(@NonNull String peerConnectionId);
 
-    /** The codec used by RtcPeerconnectionApi. */
+    void setConfiguration(@NonNull String peerConnectionId, @NonNull ConfigurationMessage msg);
+
+    void setLocalDescription(@NonNull String peerConnectionId, @NonNull SessionDescriptionMessage msg);
+
+    @NonNull 
+    SessionDescriptionMessage getRemoteDescription(@NonNull String peerConnectionId);
+
+    void setRemoteDescription(@NonNull String peerConnectionId, @NonNull SessionDescriptionMessage msg);
+
+    /** The codec used by RTCPeerConnectionApi. */
     static @NonNull MessageCodec<Object> getCodec() {
-      return RtcPeerconnectionApiCodec.INSTANCE;
+      return RTCPeerConnectionApiCodec.INSTANCE;
     }
-    /**Sets up an instance of `RtcPeerconnectionApi` to handle messages through the `binaryMessenger`. */
-    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable RtcPeerconnectionApi api) {
+    /**Sets up an instance of `RTCPeerConnectionApi` to handle messages through the `binaryMessenger`. */
+    static void setup(@NonNull BinaryMessenger binaryMessenger, @Nullable RTCPeerConnectionApi api) {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addCandidate", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addCandidate", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 IceCandidateMessage msgArg = (IceCandidateMessage) args.get(1);
                 try {
-                  api.addCandidate(peerconnectionIdArg, msgArg);
+                  api.addCandidate(peerConnectionIdArg, msgArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3144,16 +3144,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addStream", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addStream", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String streamIdArg = (String) args.get(1);
                 try {
-                  api.addStream(peerconnectionIdArg, streamIdArg);
+                  api.addStream(peerConnectionIdArg, streamIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3169,17 +3169,17 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addTrack", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addTrack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String trackIdArg = (String) args.get(1);
                 List<String> streamIdsArg = (List<String>) args.get(2);
                 try {
-                  Map<String, Object> output = api.addTrack(peerconnectionIdArg, trackIdArg, streamIdsArg);
+                  Map<String, Object> output = api.addTrack(peerConnectionIdArg, trackIdArg, streamIdsArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3195,15 +3195,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.close", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.closePeerConnection", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  api.close(peerconnectionIdArg);
+                  api.closePeerConnection(peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3219,16 +3219,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createAnswer", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createAnswer", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 ConstraintsMessage msgArg = (ConstraintsMessage) args.get(1);
                 try {
-                  SessionDescriptionMessage output = api.createAnswer(peerconnectionIdArg, msgArg);
+                  SessionDescriptionMessage output = api.createAnswer(peerConnectionIdArg, msgArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3244,17 +3244,17 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createDataChannel", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createDataChannel", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String labelArg = (String) args.get(1);
                 DataChannelInitMessage msgArg = (DataChannelInitMessage) args.get(2);
                 try {
-                  Map<String, Object> output = api.createDataChannel(peerconnectionIdArg, labelArg, msgArg);
+                  Map<String, Object> output = api.createDataChannel(peerConnectionIdArg, labelArg, msgArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3270,16 +3270,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createOffer", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createOffer", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 ConstraintsMessage msgArg = (ConstraintsMessage) args.get(1);
                 try {
-                  SessionDescriptionMessage output = api.createOffer(peerconnectionIdArg, msgArg);
+                  SessionDescriptionMessage output = api.createOffer(peerConnectionIdArg, msgArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3295,15 +3295,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.dispose", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.disposePeerconnection", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  api.dispose(peerconnectionIdArg);
+                  api.disposePeerconnection(peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3319,15 +3319,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getLocalDescription", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getLocalDescription", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  SessionDescriptionMessage output = api.getLocalDescription(peerconnectionIdArg);
+                  SessionDescriptionMessage output = api.getLocalDescription(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3343,15 +3343,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getLocalStreams", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getLocalStreams", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  List<MediaStreamMessage> output = api.getLocalStreams(peerconnectionIdArg);
+                  List<MediaStreamMessage> output = api.getLocalStreams(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3367,15 +3367,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteStreams", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteStreams", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  List<MediaStreamMessage> output = api.getRemoteStreams(peerconnectionIdArg);
+                  List<MediaStreamMessage> output = api.getRemoteStreams(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3391,15 +3391,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getReceivers", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getReceivers", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, Object>> output = api.getReceivers(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getReceivers(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3415,15 +3415,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getSenders", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getSenders", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, Object>> output = api.getSenders(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getSenders(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3439,15 +3439,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getTransceivers", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getTransceivers", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  List<Map<String, Object>> output = api.getTransceivers(peerconnectionIdArg);
+                  List<Map<String, Object>> output = api.getTransceivers(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3463,16 +3463,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getStats", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getStats", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String trackIdArg = (String) args.get(1);
                 try {
-                  List<StatsReportMessage> output = api.getStats(peerconnectionIdArg, trackIdArg);
+                  List<StatsReportMessage> output = api.getStats(peerConnectionIdArg, trackIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3488,16 +3488,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.removeStream", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.removeStream", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String streamIdArg = (String) args.get(1);
                 try {
-                  api.removeStream(peerconnectionIdArg, streamIdArg);
+                  api.removeStream(peerConnectionIdArg, streamIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3513,16 +3513,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.removeTrack", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.removeTrack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String senderIdArg = (String) args.get(1);
                 try {
-                  Boolean output = api.removeTrack(peerconnectionIdArg, senderIdArg);
+                  Boolean output = api.removeTrack(peerConnectionIdArg, senderIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3538,15 +3538,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.restartIce", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.restartIce", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  api.restartIce(peerconnectionIdArg);
+                  api.restartIce(peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3562,16 +3562,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setConfiguration", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setConfiguration", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 ConfigurationMessage msgArg = (ConfigurationMessage) args.get(1);
                 try {
-                  api.setConfiguration(peerconnectionIdArg, msgArg);
+                  api.setConfiguration(peerConnectionIdArg, msgArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3587,16 +3587,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setLocalDescription", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setLocalDescription", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 SessionDescriptionMessage msgArg = (SessionDescriptionMessage) args.get(1);
                 try {
-                  api.setLocalDescription(peerconnectionIdArg, msgArg);
+                  api.setLocalDescription(peerConnectionIdArg, msgArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3612,15 +3612,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteDescription", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteDescription", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  SessionDescriptionMessage output = api.getRemoteDescription(peerconnectionIdArg);
+                  SessionDescriptionMessage output = api.getRemoteDescription(peerConnectionIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3636,16 +3636,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setRemoteDescription", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setRemoteDescription", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 SessionDescriptionMessage msgArg = (SessionDescriptionMessage) args.get(1);
                 try {
-                  api.setRemoteDescription(peerconnectionIdArg, msgArg);
+                  api.setRemoteDescription(peerConnectionIdArg, msgArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3690,9 +3690,9 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface RTCDataChannelApi {
 
-    void send(@NonNull String peerconnectionId, @NonNull DataChannelMessage message);
+    void send(@NonNull String peerConnectionId, @NonNull DataChannelMessage message);
 
-    void close(@NonNull String peerconnectionId);
+    void closeDataChannel(@NonNull String peerConnectionId);
 
     /** The codec used by RTCDataChannelApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -3709,10 +3709,10 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 DataChannelMessage messageArg = (DataChannelMessage) args.get(1);
                 try {
-                  api.send(peerconnectionIdArg, messageArg);
+                  api.send(peerConnectionIdArg, messageArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3728,15 +3728,15 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCDataChannelApi.close", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCDataChannelApi.closeDataChannel", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 try {
-                  api.close(peerconnectionIdArg);
+                  api.closeDataChannel(peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3754,10 +3754,10 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface RTCDTMFSenderApi {
 
-    void insertDtmf(@NonNull String peerconnectionId, @NonNull String rtpSenderId, @NonNull String tones, @NonNull Long duration, @NonNull Long interToneGap);
+    void insertDtmf(@NonNull String peerConnectionId, @NonNull String rtpSenderId, @NonNull String tones, @NonNull Long duration, @NonNull Long interToneGap);
 
     @NonNull 
-    Boolean canInsertDtmf(@NonNull String peerconnectionId, @NonNull String rtpSenderId);
+    Boolean canInsertDtmf(@NonNull String peerConnectionId, @NonNull String rtpSenderId);
 
     /** The codec used by RTCDTMFSenderApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -3774,13 +3774,13 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String rtpSenderIdArg = (String) args.get(1);
                 String tonesArg = (String) args.get(2);
                 Number durationArg = (Number) args.get(3);
                 Number interToneGapArg = (Number) args.get(4);
                 try {
-                  api.insertDtmf(peerconnectionIdArg, rtpSenderIdArg, tonesArg, (durationArg == null) ? null : durationArg.longValue(), (interToneGapArg == null) ? null : interToneGapArg.longValue());
+                  api.insertDtmf(peerConnectionIdArg, rtpSenderIdArg, tonesArg, (durationArg == null) ? null : durationArg.longValue(), (interToneGapArg == null) ? null : interToneGapArg.longValue());
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3802,10 +3802,10 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String rtpSenderIdArg = (String) args.get(1);
                 try {
-                  Boolean output = api.canInsertDtmf(peerconnectionIdArg, rtpSenderIdArg);
+                  Boolean output = api.canInsertDtmf(peerConnectionIdArg, rtpSenderIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3871,11 +3871,11 @@ public class Messages {
   public interface RTCRtpSenderApi {
 
     @NonNull 
-    Boolean setParameters(@NonNull String peerconnectionId, @NonNull String rtpSenderId, @NonNull RtpParametersMessage parameters);
+    Boolean setParameters(@NonNull String peerConnectionId, @NonNull String rtpSenderId, @NonNull RtpParametersMessage parameters);
 
-    void replaceTrack(@NonNull String peerconnectionId, @NonNull String rtpSenderId, @NonNull String trackId);
+    void replaceTrack(@NonNull String peerConnectionId, @NonNull String rtpSenderId, @NonNull String trackId);
 
-    void setTrack(@NonNull String peerconnectionId, @NonNull String rtpSenderId, @NonNull String trackId, @NonNull Boolean takeOwnership);
+    void setTrack(@NonNull String peerConnectionId, @NonNull String rtpSenderId, @NonNull String trackId, @NonNull Boolean takeOwnership);
 
     /** The codec used by RTCRtpSenderApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -3892,11 +3892,11 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String rtpSenderIdArg = (String) args.get(1);
                 RtpParametersMessage parametersArg = (RtpParametersMessage) args.get(2);
                 try {
-                  Boolean output = api.setParameters(peerconnectionIdArg, rtpSenderIdArg, parametersArg);
+                  Boolean output = api.setParameters(peerConnectionIdArg, rtpSenderIdArg, parametersArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -3918,11 +3918,11 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String rtpSenderIdArg = (String) args.get(1);
                 String trackIdArg = (String) args.get(2);
                 try {
-                  api.replaceTrack(peerconnectionIdArg, rtpSenderIdArg, trackIdArg);
+                  api.replaceTrack(peerConnectionIdArg, rtpSenderIdArg, trackIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3944,12 +3944,12 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String rtpSenderIdArg = (String) args.get(1);
                 String trackIdArg = (String) args.get(2);
                 Boolean takeOwnershipArg = (Boolean) args.get(3);
                 try {
-                  api.setTrack(peerconnectionIdArg, rtpSenderIdArg, trackIdArg, takeOwnershipArg);
+                  api.setTrack(peerConnectionIdArg, rtpSenderIdArg, trackIdArg, takeOwnershipArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -3994,17 +3994,17 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface RTCRtpTransceiverApi {
 
-    void setDirection(@NonNull String peerconnectionId, @NonNull String transceiverId, @NonNull String direction);
+    void setDirection(@NonNull String peerConnectionId, @NonNull String transceiverId, @NonNull String direction);
 
     @Nullable 
-    String getCurrentDirection(@NonNull String peerconnectionId, @NonNull String transceiverId);
+    String getCurrentDirection(@NonNull String peerConnectionId, @NonNull String transceiverId);
 
     @NonNull 
-    String getDirection(@NonNull String peerconnectionId, @NonNull String transceiverId);
+    String getDirection(@NonNull String peerConnectionId, @NonNull String transceiverId);
 
-    void stop(@NonNull String peerconnectionId, @NonNull String transceiverId);
+    void stopRtpTransceiver(@NonNull String peerConnectionId, @NonNull String transceiverId);
 
-    void setCodecPreferences(@NonNull String peerconnectionId, @NonNull String transceiverId, @NonNull List<RtpCodecCapabilityMessage> codecs);
+    void setCodecPreferences(@NonNull String peerConnectionId, @NonNull String transceiverId, @NonNull List<RtpCodecCapabilityMessage> codecs);
 
     /** The codec used by RTCRtpTransceiverApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -4021,11 +4021,11 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String transceiverIdArg = (String) args.get(1);
                 String directionArg = (String) args.get(2);
                 try {
-                  api.setDirection(peerconnectionIdArg, transceiverIdArg, directionArg);
+                  api.setDirection(peerConnectionIdArg, transceiverIdArg, directionArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4047,10 +4047,10 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String transceiverIdArg = (String) args.get(1);
                 try {
-                  String output = api.getCurrentDirection(peerconnectionIdArg, transceiverIdArg);
+                  String output = api.getCurrentDirection(peerConnectionIdArg, transceiverIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -4072,10 +4072,10 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String transceiverIdArg = (String) args.get(1);
                 try {
-                  String output = api.getDirection(peerconnectionIdArg, transceiverIdArg);
+                  String output = api.getDirection(peerConnectionIdArg, transceiverIdArg);
                   wrapped.add(0, output);
                 }
  catch (Throwable exception) {
@@ -4091,16 +4091,16 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCRtpTransceiverApi.stop", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCRtpTransceiverApi.stopRtpTransceiver", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String transceiverIdArg = (String) args.get(1);
                 try {
-                  api.stop(peerconnectionIdArg, transceiverIdArg);
+                  api.stopRtpTransceiver(peerConnectionIdArg, transceiverIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4122,11 +4122,11 @@ public class Messages {
               (message, reply) -> {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
-                String peerconnectionIdArg = (String) args.get(0);
+                String peerConnectionIdArg = (String) args.get(0);
                 String transceiverIdArg = (String) args.get(1);
                 List<RtpCodecCapabilityMessage> codecsArg = (List<RtpCodecCapabilityMessage>) args.get(2);
                 try {
-                  api.setCodecPreferences(peerconnectionIdArg, transceiverIdArg, codecsArg);
+                  api.setCodecPreferences(peerConnectionIdArg, transceiverIdArg, codecsArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4149,7 +4149,7 @@ public class Messages {
 
     void setSrcObject(@NonNull Long textureId, @NonNull String streamId, @NonNull String ownerTag, @Nullable String trackId);
 
-    void dispose(@NonNull Long textureId);
+    void disposeVideoRender(@NonNull Long textureId);
 
     /** The codec used by RTCVideoRendererApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -4209,7 +4209,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.RTCVideoRendererApi.dispose", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RTCVideoRendererApi.disposeVideoRender", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4217,7 +4217,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 Number textureIdArg = (Number) args.get(0);
                 try {
-                  api.dispose((textureIdArg == null) ? null : textureIdArg.longValue());
+                  api.disposeVideoRender((textureIdArg == null) ? null : textureIdArg.longValue());
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4235,9 +4235,9 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface MediaRecorderApi {
 
-    void start(@NonNull String path, @NonNull Long audioChannel, @Nullable String videoTrackId, @NonNull Long recorderId, @Nullable String peerconnectionId);
+    void start(@NonNull String path, @NonNull Long audioChannel, @Nullable String videoTrackId, @NonNull Long recorderId, @Nullable String peerConnectionId);
 
-    void stop(@NonNull Long recorderId);
+    void stopMediaRecorder(@NonNull Long recorderId);
 
     /** The codec used by MediaRecorderApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -4258,9 +4258,9 @@ public class Messages {
                 Number audioChannelArg = (Number) args.get(1);
                 String videoTrackIdArg = (String) args.get(2);
                 Number recorderIdArg = (Number) args.get(3);
-                String peerconnectionIdArg = (String) args.get(4);
+                String peerConnectionIdArg = (String) args.get(4);
                 try {
-                  api.start(pathArg, (audioChannelArg == null) ? null : audioChannelArg.longValue(), videoTrackIdArg, (recorderIdArg == null) ? null : recorderIdArg.longValue(), peerconnectionIdArg);
+                  api.start(pathArg, (audioChannelArg == null) ? null : audioChannelArg.longValue(), videoTrackIdArg, (recorderIdArg == null) ? null : recorderIdArg.longValue(), peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4276,7 +4276,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaRecorderApi.stop", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaRecorderApi.stopMediaRecorder", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4284,7 +4284,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 Number recorderIdArg = (Number) args.get(0);
                 try {
-                  api.stop((recorderIdArg == null) ? null : recorderIdArg.longValue());
+                  api.stopMediaRecorder((recorderIdArg == null) ? null : recorderIdArg.longValue());
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4302,13 +4302,13 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface MediaStreamApi {
 
-    void getMediaTracks(@NonNull String streamId);
+    void getMediaStreamTracks(@NonNull String streamId);
 
-    void addTrack(@NonNull String streamId, @NonNull String trackId);
+    void addMediaStreamTrack(@NonNull String streamId, @NonNull String trackId);
 
-    void removeTrack(@NonNull String streamId, @NonNull String trackId);
+    void removeMediaStreamTrack(@NonNull String streamId, @NonNull String trackId);
 
-    void dispose(@NonNull String streamId);
+    void disposeMediaStream(@NonNull String streamId);
 
     /** The codec used by MediaStreamApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -4319,7 +4319,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.getMediaTracks", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.getMediaStreamTracks", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4327,7 +4327,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String streamIdArg = (String) args.get(0);
                 try {
-                  api.getMediaTracks(streamIdArg);
+                  api.getMediaStreamTracks(streamIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4343,7 +4343,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.addTrack", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.addMediaStreamTrack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4352,7 +4352,7 @@ public class Messages {
                 String streamIdArg = (String) args.get(0);
                 String trackIdArg = (String) args.get(1);
                 try {
-                  api.addTrack(streamIdArg, trackIdArg);
+                  api.addMediaStreamTrack(streamIdArg, trackIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4368,7 +4368,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.removeTrack", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.removeMediaStreamTrack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4377,7 +4377,7 @@ public class Messages {
                 String streamIdArg = (String) args.get(0);
                 String trackIdArg = (String) args.get(1);
                 try {
-                  api.removeTrack(streamIdArg, trackIdArg);
+                  api.removeMediaStreamTrack(streamIdArg, trackIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4393,7 +4393,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.dispose", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaStreamApi.disposeMediaStream", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4401,7 +4401,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String streamIdArg = (String) args.get(0);
                 try {
-                  api.dispose(streamIdArg);
+                  api.disposeMediaStream(streamIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4419,16 +4419,16 @@ public class Messages {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
   public interface MediaStreamTrackApi {
 
-    void enable(@NonNull String trackId, @NonNull Boolean enabled, @NonNull String peerconnectionId);
+    void enable(@NonNull String trackId, @NonNull Boolean enabled, @NonNull String peerConnectionId);
 
     @NonNull 
     Boolean hasTorch(@NonNull String trackId);
 
     void setTorch(@NonNull String trackId, @NonNull Boolean torch);
 
-    void captureFrame(@NonNull String trackId, @NonNull String peerconnectionId, @NonNull String path);
+    void captureFrame(@NonNull String trackId, @NonNull String peerConnectionId, @NonNull String path);
 
-    void stop(@NonNull String trackId);
+    void stopMediaStreamTrack(@NonNull String trackId);
 
     /** The codec used by MediaStreamTrackApi. */
     static @NonNull MessageCodec<Object> getCodec() {
@@ -4447,9 +4447,9 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String trackIdArg = (String) args.get(0);
                 Boolean enabledArg = (Boolean) args.get(1);
-                String peerconnectionIdArg = (String) args.get(2);
+                String peerConnectionIdArg = (String) args.get(2);
                 try {
-                  api.enable(trackIdArg, enabledArg, peerconnectionIdArg);
+                  api.enable(trackIdArg, enabledArg, peerConnectionIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4521,10 +4521,10 @@ public class Messages {
                 ArrayList<Object> wrapped = new ArrayList<Object>();
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String trackIdArg = (String) args.get(0);
-                String peerconnectionIdArg = (String) args.get(1);
+                String peerConnectionIdArg = (String) args.get(1);
                 String pathArg = (String) args.get(2);
                 try {
-                  api.captureFrame(trackIdArg, peerconnectionIdArg, pathArg);
+                  api.captureFrame(trackIdArg, peerConnectionIdArg, pathArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {
@@ -4540,7 +4540,7 @@ public class Messages {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.MediaStreamTrackApi.stop", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.MediaStreamTrackApi.stopMediaStreamTrack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -4548,7 +4548,7 @@ public class Messages {
                 ArrayList<Object> args = (ArrayList<Object>) message;
                 String trackIdArg = (String) args.get(0);
                 try {
-                  api.stop(trackIdArg);
+                  api.stopMediaStreamTrack(trackIdArg);
                   wrapped.add(0, null);
                 }
  catch (Throwable exception) {

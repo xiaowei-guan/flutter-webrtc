@@ -51,8 +51,8 @@ template<class T> class ErrorOr {
   const FlutterError& error() const { return std::get<FlutterError>(v_); };
 
  private:
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RtcPeerconnectionApi;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionApi;
   friend class RTCDataChannelApi;
   friend class RTCDTMFSenderApi;
   friend class RTCRtpSenderApi;
@@ -93,10 +93,10 @@ class SessionDescriptionMessage {
  private:
   static SessionDescriptionMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -136,10 +136,10 @@ class ConstraintsMessage {
  private:
   static ConstraintsMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -178,10 +178,10 @@ class ConfigurationMessage {
  private:
   static ConfigurationMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -246,10 +246,10 @@ class AudioTrackSettingsMessage {
   static AudioTrackSettingsMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
   friend class AudioTrackMessage;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -311,10 +311,10 @@ class AudioTrackMessage {
  private:
   static AudioTrackMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -375,10 +375,10 @@ class VideoTrackSettingsMessage {
   static VideoTrackSettingsMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
   friend class VideoTrackMessage;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -438,10 +438,10 @@ class VideoTrackMessage {
  private:
   static VideoTrackMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -497,10 +497,10 @@ class MediaStreamMessage {
  private:
   static MediaStreamMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -562,10 +562,10 @@ class MediaDeviceInfoMessage {
  private:
   static MediaDeviceInfoMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -622,10 +622,10 @@ class IceCandidateMessage {
  private:
   static IceCandidateMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -685,10 +685,10 @@ class StatsReportMessage {
  private:
   static StatsReportMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -750,10 +750,10 @@ class DataChannelMessage {
  private:
   static DataChannelMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -820,10 +820,10 @@ class DataChannelInitMessage {
  private:
   static DataChannelInitMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -883,10 +883,10 @@ class HeaderExtensionMessage {
  private:
   static HeaderExtensionMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -971,10 +971,10 @@ class RtpEncodingMessage {
  private:
   static RtpEncodingMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1051,10 +1051,10 @@ class RtpCodecMessage {
  private:
   static RtpCodecMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1104,10 +1104,10 @@ class RTCParametersMessage {
   static RTCParametersMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
   friend class RtpParametersMessage;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1172,10 +1172,10 @@ class RtpParametersMessage {
  private:
   static RtpParametersMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1238,10 +1238,10 @@ class RtpCodecCapabilityMessage {
  private:
   static RtpCodecCapabilityMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1283,10 +1283,10 @@ class RtpHeaderExtensionCapabilityMessage {
  private:
   static RtpHeaderExtensionCapabilityMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1340,10 +1340,10 @@ class RtpCapabilitiesMessage {
  private:
   static RtpCapabilitiesMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1390,10 +1390,10 @@ class ThumbnailSizeMessage {
   static ThumbnailSizeMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
   friend class DesktopCapturerSourceMessage;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1446,10 +1446,10 @@ class DesktopCapturerSourceMessage {
  private:
   static DesktopCapturerSourceMessage FromEncodableList(const flutter::EncodableList& list);
   flutter::EncodableList ToEncodableList() const;
-  friend class RTCPeerconnectionFactoryApi;
-  friend class RTCPeerconnectionFactoryApiCodecSerializer;
-  friend class RtcPeerconnectionApi;
-  friend class RtcPeerconnectionApiCodecSerializer;
+  friend class RTCPeerConnectionFactoryApi;
+  friend class RTCPeerConnectionFactoryApiCodecSerializer;
+  friend class RTCPeerConnectionApi;
+  friend class RTCPeerConnectionApiCodecSerializer;
   friend class RTCDataChannelApi;
   friend class RTCDataChannelApiCodecSerializer;
   friend class RTCDTMFSenderApi;
@@ -1477,11 +1477,11 @@ class DesktopCapturerSourceMessage {
 
 };
 
-class RTCPeerconnectionFactoryApiCodecSerializer : public flutter::StandardCodecSerializer {
+class RTCPeerConnectionFactoryApiCodecSerializer : public flutter::StandardCodecSerializer {
  public:
-  RTCPeerconnectionFactoryApiCodecSerializer();
-  inline static RTCPeerconnectionFactoryApiCodecSerializer& GetInstance() {
-    static RTCPeerconnectionFactoryApiCodecSerializer sInstance;
+  RTCPeerConnectionFactoryApiCodecSerializer();
+  inline static RTCPeerConnectionFactoryApiCodecSerializer& GetInstance() {
+    static RTCPeerConnectionFactoryApiCodecSerializer sInstance;
     return sInstance;
   }
 
@@ -1497,35 +1497,35 @@ class RTCPeerconnectionFactoryApiCodecSerializer : public flutter::StandardCodec
 };
 
 // Generated interface from Pigeon that represents a handler of messages from Flutter.
-class RTCPeerconnectionFactoryApi {
+class RTCPeerConnectionFactoryApi {
  public:
-  RTCPeerconnectionFactoryApi(const RTCPeerconnectionFactoryApi&) = delete;
-  RTCPeerconnectionFactoryApi& operator=(const RTCPeerconnectionFactoryApi&) = delete;
-  virtual ~RTCPeerconnectionFactoryApi() {}
-  virtual ErrorOr<std::string> CreatePeerconnection(
+  RTCPeerConnectionFactoryApi(const RTCPeerConnectionFactoryApi&) = delete;
+  RTCPeerConnectionFactoryApi& operator=(const RTCPeerConnectionFactoryApi&) = delete;
+  virtual ~RTCPeerConnectionFactoryApi() {}
+  virtual ErrorOr<std::string> CreatePeerConnection(
     const flutter::EncodableMap& configuration,
     const flutter::EncodableMap& constraints) = 0;
   virtual ErrorOr<RtpCapabilitiesMessage> GetRtpReceiverCapabilities(const std::string& kind) = 0;
   virtual ErrorOr<RtpCapabilitiesMessage> GetRtpSenderCapabilities(const std::string& kind) = 0;
 
-  // The codec used by RTCPeerconnectionFactoryApi.
+  // The codec used by RTCPeerConnectionFactoryApi.
   static const flutter::StandardMessageCodec& GetCodec();
-  // Sets up an instance of `RTCPeerconnectionFactoryApi` to handle messages through the `binary_messenger`.
+  // Sets up an instance of `RTCPeerConnectionFactoryApi` to handle messages through the `binary_messenger`.
   static void SetUp(
     flutter::BinaryMessenger* binary_messenger,
-    RTCPeerconnectionFactoryApi* api);
+    RTCPeerConnectionFactoryApi* api);
   static flutter::EncodableValue WrapError(std::string_view error_message);
   static flutter::EncodableValue WrapError(const FlutterError& error);
 
  protected:
-  RTCPeerconnectionFactoryApi() = default;
+  RTCPeerConnectionFactoryApi() = default;
 
 };
-class RtcPeerconnectionApiCodecSerializer : public flutter::StandardCodecSerializer {
+class RTCPeerConnectionApiCodecSerializer : public flutter::StandardCodecSerializer {
  public:
-  RtcPeerconnectionApiCodecSerializer();
-  inline static RtcPeerconnectionApiCodecSerializer& GetInstance() {
-    static RtcPeerconnectionApiCodecSerializer sInstance;
+  RTCPeerConnectionApiCodecSerializer();
+  inline static RTCPeerConnectionApiCodecSerializer& GetInstance() {
+    static RTCPeerConnectionApiCodecSerializer sInstance;
     return sInstance;
   }
 
@@ -1541,71 +1541,71 @@ class RtcPeerconnectionApiCodecSerializer : public flutter::StandardCodecSeriali
 };
 
 // Generated interface from Pigeon that represents a handler of messages from Flutter.
-class RtcPeerconnectionApi {
+class RTCPeerConnectionApi {
  public:
-  RtcPeerconnectionApi(const RtcPeerconnectionApi&) = delete;
-  RtcPeerconnectionApi& operator=(const RtcPeerconnectionApi&) = delete;
-  virtual ~RtcPeerconnectionApi() {}
+  RTCPeerConnectionApi(const RTCPeerConnectionApi&) = delete;
+  RTCPeerConnectionApi& operator=(const RTCPeerConnectionApi&) = delete;
+  virtual ~RTCPeerConnectionApi() {}
   virtual std::optional<FlutterError> AddCandidate(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const IceCandidateMessage& msg) = 0;
   virtual std::optional<FlutterError> AddStream(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& stream_id) = 0;
   virtual ErrorOr<flutter::EncodableMap> AddTrack(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& track_id,
     const flutter::EncodableList* stream_ids) = 0;
-  virtual std::optional<FlutterError> Close(const std::string& peerconnection_id) = 0;
+  virtual std::optional<FlutterError> ClosePeerConnection(const std::string& peer_connection_id) = 0;
   virtual ErrorOr<SessionDescriptionMessage> CreateAnswer(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const ConstraintsMessage& msg) = 0;
   virtual ErrorOr<flutter::EncodableMap> CreateDataChannel(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& label,
     const DataChannelInitMessage& msg) = 0;
   virtual ErrorOr<SessionDescriptionMessage> CreateOffer(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const ConstraintsMessage& msg) = 0;
-  virtual std::optional<FlutterError> Dispose(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<std::optional<SessionDescriptionMessage>> GetLocalDescription(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<flutter::EncodableList> GetLocalStreams(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<flutter::EncodableList> GetRemoteStreams(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<flutter::EncodableList> GetReceivers(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<flutter::EncodableList> GetSenders(const std::string& peerconnection_id) = 0;
-  virtual ErrorOr<flutter::EncodableList> GetTransceivers(const std::string& peerconnection_id) = 0;
+  virtual std::optional<FlutterError> DisposePeerconnection(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<std::optional<SessionDescriptionMessage>> GetLocalDescription(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<flutter::EncodableList> GetLocalStreams(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<flutter::EncodableList> GetRemoteStreams(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<flutter::EncodableList> GetReceivers(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<flutter::EncodableList> GetSenders(const std::string& peer_connection_id) = 0;
+  virtual ErrorOr<flutter::EncodableList> GetTransceivers(const std::string& peer_connection_id) = 0;
   virtual ErrorOr<flutter::EncodableList> GetStats(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& track_id) = 0;
   virtual std::optional<FlutterError> RemoveStream(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& stream_id) = 0;
   virtual ErrorOr<bool> RemoveTrack(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& sender_id) = 0;
-  virtual std::optional<FlutterError> RestartIce(const std::string& peerconnection_id) = 0;
+  virtual std::optional<FlutterError> RestartIce(const std::string& peer_connection_id) = 0;
   virtual std::optional<FlutterError> SetConfiguration(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const ConfigurationMessage& msg) = 0;
   virtual std::optional<FlutterError> SetLocalDescription(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const SessionDescriptionMessage& msg) = 0;
-  virtual ErrorOr<SessionDescriptionMessage> GetRemoteDescription(const std::string& peerconnection_id) = 0;
+  virtual ErrorOr<SessionDescriptionMessage> GetRemoteDescription(const std::string& peer_connection_id) = 0;
   virtual std::optional<FlutterError> SetRemoteDescription(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const SessionDescriptionMessage& msg) = 0;
 
-  // The codec used by RtcPeerconnectionApi.
+  // The codec used by RTCPeerConnectionApi.
   static const flutter::StandardMessageCodec& GetCodec();
-  // Sets up an instance of `RtcPeerconnectionApi` to handle messages through the `binary_messenger`.
+  // Sets up an instance of `RTCPeerConnectionApi` to handle messages through the `binary_messenger`.
   static void SetUp(
     flutter::BinaryMessenger* binary_messenger,
-    RtcPeerconnectionApi* api);
+    RTCPeerConnectionApi* api);
   static flutter::EncodableValue WrapError(std::string_view error_message);
   static flutter::EncodableValue WrapError(const FlutterError& error);
 
  protected:
-  RtcPeerconnectionApi() = default;
+  RTCPeerConnectionApi() = default;
 
 };
 class RTCDataChannelApiCodecSerializer : public flutter::StandardCodecSerializer {
@@ -1634,9 +1634,9 @@ class RTCDataChannelApi {
   RTCDataChannelApi& operator=(const RTCDataChannelApi&) = delete;
   virtual ~RTCDataChannelApi() {}
   virtual std::optional<FlutterError> Send(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const DataChannelMessage& message) = 0;
-  virtual std::optional<FlutterError> Close(const std::string& peerconnection_id) = 0;
+  virtual std::optional<FlutterError> CloseDataChannel(const std::string& peer_connection_id) = 0;
 
   // The codec used by RTCDataChannelApi.
   static const flutter::StandardMessageCodec& GetCodec();
@@ -1658,13 +1658,13 @@ class RTCDTMFSenderApi {
   RTCDTMFSenderApi& operator=(const RTCDTMFSenderApi&) = delete;
   virtual ~RTCDTMFSenderApi() {}
   virtual std::optional<FlutterError> InsertDtmf(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& rtp_sender_id,
     const std::string& tones,
     int64_t duration,
     int64_t inter_tone_gap) = 0;
   virtual ErrorOr<bool> CanInsertDtmf(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& rtp_sender_id) = 0;
 
   // The codec used by RTCDTMFSenderApi.
@@ -1706,15 +1706,15 @@ class RTCRtpSenderApi {
   RTCRtpSenderApi& operator=(const RTCRtpSenderApi&) = delete;
   virtual ~RTCRtpSenderApi() {}
   virtual ErrorOr<bool> SetParameters(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& rtp_sender_id,
     const RtpParametersMessage& parameters) = 0;
   virtual std::optional<FlutterError> ReplaceTrack(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& rtp_sender_id,
     const std::string& track_id) = 0;
   virtual std::optional<FlutterError> SetTrack(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& rtp_sender_id,
     const std::string& track_id,
     bool take_ownership) = 0;
@@ -1758,20 +1758,20 @@ class RTCRtpTransceiverApi {
   RTCRtpTransceiverApi& operator=(const RTCRtpTransceiverApi&) = delete;
   virtual ~RTCRtpTransceiverApi() {}
   virtual std::optional<FlutterError> SetDirection(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& transceiver_id,
     const std::string& direction) = 0;
   virtual ErrorOr<std::optional<std::string>> GetCurrentDirection(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& transceiver_id) = 0;
   virtual ErrorOr<std::string> GetDirection(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& transceiver_id) = 0;
-  virtual std::optional<FlutterError> Stop(
-    const std::string& peerconnection_id,
+  virtual std::optional<FlutterError> StopRtpTransceiver(
+    const std::string& peer_connection_id,
     const std::string& transceiver_id) = 0;
   virtual std::optional<FlutterError> SetCodecPreferences(
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& transceiver_id,
     const flutter::EncodableList& codecs) = 0;
 
@@ -1800,7 +1800,7 @@ class RTCVideoRendererApi {
     const std::string& stream_id,
     const std::string& owner_tag,
     const std::string* track_id) = 0;
-  virtual std::optional<FlutterError> Dispose(int64_t texture_id) = 0;
+  virtual std::optional<FlutterError> DisposeVideoRender(int64_t texture_id) = 0;
 
   // The codec used by RTCVideoRendererApi.
   static const flutter::StandardMessageCodec& GetCodec();
@@ -1826,8 +1826,8 @@ class MediaRecorderApi {
     int64_t audio_channel,
     const std::string* video_track_id,
     int64_t recorder_id,
-    const std::string* peerconnection_id) = 0;
-  virtual std::optional<FlutterError> Stop(int64_t recorder_id) = 0;
+    const std::string* peer_connection_id) = 0;
+  virtual std::optional<FlutterError> StopMediaRecorder(int64_t recorder_id) = 0;
 
   // The codec used by MediaRecorderApi.
   static const flutter::StandardMessageCodec& GetCodec();
@@ -1848,14 +1848,14 @@ class MediaStreamApi {
   MediaStreamApi(const MediaStreamApi&) = delete;
   MediaStreamApi& operator=(const MediaStreamApi&) = delete;
   virtual ~MediaStreamApi() {}
-  virtual std::optional<FlutterError> GetMediaTracks(const std::string& stream_id) = 0;
-  virtual std::optional<FlutterError> AddTrack(
+  virtual std::optional<FlutterError> GetMediaStreamTracks(const std::string& stream_id) = 0;
+  virtual std::optional<FlutterError> AddMediaStreamTrack(
     const std::string& stream_id,
     const std::string& track_id) = 0;
-  virtual std::optional<FlutterError> RemoveTrack(
+  virtual std::optional<FlutterError> RemoveMediaStreamTrack(
     const std::string& stream_id,
     const std::string& track_id) = 0;
-  virtual std::optional<FlutterError> Dispose(const std::string& stream_id) = 0;
+  virtual std::optional<FlutterError> DisposeMediaStream(const std::string& stream_id) = 0;
 
   // The codec used by MediaStreamApi.
   static const flutter::StandardMessageCodec& GetCodec();
@@ -1879,16 +1879,16 @@ class MediaStreamTrackApi {
   virtual std::optional<FlutterError> Enable(
     const std::string& track_id,
     bool enabled,
-    const std::string& peerconnection_id) = 0;
+    const std::string& peer_connection_id) = 0;
   virtual ErrorOr<bool> HasTorch(const std::string& track_id) = 0;
   virtual std::optional<FlutterError> SetTorch(
     const std::string& track_id,
     bool torch) = 0;
   virtual std::optional<FlutterError> CaptureFrame(
     const std::string& track_id,
-    const std::string& peerconnection_id,
+    const std::string& peer_connection_id,
     const std::string& path) = 0;
-  virtual std::optional<FlutterError> Stop(const std::string& track_id) = 0;
+  virtual std::optional<FlutterError> StopMediaStreamTrack(const std::string& track_id) = 0;
 
   // The codec used by MediaStreamTrackApi.
   static const flutter::StandardMessageCodec& GetCodec();

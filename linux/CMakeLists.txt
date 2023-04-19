@@ -10,14 +10,8 @@ add_definitions(-DRTC_DESKTOP_DEVICE)
 
 add_library(${PLUGIN_NAME} SHARED
   "../third_party/uuidxx/uuidxx.cc"
-  "../common/cpp/src/flutter_data_channel.cc"
-  "../common/cpp/src/flutter_media_stream.cc"
-  "../common/cpp/src/flutter_peerconnection.cc"
-  "../common/cpp/src/flutter_video_renderer.cc"
-  "../common/cpp/src/flutter_screen_capture.cc"
   "../common/cpp/src/flutter_webrtc.cc"
-  "../common/cpp/src/flutter_webrtc_base.cc"
-  "../common/cpp/src/flutter_common.cc"
+  "../common/cpp/src/messages.cc"
   "../common/cpp/flutter_webrtc_plugin.cc"
   "flutter/core_implementations.cc"
   "flutter/standard_codec.cc"

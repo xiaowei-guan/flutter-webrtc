@@ -1859,9 +1859,9 @@ DesktopCapturerSourceMessage DesktopCapturerSourceMessage::FromEncodableList(con
 }
 
 
-RTCPeerconnectionFactoryApiCodecSerializer::RTCPeerconnectionFactoryApiCodecSerializer() {}
+RTCPeerConnectionFactoryApiCodecSerializer::RTCPeerConnectionFactoryApiCodecSerializer() {}
 
-EncodableValue RTCPeerconnectionFactoryApiCodecSerializer::ReadValueOfType(
+EncodableValue RTCPeerConnectionFactoryApiCodecSerializer::ReadValueOfType(
   uint8_t type,
   flutter::ByteStreamReader* stream) const {
   switch (type) {
@@ -1916,7 +1916,7 @@ EncodableValue RTCPeerconnectionFactoryApiCodecSerializer::ReadValueOfType(
   }
 }
 
-void RTCPeerconnectionFactoryApiCodecSerializer::WriteValue(
+void RTCPeerConnectionFactoryApiCodecSerializer::WriteValue(
   const EncodableValue& value,
   flutter::ByteStreamWriter* stream) const {
   if (const CustomEncodableValue* custom_value = std::get_if<CustomEncodableValue>(&value)) {
@@ -2039,17 +2039,17 @@ void RTCPeerconnectionFactoryApiCodecSerializer::WriteValue(
   flutter::StandardCodecSerializer::WriteValue(value, stream);
 }
 
-/// The codec used by RTCPeerconnectionFactoryApi.
-const flutter::StandardMessageCodec& RTCPeerconnectionFactoryApi::GetCodec() {
-  return flutter::StandardMessageCodec::GetInstance(&RTCPeerconnectionFactoryApiCodecSerializer::GetInstance());
+/// The codec used by RTCPeerConnectionFactoryApi.
+const flutter::StandardMessageCodec& RTCPeerConnectionFactoryApi::GetCodec() {
+  return flutter::StandardMessageCodec::GetInstance(&RTCPeerConnectionFactoryApiCodecSerializer::GetInstance());
 }
 
-// Sets up an instance of `RTCPeerconnectionFactoryApi` to handle messages through the `binary_messenger`.
-void RTCPeerconnectionFactoryApi::SetUp(
+// Sets up an instance of `RTCPeerConnectionFactoryApi` to handle messages through the `binary_messenger`.
+void RTCPeerConnectionFactoryApi::SetUp(
   flutter::BinaryMessenger* binary_messenger,
-  RTCPeerconnectionFactoryApi* api) {
+  RTCPeerConnectionFactoryApi* api) {
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.createPeerconnection", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.createPeerConnection", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -2066,7 +2066,7 @@ void RTCPeerconnectionFactoryApi::SetUp(
             return;
           }
           const auto& constraints_arg = std::get<EncodableMap>(encodable_constraints_arg);
-          ErrorOr<std::string> output = api->CreatePeerconnection(configuration_arg, constraints_arg);
+          ErrorOr<std::string> output = api->CreatePeerConnection(configuration_arg, constraints_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2083,7 +2083,7 @@ void RTCPeerconnectionFactoryApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpReceiverCapabilities", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpReceiverCapabilities", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -2111,7 +2111,7 @@ void RTCPeerconnectionFactoryApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerconnectionFactoryApi.getRtpSenderCapabilities", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionFactoryApi.getRtpSenderCapabilities", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -2140,7 +2140,7 @@ void RTCPeerconnectionFactoryApi::SetUp(
   }
 }
 
-EncodableValue RTCPeerconnectionFactoryApi::WrapError(std::string_view error_message) {
+EncodableValue RTCPeerConnectionFactoryApi::WrapError(std::string_view error_message) {
   return EncodableValue(EncodableList{
     EncodableValue(std::string(error_message)),
     EncodableValue("Error"),
@@ -2148,7 +2148,7 @@ EncodableValue RTCPeerconnectionFactoryApi::WrapError(std::string_view error_mes
   });
 }
 
-EncodableValue RTCPeerconnectionFactoryApi::WrapError(const FlutterError& error) {
+EncodableValue RTCPeerConnectionFactoryApi::WrapError(const FlutterError& error) {
   return EncodableValue(EncodableList{
     EncodableValue(error.code()),
     EncodableValue(error.message()),
@@ -2157,9 +2157,9 @@ EncodableValue RTCPeerconnectionFactoryApi::WrapError(const FlutterError& error)
 }
 
 
-RtcPeerconnectionApiCodecSerializer::RtcPeerconnectionApiCodecSerializer() {}
+RTCPeerConnectionApiCodecSerializer::RTCPeerConnectionApiCodecSerializer() {}
 
-EncodableValue RtcPeerconnectionApiCodecSerializer::ReadValueOfType(
+EncodableValue RTCPeerConnectionApiCodecSerializer::ReadValueOfType(
   uint8_t type,
   flutter::ByteStreamReader* stream) const {
   switch (type) {
@@ -2214,7 +2214,7 @@ EncodableValue RtcPeerconnectionApiCodecSerializer::ReadValueOfType(
   }
 }
 
-void RtcPeerconnectionApiCodecSerializer::WriteValue(
+void RTCPeerConnectionApiCodecSerializer::WriteValue(
   const EncodableValue& value,
   flutter::ByteStreamWriter* stream) const {
   if (const CustomEncodableValue* custom_value = std::get_if<CustomEncodableValue>(&value)) {
@@ -2337,34 +2337,34 @@ void RtcPeerconnectionApiCodecSerializer::WriteValue(
   flutter::StandardCodecSerializer::WriteValue(value, stream);
 }
 
-/// The codec used by RtcPeerconnectionApi.
-const flutter::StandardMessageCodec& RtcPeerconnectionApi::GetCodec() {
-  return flutter::StandardMessageCodec::GetInstance(&RtcPeerconnectionApiCodecSerializer::GetInstance());
+/// The codec used by RTCPeerConnectionApi.
+const flutter::StandardMessageCodec& RTCPeerConnectionApi::GetCodec() {
+  return flutter::StandardMessageCodec::GetInstance(&RTCPeerConnectionApiCodecSerializer::GetInstance());
 }
 
-// Sets up an instance of `RtcPeerconnectionApi` to handle messages through the `binary_messenger`.
-void RtcPeerconnectionApi::SetUp(
+// Sets up an instance of `RTCPeerConnectionApi` to handle messages through the `binary_messenger`.
+void RTCPeerConnectionApi::SetUp(
   flutter::BinaryMessenger* binary_messenger,
-  RtcPeerconnectionApi* api) {
+  RTCPeerConnectionApi* api) {
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addCandidate", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addCandidate", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const IceCandidateMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          std::optional<FlutterError> output = api->AddCandidate(peerconnection_id_arg, msg_arg);
+          std::optional<FlutterError> output = api->AddCandidate(peer_connection_id_arg, msg_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2381,24 +2381,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addStream", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addStream", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_stream_id_arg = args.at(1);
           if (encodable_stream_id_arg.IsNull()) {
             reply(WrapError("stream_id_arg unexpectedly null."));
             return;
           }
           const auto& stream_id_arg = std::get<std::string>(encodable_stream_id_arg);
-          std::optional<FlutterError> output = api->AddStream(peerconnection_id_arg, stream_id_arg);
+          std::optional<FlutterError> output = api->AddStream(peer_connection_id_arg, stream_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2415,17 +2415,17 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.addTrack", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.addTrack", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_track_id_arg = args.at(1);
           if (encodable_track_id_arg.IsNull()) {
             reply(WrapError("track_id_arg unexpectedly null."));
@@ -2434,7 +2434,7 @@ void RtcPeerconnectionApi::SetUp(
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
           const auto& encodable_stream_ids_arg = args.at(2);
           const auto* stream_ids_arg = std::get_if<EncodableList>(&encodable_stream_ids_arg);
-          ErrorOr<EncodableMap> output = api->AddTrack(peerconnection_id_arg, track_id_arg, stream_ids_arg);
+          ErrorOr<EncodableMap> output = api->AddTrack(peer_connection_id_arg, track_id_arg, stream_ids_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2451,18 +2451,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.close", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.closePeerConnection", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->Close(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->ClosePeerConnection(peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2479,24 +2479,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createAnswer", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createAnswer", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const ConstraintsMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          ErrorOr<SessionDescriptionMessage> output = api->CreateAnswer(peerconnection_id_arg, msg_arg);
+          ErrorOr<SessionDescriptionMessage> output = api->CreateAnswer(peer_connection_id_arg, msg_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2513,17 +2513,17 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createDataChannel", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createDataChannel", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_label_arg = args.at(1);
           if (encodable_label_arg.IsNull()) {
             reply(WrapError("label_arg unexpectedly null."));
@@ -2536,7 +2536,7 @@ void RtcPeerconnectionApi::SetUp(
             return;
           }
           const auto& msg_arg = std::any_cast<const DataChannelInitMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          ErrorOr<EncodableMap> output = api->CreateDataChannel(peerconnection_id_arg, label_arg, msg_arg);
+          ErrorOr<EncodableMap> output = api->CreateDataChannel(peer_connection_id_arg, label_arg, msg_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2553,24 +2553,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.createOffer", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.createOffer", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const ConstraintsMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          ErrorOr<SessionDescriptionMessage> output = api->CreateOffer(peerconnection_id_arg, msg_arg);
+          ErrorOr<SessionDescriptionMessage> output = api->CreateOffer(peer_connection_id_arg, msg_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2587,18 +2587,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.dispose", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.disposePeerconnection", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->Dispose(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->DisposePeerconnection(peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2615,18 +2615,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getLocalDescription", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getLocalDescription", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<std::optional<SessionDescriptionMessage>> output = api->GetLocalDescription(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<std::optional<SessionDescriptionMessage>> output = api->GetLocalDescription(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2648,18 +2648,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getLocalStreams", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getLocalStreams", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<EncodableList> output = api->GetLocalStreams(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<EncodableList> output = api->GetLocalStreams(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2676,18 +2676,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteStreams", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteStreams", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<EncodableList> output = api->GetRemoteStreams(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<EncodableList> output = api->GetRemoteStreams(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2704,18 +2704,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getReceivers", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getReceivers", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<EncodableList> output = api->GetReceivers(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<EncodableList> output = api->GetReceivers(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2732,18 +2732,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getSenders", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getSenders", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<EncodableList> output = api->GetSenders(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<EncodableList> output = api->GetSenders(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2760,18 +2760,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getTransceivers", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getTransceivers", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<EncodableList> output = api->GetTransceivers(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<EncodableList> output = api->GetTransceivers(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2788,24 +2788,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getStats", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getStats", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_track_id_arg = args.at(1);
           if (encodable_track_id_arg.IsNull()) {
             reply(WrapError("track_id_arg unexpectedly null."));
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          ErrorOr<EncodableList> output = api->GetStats(peerconnection_id_arg, track_id_arg);
+          ErrorOr<EncodableList> output = api->GetStats(peer_connection_id_arg, track_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2822,24 +2822,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.removeStream", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.removeStream", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_stream_id_arg = args.at(1);
           if (encodable_stream_id_arg.IsNull()) {
             reply(WrapError("stream_id_arg unexpectedly null."));
             return;
           }
           const auto& stream_id_arg = std::get<std::string>(encodable_stream_id_arg);
-          std::optional<FlutterError> output = api->RemoveStream(peerconnection_id_arg, stream_id_arg);
+          std::optional<FlutterError> output = api->RemoveStream(peer_connection_id_arg, stream_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2856,24 +2856,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.removeTrack", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.removeTrack", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_sender_id_arg = args.at(1);
           if (encodable_sender_id_arg.IsNull()) {
             reply(WrapError("sender_id_arg unexpectedly null."));
             return;
           }
           const auto& sender_id_arg = std::get<std::string>(encodable_sender_id_arg);
-          ErrorOr<bool> output = api->RemoveTrack(peerconnection_id_arg, sender_id_arg);
+          ErrorOr<bool> output = api->RemoveTrack(peer_connection_id_arg, sender_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -2890,18 +2890,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.restartIce", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.restartIce", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->RestartIce(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->RestartIce(peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2918,24 +2918,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setConfiguration", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setConfiguration", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const ConfigurationMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          std::optional<FlutterError> output = api->SetConfiguration(peerconnection_id_arg, msg_arg);
+          std::optional<FlutterError> output = api->SetConfiguration(peer_connection_id_arg, msg_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2952,24 +2952,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setLocalDescription", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setLocalDescription", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const SessionDescriptionMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          std::optional<FlutterError> output = api->SetLocalDescription(peerconnection_id_arg, msg_arg);
+          std::optional<FlutterError> output = api->SetLocalDescription(peer_connection_id_arg, msg_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -2986,18 +2986,18 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.getRemoteDescription", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.getRemoteDescription", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          ErrorOr<SessionDescriptionMessage> output = api->GetRemoteDescription(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          ErrorOr<SessionDescriptionMessage> output = api->GetRemoteDescription(peer_connection_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -3014,24 +3014,24 @@ void RtcPeerconnectionApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RtcPeerconnectionApi.setRemoteDescription", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCPeerConnectionApi.setRemoteDescription", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_msg_arg = args.at(1);
           if (encodable_msg_arg.IsNull()) {
             reply(WrapError("msg_arg unexpectedly null."));
             return;
           }
           const auto& msg_arg = std::any_cast<const SessionDescriptionMessage&>(std::get<CustomEncodableValue>(encodable_msg_arg));
-          std::optional<FlutterError> output = api->SetRemoteDescription(peerconnection_id_arg, msg_arg);
+          std::optional<FlutterError> output = api->SetRemoteDescription(peer_connection_id_arg, msg_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3049,7 +3049,7 @@ void RtcPeerconnectionApi::SetUp(
   }
 }
 
-EncodableValue RtcPeerconnectionApi::WrapError(std::string_view error_message) {
+EncodableValue RTCPeerConnectionApi::WrapError(std::string_view error_message) {
   return EncodableValue(EncodableList{
     EncodableValue(std::string(error_message)),
     EncodableValue("Error"),
@@ -3057,7 +3057,7 @@ EncodableValue RtcPeerconnectionApi::WrapError(std::string_view error_message) {
   });
 }
 
-EncodableValue RtcPeerconnectionApi::WrapError(const FlutterError& error) {
+EncodableValue RTCPeerConnectionApi::WrapError(const FlutterError& error) {
   return EncodableValue(EncodableList{
     EncodableValue(error.code()),
     EncodableValue(error.message()),
@@ -3107,19 +3107,19 @@ void RTCDataChannelApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_message_arg = args.at(1);
           if (encodable_message_arg.IsNull()) {
             reply(WrapError("message_arg unexpectedly null."));
             return;
           }
           const auto& message_arg = std::any_cast<const DataChannelMessage&>(std::get<CustomEncodableValue>(encodable_message_arg));
-          std::optional<FlutterError> output = api->Send(peerconnection_id_arg, message_arg);
+          std::optional<FlutterError> output = api->Send(peer_connection_id_arg, message_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3136,18 +3136,18 @@ void RTCDataChannelApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCDataChannelApi.close", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCDataChannelApi.closeDataChannel", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->Close(peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->CloseDataChannel(peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3196,12 +3196,12 @@ void RTCDTMFSenderApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_rtp_sender_id_arg = args.at(1);
           if (encodable_rtp_sender_id_arg.IsNull()) {
             reply(WrapError("rtp_sender_id_arg unexpectedly null."));
@@ -3226,7 +3226,7 @@ void RTCDTMFSenderApi::SetUp(
             return;
           }
           const int64_t inter_tone_gap_arg = encodable_inter_tone_gap_arg.LongValue();
-          std::optional<FlutterError> output = api->InsertDtmf(peerconnection_id_arg, rtp_sender_id_arg, tones_arg, duration_arg, inter_tone_gap_arg);
+          std::optional<FlutterError> output = api->InsertDtmf(peer_connection_id_arg, rtp_sender_id_arg, tones_arg, duration_arg, inter_tone_gap_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3248,19 +3248,19 @@ void RTCDTMFSenderApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_rtp_sender_id_arg = args.at(1);
           if (encodable_rtp_sender_id_arg.IsNull()) {
             reply(WrapError("rtp_sender_id_arg unexpectedly null."));
             return;
           }
           const auto& rtp_sender_id_arg = std::get<std::string>(encodable_rtp_sender_id_arg);
-          ErrorOr<bool> output = api->CanInsertDtmf(peerconnection_id_arg, rtp_sender_id_arg);
+          ErrorOr<bool> output = api->CanInsertDtmf(peer_connection_id_arg, rtp_sender_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -3364,12 +3364,12 @@ void RTCRtpSenderApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_rtp_sender_id_arg = args.at(1);
           if (encodable_rtp_sender_id_arg.IsNull()) {
             reply(WrapError("rtp_sender_id_arg unexpectedly null."));
@@ -3382,7 +3382,7 @@ void RTCRtpSenderApi::SetUp(
             return;
           }
           const auto& parameters_arg = std::any_cast<const RtpParametersMessage&>(std::get<CustomEncodableValue>(encodable_parameters_arg));
-          ErrorOr<bool> output = api->SetParameters(peerconnection_id_arg, rtp_sender_id_arg, parameters_arg);
+          ErrorOr<bool> output = api->SetParameters(peer_connection_id_arg, rtp_sender_id_arg, parameters_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -3404,12 +3404,12 @@ void RTCRtpSenderApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_rtp_sender_id_arg = args.at(1);
           if (encodable_rtp_sender_id_arg.IsNull()) {
             reply(WrapError("rtp_sender_id_arg unexpectedly null."));
@@ -3422,7 +3422,7 @@ void RTCRtpSenderApi::SetUp(
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          std::optional<FlutterError> output = api->ReplaceTrack(peerconnection_id_arg, rtp_sender_id_arg, track_id_arg);
+          std::optional<FlutterError> output = api->ReplaceTrack(peer_connection_id_arg, rtp_sender_id_arg, track_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3444,12 +3444,12 @@ void RTCRtpSenderApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_rtp_sender_id_arg = args.at(1);
           if (encodable_rtp_sender_id_arg.IsNull()) {
             reply(WrapError("rtp_sender_id_arg unexpectedly null."));
@@ -3468,7 +3468,7 @@ void RTCRtpSenderApi::SetUp(
             return;
           }
           const auto& take_ownership_arg = std::get<bool>(encodable_take_ownership_arg);
-          std::optional<FlutterError> output = api->SetTrack(peerconnection_id_arg, rtp_sender_id_arg, track_id_arg, take_ownership_arg);
+          std::optional<FlutterError> output = api->SetTrack(peer_connection_id_arg, rtp_sender_id_arg, track_id_arg, take_ownership_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3544,12 +3544,12 @@ void RTCRtpTransceiverApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_transceiver_id_arg = args.at(1);
           if (encodable_transceiver_id_arg.IsNull()) {
             reply(WrapError("transceiver_id_arg unexpectedly null."));
@@ -3562,7 +3562,7 @@ void RTCRtpTransceiverApi::SetUp(
             return;
           }
           const auto& direction_arg = std::get<std::string>(encodable_direction_arg);
-          std::optional<FlutterError> output = api->SetDirection(peerconnection_id_arg, transceiver_id_arg, direction_arg);
+          std::optional<FlutterError> output = api->SetDirection(peer_connection_id_arg, transceiver_id_arg, direction_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3584,19 +3584,19 @@ void RTCRtpTransceiverApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_transceiver_id_arg = args.at(1);
           if (encodable_transceiver_id_arg.IsNull()) {
             reply(WrapError("transceiver_id_arg unexpectedly null."));
             return;
           }
           const auto& transceiver_id_arg = std::get<std::string>(encodable_transceiver_id_arg);
-          ErrorOr<std::optional<std::string>> output = api->GetCurrentDirection(peerconnection_id_arg, transceiver_id_arg);
+          ErrorOr<std::optional<std::string>> output = api->GetCurrentDirection(peer_connection_id_arg, transceiver_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -3623,19 +3623,19 @@ void RTCRtpTransceiverApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_transceiver_id_arg = args.at(1);
           if (encodable_transceiver_id_arg.IsNull()) {
             reply(WrapError("transceiver_id_arg unexpectedly null."));
             return;
           }
           const auto& transceiver_id_arg = std::get<std::string>(encodable_transceiver_id_arg);
-          ErrorOr<std::string> output = api->GetDirection(peerconnection_id_arg, transceiver_id_arg);
+          ErrorOr<std::string> output = api->GetDirection(peer_connection_id_arg, transceiver_id_arg);
           if (output.has_error()) {
             reply(WrapError(output.error()));
             return;
@@ -3652,24 +3652,24 @@ void RTCRtpTransceiverApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCRtpTransceiverApi.stop", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCRtpTransceiverApi.stopRtpTransceiver", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_transceiver_id_arg = args.at(1);
           if (encodable_transceiver_id_arg.IsNull()) {
             reply(WrapError("transceiver_id_arg unexpectedly null."));
             return;
           }
           const auto& transceiver_id_arg = std::get<std::string>(encodable_transceiver_id_arg);
-          std::optional<FlutterError> output = api->Stop(peerconnection_id_arg, transceiver_id_arg);
+          std::optional<FlutterError> output = api->StopRtpTransceiver(peer_connection_id_arg, transceiver_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3691,12 +3691,12 @@ void RTCRtpTransceiverApi::SetUp(
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
           const auto& args = std::get<EncodableList>(message);
-          const auto& encodable_peerconnection_id_arg = args.at(0);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(0);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_transceiver_id_arg = args.at(1);
           if (encodable_transceiver_id_arg.IsNull()) {
             reply(WrapError("transceiver_id_arg unexpectedly null."));
@@ -3709,7 +3709,7 @@ void RTCRtpTransceiverApi::SetUp(
             return;
           }
           const auto& codecs_arg = std::get<EncodableList>(encodable_codecs_arg);
-          std::optional<FlutterError> output = api->SetCodecPreferences(peerconnection_id_arg, transceiver_id_arg, codecs_arg);
+          std::optional<FlutterError> output = api->SetCodecPreferences(peer_connection_id_arg, transceiver_id_arg, codecs_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3821,7 +3821,7 @@ void RTCVideoRendererApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCVideoRendererApi.dispose", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.RTCVideoRendererApi.disposeVideoRender", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -3832,7 +3832,7 @@ void RTCVideoRendererApi::SetUp(
             return;
           }
           const int64_t texture_id_arg = encodable_texture_id_arg.LongValue();
-          std::optional<FlutterError> output = api->Dispose(texture_id_arg);
+          std::optional<FlutterError> output = api->DisposeVideoRender(texture_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3901,9 +3901,9 @@ void MediaRecorderApi::SetUp(
             return;
           }
           const int64_t recorder_id_arg = encodable_recorder_id_arg.LongValue();
-          const auto& encodable_peerconnection_id_arg = args.at(4);
-          const auto* peerconnection_id_arg = std::get_if<std::string>(&encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->Start(path_arg, audio_channel_arg, video_track_id_arg, recorder_id_arg, peerconnection_id_arg);
+          const auto& encodable_peer_connection_id_arg = args.at(4);
+          const auto* peer_connection_id_arg = std::get_if<std::string>(&encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->Start(path_arg, audio_channel_arg, video_track_id_arg, recorder_id_arg, peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3920,7 +3920,7 @@ void MediaRecorderApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaRecorderApi.stop", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaRecorderApi.stopMediaRecorder", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -3931,7 +3931,7 @@ void MediaRecorderApi::SetUp(
             return;
           }
           const int64_t recorder_id_arg = encodable_recorder_id_arg.LongValue();
-          std::optional<FlutterError> output = api->Stop(recorder_id_arg);
+          std::optional<FlutterError> output = api->StopMediaRecorder(recorder_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -3975,7 +3975,7 @@ void MediaStreamApi::SetUp(
   flutter::BinaryMessenger* binary_messenger,
   MediaStreamApi* api) {
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.getMediaTracks", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.getMediaStreamTracks", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -3986,7 +3986,7 @@ void MediaStreamApi::SetUp(
             return;
           }
           const auto& stream_id_arg = std::get<std::string>(encodable_stream_id_arg);
-          std::optional<FlutterError> output = api->GetMediaTracks(stream_id_arg);
+          std::optional<FlutterError> output = api->GetMediaStreamTracks(stream_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4003,7 +4003,7 @@ void MediaStreamApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.addTrack", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.addMediaStreamTrack", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4020,7 +4020,7 @@ void MediaStreamApi::SetUp(
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          std::optional<FlutterError> output = api->AddTrack(stream_id_arg, track_id_arg);
+          std::optional<FlutterError> output = api->AddMediaStreamTrack(stream_id_arg, track_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4037,7 +4037,7 @@ void MediaStreamApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.removeTrack", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.removeMediaStreamTrack", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4054,7 +4054,7 @@ void MediaStreamApi::SetUp(
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          std::optional<FlutterError> output = api->RemoveTrack(stream_id_arg, track_id_arg);
+          std::optional<FlutterError> output = api->RemoveMediaStreamTrack(stream_id_arg, track_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4071,7 +4071,7 @@ void MediaStreamApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.dispose", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamApi.disposeMediaStream", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4082,7 +4082,7 @@ void MediaStreamApi::SetUp(
             return;
           }
           const auto& stream_id_arg = std::get<std::string>(encodable_stream_id_arg);
-          std::optional<FlutterError> output = api->Dispose(stream_id_arg);
+          std::optional<FlutterError> output = api->DisposeMediaStream(stream_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4143,13 +4143,13 @@ void MediaStreamTrackApi::SetUp(
             return;
           }
           const auto& enabled_arg = std::get<bool>(encodable_enabled_arg);
-          const auto& encodable_peerconnection_id_arg = args.at(2);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(2);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
-          std::optional<FlutterError> output = api->Enable(track_id_arg, enabled_arg, peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
+          std::optional<FlutterError> output = api->Enable(track_id_arg, enabled_arg, peer_connection_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4239,19 +4239,19 @@ void MediaStreamTrackApi::SetUp(
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          const auto& encodable_peerconnection_id_arg = args.at(1);
-          if (encodable_peerconnection_id_arg.IsNull()) {
-            reply(WrapError("peerconnection_id_arg unexpectedly null."));
+          const auto& encodable_peer_connection_id_arg = args.at(1);
+          if (encodable_peer_connection_id_arg.IsNull()) {
+            reply(WrapError("peer_connection_id_arg unexpectedly null."));
             return;
           }
-          const auto& peerconnection_id_arg = std::get<std::string>(encodable_peerconnection_id_arg);
+          const auto& peer_connection_id_arg = std::get<std::string>(encodable_peer_connection_id_arg);
           const auto& encodable_path_arg = args.at(2);
           if (encodable_path_arg.IsNull()) {
             reply(WrapError("path_arg unexpectedly null."));
             return;
           }
           const auto& path_arg = std::get<std::string>(encodable_path_arg);
-          std::optional<FlutterError> output = api->CaptureFrame(track_id_arg, peerconnection_id_arg, path_arg);
+          std::optional<FlutterError> output = api->CaptureFrame(track_id_arg, peer_connection_id_arg, path_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;
@@ -4268,7 +4268,7 @@ void MediaStreamTrackApi::SetUp(
     }
   }
   {
-    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamTrackApi.stop", &GetCodec());
+    auto channel = std::make_unique<BasicMessageChannel<>>(binary_messenger, "dev.flutter.pigeon.MediaStreamTrackApi.stopMediaStreamTrack", &GetCodec());
     if (api != nullptr) {
       channel->SetMessageHandler([api](const EncodableValue& message, const flutter::MessageReply<EncodableValue>& reply) {
         try {
@@ -4279,7 +4279,7 @@ void MediaStreamTrackApi::SetUp(
             return;
           }
           const auto& track_id_arg = std::get<std::string>(encodable_track_id_arg);
-          std::optional<FlutterError> output = api->Stop(track_id_arg);
+          std::optional<FlutterError> output = api->StopMediaStreamTrack(track_id_arg);
           if (output.has_value()) {
             reply(WrapError(output.value()));
             return;

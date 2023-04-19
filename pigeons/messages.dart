@@ -212,76 +212,76 @@ class DesktopCapturerSourceMessage {
 }
 
 @HostApi()
-abstract class RTCPeerconnectionFactoryApi {
-  String createPeerconnection(
+abstract class RTCPeerConnectionFactoryApi {
+  String createPeerConnection(
       Map<String, Object?> configuration, Map<String, Object?> constraints);
   RtpCapabilitiesMessage getRtpReceiverCapabilities(String kind);
   RtpCapabilitiesMessage getRtpSenderCapabilities(String kind);
 }
 
 @HostApi()
-abstract class RtcPeerconnectionApi {
-  void addCandidate(String peerconnectionId, IceCandidateMessage msg);
-  void addStream(String peerconnectionId, String streamId);
+abstract class RTCPeerConnectionApi {
+  void addCandidate(String peerConnectionId, IceCandidateMessage msg);
+  void addStream(String peerConnectionId, String streamId);
   Map<String, Object?> addTrack(
-      String peerconnectionId, String trackId, List<String>? streamIds);
-  void close(String peerconnectionId);
+      String peerConnectionId, String trackId, List<String>? streamIds);
+  void closePeerConnection(String peerConnectionId);
   SessionDescriptionMessage createAnswer(
-      String peerconnectionId, ConstraintsMessage msg);
+      String peerConnectionId, ConstraintsMessage msg);
   Map<String, Object?> createDataChannel(
-      String peerconnectionId, String label, DataChannelInitMessage msg);
+      String peerConnectionId, String label, DataChannelInitMessage msg);
   SessionDescriptionMessage createOffer(
-      String peerconnectionId, ConstraintsMessage msg);
-  void dispose(String peerconnectionId);
-  SessionDescriptionMessage? getLocalDescription(String peerconnectionId);
-  List<MediaStreamMessage> getLocalStreams(String peerconnectionId);
-  List<MediaStreamMessage> getRemoteStreams(String peerconnectionId);
-  List<Map<String, Object?>> getReceivers(String peerconnectionId);
-  List<Map<String, Object?>> getSenders(String peerconnectionId);
-  List<Map<String, Object?>> getTransceivers(String peerconnectionId);
-  List<StatsReportMessage> getStats(String peerconnectionId, String trackId);
-  void removeStream(String peerconnectionId, String streamId);
-  bool removeTrack(String peerconnectionId, String senderId);
-  void restartIce(String peerconnectionId);
-  void setConfiguration(String peerconnectionId, ConfigurationMessage msg);
+      String peerConnectionId, ConstraintsMessage msg);
+  void disposePeerconnection(String peerConnectionId);
+  SessionDescriptionMessage? getLocalDescription(String peerConnectionId);
+  List<MediaStreamMessage> getLocalStreams(String peerConnectionId);
+  List<MediaStreamMessage> getRemoteStreams(String peerConnectionId);
+  List<Map<String, Object?>> getReceivers(String peerConnectionId);
+  List<Map<String, Object?>> getSenders(String peerConnectionId);
+  List<Map<String, Object?>> getTransceivers(String peerConnectionId);
+  List<StatsReportMessage> getStats(String peerConnectionId, String trackId);
+  void removeStream(String peerConnectionId, String streamId);
+  bool removeTrack(String peerConnectionId, String senderId);
+  void restartIce(String peerConnectionId);
+  void setConfiguration(String peerConnectionId, ConfigurationMessage msg);
   void setLocalDescription(
-      String peerconnectionId, SessionDescriptionMessage msg);
-  SessionDescriptionMessage getRemoteDescription(String peerconnectionId);
+      String peerConnectionId, SessionDescriptionMessage msg);
+  SessionDescriptionMessage getRemoteDescription(String peerConnectionId);
   void setRemoteDescription(
-      String peerconnectionId, SessionDescriptionMessage msg);
+      String peerConnectionId, SessionDescriptionMessage msg);
 }
 
 @HostApi()
 abstract class RTCDataChannelApi {
-  void send(String peerconnectionId, DataChannelMessage message);
-  void close(String peerconnectionId);
+  void send(String peerConnectionId, DataChannelMessage message);
+  void closeDataChannel(String peerConnectionId);
 }
 
 @HostApi()
 abstract class RTCDTMFSenderApi {
-  void insertDtmf(String peerconnectionId, String rtpSenderId, String tones,
+  void insertDtmf(String peerConnectionId, String rtpSenderId, String tones,
       int duration, int interToneGap);
-  bool canInsertDtmf(String peerconnectionId, String rtpSenderId);
+  bool canInsertDtmf(String peerConnectionId, String rtpSenderId);
 }
 
 @HostApi()
 abstract class RTCRtpSenderApi {
-  bool setParameters(String peerconnectionId, String rtpSenderId,
+  bool setParameters(String peerConnectionId, String rtpSenderId,
       RtpParametersMessage parameters);
   void replaceTrack(
-      String peerconnectionId, String rtpSenderId, String trackId);
-  void setTrack(String peerconnectionId, String rtpSenderId, String trackId,
+      String peerConnectionId, String rtpSenderId, String trackId);
+  void setTrack(String peerConnectionId, String rtpSenderId, String trackId,
       bool takeOwnership);
 }
 
 @HostApi()
 abstract class RTCRtpTransceiverApi {
   void setDirection(
-      String peerconnectionId, String transceiverId, String direction);
-  String? getCurrentDirection(String peerconnectionId, String transceiverId);
-  String getDirection(String peerconnectionId, String transceiverId);
-  void stop(String peerconnectionId, String transceiverId);
-  void setCodecPreferences(String peerconnectionId, String transceiverId,
+      String peerConnectionId, String transceiverId, String direction);
+  String? getCurrentDirection(String peerConnectionId, String transceiverId);
+  String getDirection(String peerConnectionId, String transceiverId);
+  void stopRtpTransceiver(String peerConnectionId, String transceiverId);
+  void setCodecPreferences(String peerConnectionId, String transceiverId,
       List<RtpCodecCapabilityMessage> codecs);
 }
 
@@ -290,31 +290,31 @@ abstract class RTCVideoRendererApi {
   int? initialize();
   void setSrcObject(
       int textureId, String streamId, String ownerTag, String? trackId);
-  void dispose(int textureId);
+  void disposeVideoRender(int textureId);
 }
 
 @HostApi()
 abstract class MediaRecorderApi {
   void start(String path, int audioChannel, String? videoTrackId,
-      int recorderId, String? peerconnectionId);
-  void stop(int recorderId);
+      int recorderId, String? peerConnectionId);
+  void stopMediaRecorder(int recorderId);
 }
 
 @HostApi()
 abstract class MediaStreamApi {
-  void getMediaTracks(String streamId);
-  void addTrack(String streamId, String trackId);
-  void removeTrack(String streamId, String trackId);
-  void dispose(String streamId);
+  void getMediaStreamTracks(String streamId);
+  void addMediaStreamTrack(String streamId, String trackId);
+  void removeMediaStreamTrack(String streamId, String trackId);
+  void disposeMediaStream(String streamId);
 }
 
 @HostApi()
 abstract class MediaStreamTrackApi {
-  void enable(String trackId, bool enabled, String peerconnectionId);
+  void enable(String trackId, bool enabled, String peerConnectionId);
   bool hasTorch(String trackId);
   void setTorch(String trackId, bool torch);
-  void captureFrame(String trackId, String peerconnectionId, String path);
-  void stop(String trackId);
+  void captureFrame(String trackId, String peerConnectionId, String path);
+  void stopMediaStreamTrack(String trackId);
 }
 
 @HostApi()
